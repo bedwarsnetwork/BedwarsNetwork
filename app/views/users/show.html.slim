@@ -1,0 +1,21 @@
+- title(@user.name)
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .row
+    .col.offset-s1.s10
+      .section
+        .row
+          = render("header")
+        - if !@user.friendships.empty?
+          .row
+            .col.s12
+              .card
+                .card-content
+                  span.card-title Freunde
+                  .center-align
+                    - @user.sorted_friendships.each do |friendship|
+                      - if friendship.status?
+                        = link_to user_path(friendship.user.name) do
+                          = image_tag("https://visage.surgeplay.com/bust/256/#{friendship.user.id}", alt: friendship.user.name, title: friendship.user.name, class: "circle", style: "height: 60px; margin: 15px;")

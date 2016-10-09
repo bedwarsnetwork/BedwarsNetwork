@@ -1,0 +1,65 @@
+- title("Team")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Team
+  .section
+    .row
+      - @team.select{|key| key[:_id] == "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
+        .col.xs12.s6.l4
+          .card.horizontal
+            .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+              = link_to user_path(user.name) do
+                = link_to user_path(user.name) do
+                  = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
+            .card-stacked.col.xs10.m9.l8
+              .card-content
+                span.card-title
+                  = link_to user.name, user_path(user.name), class: "black-text"
+                br
+                - if user.rank
+                  = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
+      - @team.select{|key| key[:_id] != "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
+        .col.xs12.s6.l4
+          .card.horizontal
+            .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+              = link_to user_path(user.name) do
+                = link_to user_path(user.name) do
+                  = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
+            .card-stacked.col.xs10.m9.l8
+              .card-content
+                span.card-title
+                  = link_to user.name, user_path(user.name), class: "black-text"
+                br
+                - if user.rank
+                  = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
+  .section
+    .row
+      .col.s12.l6
+        .card
+          .card-content
+            span.card-title
+              | Bewirb dich bei uns!
+            p
+              | Wir suchen regelmäßig neue Mitglieder für unser Team. Schau doch einmal auf unserer Seite "Bewerbung" vorbei, wen wir gerade suchen!
+          .card-action
+            = link_to({controller: "static", action: "application"}, {class: "waves-effect waves-light btn bwnet"}) do
+              = content_tag(:i, "info_outline", class: "material-icons left")
+              | Bewerbung 
+      .col.s12.l6
+        .card
+          .card-content
+            span.card-title
+              | Ehemalige Teammitglieder
+            p
+              | Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.
+          .card-action
+            = link_to({controller: "static", action: "team_history"}, {class: "waves-effect waves-light btn bwnet"}) do
+              = content_tag(:i, "history", class: "material-icons left")
+              | Ehemalige Teammitglieder 

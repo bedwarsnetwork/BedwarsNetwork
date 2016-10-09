@@ -1,0 +1,24 @@
+.col.s12
+  .card
+    .card-content.center-align
+      = image_tag("https://visage.surgeplay.com/bust/256/#{@user.id}", alt: @user.name, title: @user.name, class: "circle responsive-img")
+      h1 style=("text-transform: none") = @user.name
+      - if @user.rank
+        = content_tag(:div, class: "chip white-text", style: "background-color: ##{@user.colorcode}") do
+          = @user.rank
+      - if @user.online
+        .chip.green.white-text
+          | online
+.col.s12
+  .card
+    ul.linked-tabs
+      li.tab.col.s6
+        - if params[:action] == "show"
+          = link_to "Profil", user_path(@user.name), class: "active"
+        - else
+          = link_to "Profil", user_path(@user.name)
+      li.tab.col.s6
+        - if params[:action] == "statistic"
+          = link_to "Statistik", user_statistic_path(@user.name), class: "active"
+        - else
+          = link_to "Statistik", user_statistic_path(@user.name)

@@ -1,0 +1,96 @@
+- title("Premium")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Premium
+  .section
+    .row
+      .col.xs12
+        .card.horizontal
+          .card-image.valign-wrapper[style="padding: 10px"]
+            = image_tag("https://visage.surgeplay.com/full/256/93ede72e-3ef0-42eb-a37b-62477df6497f", alt: "sbinder93", title: "sbinder93", style: "width: 200px", class: "circle valign")
+          .card-content
+            p
+              span.card-title
+                | Hilf mir bei der Finanzierung!
+            p
+              | Die wenigsten Minecraft-Spieler beschäftigen sich mit dem Thema Server und die Kosten hierfür. Hinter bedwars.network steht kein großes Unternehmen, sondern Einzelpersonen und freiwillige Helfer. Es entstehen monatliche sehr hohe Kosten für den Betrieb des Servers.
+            p
+              | Wer das alles finanziert? Grundsätzlich ich als Serverinhaber aus eigener Tasche. Daher die bitte an euch da draußen: Seid fair und unterstützt mich hierbei.
+            p
+              | Danke euch!
+              br
+              span.bwnet-text
+                | Sebastian (sbinder93)
+  .section
+    .row
+      .col.xs12
+        .card
+          .row
+            .col.xs12
+              ul.tabs
+                li.tab.col.xs3
+                  a[href="#tab-how-to-help"]
+                    | Wie helfe ich?
+                li.tab.col.xs3
+                  a[href="#tab-profits"]
+                    | Was bekomme ich im Gegenzug?
+                li.tab.col.xs3
+                  a[href="#tab-goals"]
+                    | Verwendung der Gelder
+              #tab-how-to-help.col.xs12
+                p
+                  | Die einfachste Möglichkeit ist über das Formular direkt unterhalb auf dieser Seite oder in unserem Shop 
+                  a[href="http://buy.bedwars.network" target="_blank"]
+                    | buy.bedwars.network
+                  | . Dort kannst du über PayPal oder unseren Kooperationspartner Paymentwall bezahlen. PayPal unterstützt u.A. Zahlungen via dein PayPal-Guthaben, per Kreditkarte und per Lastschrift, wohingegen du bei Paymentwall u.A. mit einer Paysafecard zahlen kannst.
+                  br
+                  |  Gerne können wir dir auch auf Anfrage per E-Mail Überweisungsdaten zukommen lassen, denn sowohl an PayPal als auch an Paymentwall müssen wir für jede Transaktion Gebühren zahlen. Somit kommt nur bei einer direkten Überweisung auf unser Konto der volle Betrag bei uns an.
+              #tab-profits.col.xs12
+                p
+                  | Einerseits sorgt deine Unterstützung dafür, dass der Server weiterhin am Leben bleibt. Das geht einfach nur, solange die Spenden die Kosten decken. Trotzdem bieten wir dir zusätzlich an, dass du pro 5 € Spendenbetrag einen einmonatigen Premiumrang auf unserem Server bekommst. Das bedeutet, dass du auch auf Spiele joinen kannst, die eigentlich schon voll sind.
+              #tab-goals.col.xs12
+                p
+                  | Alle eingegangenen Gelder dienen grundsätzlich zur Deckung der Serverkosten. Diese betragen für das Jahr 2016 rund 600,00 €. Jeder Betrag aber, insbesondere der Teil der über die genannten Serverkosten hinausgeht, dient zum einen Teil dem Ausbau des Netzwerks und zum anderen Teil für Unterstützungsleistungen gegenüber der vielen helfenden Hände im Serverteam. Niemand will hiermit reich werden, denn wir alle machen das neben unseren Haupttätigkeiten (Schule, Uni, Arbeit) zum Spaß innerhalb unserer Freizeit. Wir wollen nur nicht alleine auf den Kosten sitzenbleiben.
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content
+            a[href="http://buy.bedwars.network" target="_blank"]
+              = image_tag("buycraft.png")
+            form[method="get" action="http://buy.bedwars.network/checkout/packages" target="_blank"]
+              .row
+                .input-field.col.xs12
+                  - if user_signed_in?
+                    label[for="ign" class="active"] Dein InGame-Name:
+                    input type="text" name="ign" value="#{current_user.name}" class="validate"
+                  - else
+                    label[for="ign"] Dein InGame-Name:
+                    input.validate type="text" name="ign"
+              .row
+                .input-field.col.xs12
+                  select[name="package"]
+                    option[value="1689650"]
+                      |  Premium für 1 Monat (ab 5.00 €) 
+                    option[value="1719251"]
+                      |  Premium für 3 Monate (ab 15.00 €) 
+                    option[value="1719254"]
+                      |  Premium für 6 Monate (ab 30.00 €) 
+                    option[value="1845662"]
+                      |  Premium 5 Tage kostenlos testen 
+                  label[for="package"]
+                    | Gewünschtes Paket:
+              .row
+                .col.xs12
+                  input[type="hidden" name="direct" value="true"]
+                  input[type="hidden" name="action" value="add"]
+                  br
+                  input.center-block.btn.btn-primary[type="submit" value="In den Warenkorb"]
+            .clearfix

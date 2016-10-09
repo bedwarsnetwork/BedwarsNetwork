@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title
+      - if content_for?(:title)
+        = yield(:title)
+        |  | bedwars.network
+      - else
+        | bedwars.network | Das Bedwars-Netzwerk für Minecraft 1.9 + 1.10!
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Ubuntu'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Arvo'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+  body
+    = render 'cookies_eu/consent_banner'
+    = render "shared/navigation"
+    - flash.each do |type, message|
+      - if type == "success" || type == "notice"
+        javascript:
+          Materialize.toast("#{message}", 4000, 'green')
+      - elsif type == "error" || type == "alert"
+        javascript:
+          Materialize.toast("#{message}", 4000, 'red')
+    = yield
+    = render "shared/footer"
+    = javascript_include_tag 'footer'

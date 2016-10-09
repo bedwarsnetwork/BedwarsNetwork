@@ -1,0 +1,41 @@
+- title("Statistik von " + @user.name)
+#index-banner.parallax-container
+  .parallax= image_tag("header/index.png")
+.container
+  .row
+    .col.offset-s1.s10
+      .section
+        .row
+          = render("header")
+        .row
+          .col.s12
+            .card
+              .card-content
+                span.card-title Statistik
+                - if @statistic.nil?
+                  p Keine Daten gefunden...
+                - else
+                  table.table
+                    thead
+                      tr
+                        th.center-align Punkte
+                        th.center-align KD
+                        th.center-align Kills
+                        th.center-align Tode
+                        th.center-align
+                          | Gespielte
+                          | Spiele
+                        th.center-align
+                          | Zerstörte
+                          | Betten
+                    tbody
+                      td.center-align= @statistic.score
+                      td.center-align= @statistic.kd.round
+                      td.center-align= @statistic.kills
+                      td.center-align= @statistic.deaths
+                      td.center-align= @statistic.games
+                      td.center-align= @statistic.destroyedBeds
+              .card-action
+                = link_to user_path(@user.name), class: "waves-effect waves-light btn bwnet" do
+                  = content_tag(:i, "chevron_left", class: "material-icons left")
+                  = @user.name

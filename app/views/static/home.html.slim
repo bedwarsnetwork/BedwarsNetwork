@@ -1,0 +1,109 @@
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1
+              | Willkommen auf
+              br
+              span.light-blue-text.text-lighten-1
+                | bedwars.network
+            p
+              | Das Bedwars-Netzwerk für Minecraft 1.9 + 1.10!
+  .section
+    .row
+      .col.xs12
+        .card style="height: 150px;"
+          .card-content.center-align
+            p.card-title
+              | Serveradresse:
+              br
+              span.light-blue-text.text-lighten-1
+                | bedwars.network
+      /.col.xs12.m6
+      /  .card style="height: 150px;"
+      /    .card-content.center-align
+      /      p.card-title
+      /        | Spieler online:
+      /      dl class="player-count text-center"
+      /        dd
+      /          - query = MCQuery::simpleQuery('5.9.29.67', 40001)
+      /          - query[:numplayers].split("").each do |letter|
+      /            span
+      /              = letter
+      /          span.divider
+      /            |/
+      /          - query[:maxplayers].split("").each do |letter|
+      /            span
+      /              = letter
+  .section
+    .row
+      .col.xs12
+        .card
+          .row
+            .col.xs12
+              ul.tabs
+                li.tab.col.xs3
+                  a[href="#test1"]
+                    | Was ist Minecraft?
+                li.tab.col.xs3
+                  a[href="#test2"]
+                    | Was ist Bedwars?
+                li.tab.col.xs3
+                  a[href="#test3"]
+                    | Wie spiele ich Bedwars?
+              #test1.col.xs12
+                p
+                  | Minecraft ist ein Open-World-Spiel ohne ein fest vorgegebenes Spielziel. Das Hauptaugenmerk liegt auf der Erkundung und Entdeckung der von Höhlen und Dungeons durchzogenen Spielwelt sowie dem Bau eigener Gebäude und Vorrichtungen. Der Spieler kann Rohstoffe abbauen ("Mine"), diese zu anderen Gegenständen weiterverarbeiten ("Craft") und gegen Monster kämpfen. (Quelle: 
+                  a[href="https://de.wikipedia.org/wiki/Minecraft" target="_blank"]
+                    | Wikipedia
+                  | )
+              #test2.col.xs12
+                p
+                  | Bedwars ist ein Minigame innerhalb von Minecraft. Man spiel hierbei auf Mehrspieler-Servern im Internet. In einer Runde gibt es mehrere Teams, welche alle als Ziel haben, als letztes Team zu überleben. Spieler können sich gegenseitig angreifen und töten, aber erscheinen immer wieder - solange das Team noch ein Bett hat. Ziel ist es also auch, das Bett des anderen Teams zu zerstören, sodass sich die Spielerzahl des anderen Teams reduziert. Das Team, das zuletzt noch einen Spieler in der Runde hat, gewinnt.
+              #test3.col.xs12
+                p
+                  | Gehe in Minecraft auf Mehrspieler und danach im unteren Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername, sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der Liste klicken und der Spielspaß beginnt!
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            span.card-title
+              | News von Twitter 
+              a[href="https://twitter.com/bedwarsnetwork" target="_blank"]
+                | @bedwarsnetwork
+            p
+              a.twitter-timeline[href="https://twitter.com/bedwarsnetwork" data-widget-id="674197251946913792" data-tweet-limit="3" data-chrome="noheader nofooter noborders" data-aria-polite="assertive"]
+                | Tweets von @bedwarsnetwork
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            span.card-title
+              | Impressionen
+            .video-container
+              iframe[width="1280" height="720" src="https://www.youtube.com/embed?listType=playlist&list=PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW" frameborder="0" allowfullscreen="" style="width: 100%;"]
+            p.margin-bottom-lg.text-center
+              i
+                | Diese Videos sind hier aufgrund des Projekts 
+                a[href="/deine-chance/"]
+                  | "Deine Chance"
+                |  veröffentlicht worden.
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            span.card-title
+              | Public Voice Server 
+              span.light-blue-text.text-lighten-1[style="font-style: italic"]
+                | by discord
+            .video-container
+              iframe[src="https://discordapp.com/widget?id=185305236762525697" width="350" height="500" allowtransparency="true" frameborder="0" style="width: 100%"]
+= javascript_include_tag '//platform.twitter.com/widgets.js'
