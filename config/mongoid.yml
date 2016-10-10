@@ -9,7 +9,7 @@ development:
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= ENV["MONGODB_HOST"] %>:27017
+      - <%= ENV["MONGODB_HOST"] %>:27017
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -136,7 +136,7 @@ production:
     default:
       database: <%= ENV["MONGODB_DATABASE"] %>
       hosts:
-        - <%= ENV["MONGODB_HOST"] %>:27017
+      - <%= ENV["MONGODB_HOST"] %>:27017
       options:
         user: <%= ENV["MONGODB_USER"] %>
         password: <%= ENV["MONGODB_PASSWORD"] %>
