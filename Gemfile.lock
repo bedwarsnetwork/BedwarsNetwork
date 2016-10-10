@@ -126,6 +126,10 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    piwik_analytics (1.0.2)
+      actionpack
+      activesupport
+      rails (>= 3.0.0)
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -229,6 +233,7 @@ DEPENDENCIES
   materialize-sass
   mongoid (~> 6)
   mysql2
+  piwik_analytics
   puma (~> 3)
   rails (~> 5)
   sass-rails (~> 5.0)
