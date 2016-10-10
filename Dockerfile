@@ -13,7 +13,7 @@ RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 ADD docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
-ADD docker/environment.conf /etc/nginx/main.d/secret_key.conf
+ADD docker/environment.conf /etc/nginx/main.d/environment.conf
 RUN mkdir /home/app/webapp
 COPY . /home/app/webapp
 RUN ["chown", "-R", "app:users", "/home/app/webapp"]
