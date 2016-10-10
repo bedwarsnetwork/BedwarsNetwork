@@ -15,4 +15,4 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require turbolinks
-//= require cookies_eu
+//= require jquery.divascookies-0.6
