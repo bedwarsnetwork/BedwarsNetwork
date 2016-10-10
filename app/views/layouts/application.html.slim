@@ -26,4 +26,5 @@ html
     = yield
     = render "shared/footer"
     = javascript_include_tag 'footer'
-    = render "shared/piwik"
+    - if Rails.env.production?
+      = render "shared/piwik"
