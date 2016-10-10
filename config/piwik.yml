@@ -1,9 +1,0 @@
-production:
-  piwik:
-    id_site: <%= ENV["PIWIK_ID"] %>
-    url: <%= ENV["PIWIK_URL"] %>
-    use_async: true
-    disabled: false
-development:
-  piwik:
-    disabled: true
