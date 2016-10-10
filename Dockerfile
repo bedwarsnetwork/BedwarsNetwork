@@ -16,7 +16,6 @@ ADD docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 ADD docker/environment.conf /etc/nginx/main.d/secret_key.conf
 RUN mkdir /home/app/webapp
 COPY . /home/app/webapp
-RUN ["ls", "/home/app/webapp"]
 RUN ["chown", "-R", "app:users", "/home/app/webapp"]
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

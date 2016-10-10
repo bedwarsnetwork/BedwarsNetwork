@@ -43,7 +43,7 @@ namespace :deploy do
   task :build do
     on roles(:app) do
       #build the actual docker image, tagging the push for the remote repo
-      execute "cd #{fetch(:deploy_to)} && docker build -t #{fetch(:application)} --build-arg APP_PATH=releases/#{fetch(:release_timestamp)} ."
+      execute "cd #{fetch(:release_path)} && docker build -t #{fetch(:application)} ."
     end
   end
   after :build, :stop
