@@ -1,7 +1,7 @@
 footer.page-footer
-  .fixed-action-btn[style="bottom: 45px; right: 24px;"]
-    - if user_signed_in?
-      a.button-collapse.btn-floating.btn-large.show-on-large.bwnet.white-text.user-nav[href="#" data-activates="slide-out"]
+  - if user_signed_in?
+    .fixed-action-btn[style="bottom: 45px; right: 24px;"]
+      a.button-collapse.btn-floating.btn-large.show-on-large.bwnet.white-text.user-nav[href="#" data-activates="nav-user"]
         = fa_icon ("user")
   .container
     .row
