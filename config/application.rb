@@ -17,12 +17,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module BedwarsNetwork
-  class Application < Rails::Application
-    
+  class Application < Rails::Application   
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
-    if Rails.env.production?
-      config.force_ssl = true
-    end
   end
 end
