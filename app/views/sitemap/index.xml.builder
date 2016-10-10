@@ -12,6 +12,16 @@ xml.url do
 end
 
 xml.url do
+  xml.loc         "http://www.bedwars.network/deine-chance"
+  xml.changefreq  "monthly"
+end
+
+xml.url do
+  xml.loc         "http://www.bedwars.network/youtube"
+  xml.changefreq  "monthly"
+end
+
+xml.url do
   xml.loc         "http://www.bedwars.network/team/history"
   xml.changefreq  "monthly"
 end
