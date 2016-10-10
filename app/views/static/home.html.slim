@@ -96,9 +96,8 @@
             p.margin-bottom-lg.text-center
               i
                 | Diese Videos sind hier aufgrund des Projekts 
-                a[href="/deine-chance/"]
-                  | "Deine Chance"
-                |  veröffentlicht worden.
+                => link_to("Deine Chance", deine_chance_path())
+                | veröffentlicht worden.
   .section
     .row
       .col.xs12

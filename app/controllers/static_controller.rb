@@ -27,6 +27,9 @@ class StaticController < ApplicationController
   def maps
   end
   
+  def youtube
+  end
+  
   def premium
   end
   

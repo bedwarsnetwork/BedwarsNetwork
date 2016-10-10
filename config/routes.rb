@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     devise_for :users
     get '/' => 'static#home', :as => 'home'
     get '/team' => 'static#team', :as => 'team'
+    get '/deine-chance' => 'static#youtube', :as => 'deine_chance'
+    get '/youtube' => 'static#youtube', :as => 'youtube'
     get '/bewerbung' => 'static#application', :as => 'application'
     get '/team/history' => 'static#team_history', :as => 'team_history'
     get '/maps' => 'static#maps', :as => 'maps'
