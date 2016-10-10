@@ -16,7 +16,7 @@
           .card-content
             span.card-title Punkte
             - @score.each_with_index do |statistic, i|
-              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper') style="padding: 20px;"
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
                   = link_to user_statistic_path(statistic.user.name) do
                     = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
@@ -36,7 +36,7 @@
           .card-content
             span.card-title KD
             - @kd.each_with_index do |statistic, i|
-              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper') style="padding: 20px;"
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
                   = link_to user_statistic_path(statistic.user.name) do
                     = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
@@ -56,7 +56,7 @@
           .card-content
             span.card-title Gespielte Spiele
             - @games.each_with_index do |statistic, i|
-              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper') style="padding: 20px;"
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
                   = link_to user_statistic_path(statistic.user.name) do
                     = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
@@ -76,7 +76,7 @@
           .card-content
             span.card-title Zerstörte Betten
             - @destroyedBeds.each_with_index do |statistic, i|
-              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper') style="padding: 20px;"
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
                   = link_to user_statistic_path(statistic.user.name) do
                     = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
