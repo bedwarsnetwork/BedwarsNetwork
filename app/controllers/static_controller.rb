@@ -1,7 +1,19 @@
+require 'open-uri'
 class StaticController < ApplicationController
   skip_authorization_check
   
   def home
+      json = nil
+    begin
+      json = open("https://mcapi.ca/query/bedwars.network/info")
+    rescue => e
+      puts e.inspect
+    end
+    if json.nil?
+      @server_query = nil
+    else
+      @server_query = JSON.load(json)
+    end
   end
 
   def team

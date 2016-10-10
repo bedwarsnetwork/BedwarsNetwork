@@ -16,7 +16,7 @@
               | Das Bedwars-Netzwerk für Minecraft 1.9 + 1.10!
   .section
     .row
-      .col.xs12
+      .col.xs12.m6
         .card style="height: 150px;"
           .card-content.center-align
             p.card-title
@@ -24,22 +24,26 @@
               br
               span.light-blue-text.text-lighten-1
                 | bedwars.network
-      /.col.xs12.m6
-      /  .card style="height: 150px;"
-      /    .card-content.center-align
-      /      p.card-title
-      /        | Spieler online:
-      /      dl class="player-count text-center"
-      /        dd
-      /          - query = MCQuery::simpleQuery('5.9.29.67', 40001)
-      /          - query[:numplayers].split("").each do |letter|
-      /            span
-      /              = letter
-      /          span.divider
-      /            |/
-      /          - query[:maxplayers].split("").each do |letter|
-      /            span
-      /              = letter
+      .col.xs12.m6
+        .card style="height: 150px;"
+          .card-content.center-align
+            p.card-title
+              | Spieler online:
+            dl class="player-count text-center"
+              dd
+                - if !@server_query.nil? && @server_query['status']
+                  - @server_query['players']['online'].to_s.split("").each do |letter|
+                    span
+                      = letter
+                  span.divider
+                    |/
+                  - @server_query['players']['max'].to_s.split("").each do |letter|
+                    span
+                      = letter
+                - else
+                  - "------".split("").each do |letter|
+                    span
+                      = letter
   .section
     .row
       .col.xs12
