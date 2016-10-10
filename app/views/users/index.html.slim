@@ -2,26 +2,24 @@
 #index-banner.parallax-container
   .parallax= image_tag("header/index.png")
 .container
-  .row
-    .col.offset-s1.s10
-      .section
-        .row
-          .col.s12
-            .card
-              .card-content.center-align
-                h1 Users
-        .row
-          .col.s12
-            .card
-              .card-content.left-align
-                .collection.center-align
-                  = paginate @users
-                ul.collection.two-col
-                  - @users.each do |user|
-                    li.collection-item.clickable
-                      = link_to user_path(user.name) do
-                        img.circle.responsive-image.col.s2 alt="#{user.name}" src="https://crafatar.com/avatars/#{user.id}" /
-                        span.title= user.name
-                        .clearfix
-                .collection.center-align
-                  = paginate @users
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Users
+    .row
+      .col.xs12
+        .card
+          .card-content.left-align
+            .collection.center-align
+              = paginate @users
+            ul.collection.two-col
+              - @users.each do |user|
+                li.collection-item.clickable
+                  = link_to user_path(user.name) do
+                    img.circle.responsive-image.col.xs2 alt="#{user.name}" src="https://crafatar.com/avatars/#{user.id}" /
+                    span.title= user.name
+                    .clearfix
+            .collection.center-align
+              = paginate @users
