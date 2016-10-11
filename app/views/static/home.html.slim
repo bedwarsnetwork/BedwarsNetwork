@@ -74,8 +74,8 @@
                   | Gehe in Minecraft auf Mehrspieler und danach im unteren Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername, sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der Liste klicken und der Spielspaß beginnt!
   .section
     .row
-      .col.xs12
-        .card
+      .col.xs12.l4
+        .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
               | News von Twitter 
@@ -84,10 +84,8 @@
             p
               a.twitter-timeline[href="https://twitter.com/bedwarsnetwork" data-widget-id="674197251946913792" data-tweet-limit="3" data-chrome="noheader nofooter noborders" data-aria-polite="assertive"]
                 | Tweets von @bedwarsnetwork
-  .section
-    .row
-      .col.xs12
-        .card
+      .col.xs12.l4
+        .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
               | Impressionen
@@ -98,15 +96,10 @@
                 | Diese Videos sind hier aufgrund des Projekts 
                 => link_to("Deine Chance", deine_chance_path())
                 | veröffentlicht worden.
-  .section
-    .row
-      .col.xs12
-        .card
+      .col.xs12.l4
+        .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
               | Public Voice Server 
-              span.light-blue-text.text-lighten-1[style="font-style: italic"]
-                | by discord
-            .video-container
-              iframe[src="https://discordapp.com/widget?id=185305236762525697" width="350" height="500" allowtransparency="true" frameborder="0" style="width: 100%"]
+            iframe[src="https://discordapp.com/widget?id=185305236762525697" width="350" height="300" allowtransparency="true" frameborder="0" style="width: 100%"]
 = javascript_include_tag '//platform.twitter.com/widgets.js'
