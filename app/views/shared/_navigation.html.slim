@@ -14,53 +14,53 @@
             = link_to "Statistik", statistic_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
           = link_to "Kontakt", contact_path(), class: "white-text"
-      ul#nav-mobile.side-nav
-        li class=('active' if (params[:controller] == "static" && params[:action] == "team"))
-          = link_to "Team", team_path()
-        li class=('active' if (params[:controller] == "static" && params[:action] == "maps"))
-            = link_to "Maps", maps_path()
-        li class=('active' if (params[:controller] == "static" && params[:action] == "premium"))
-            = link_to "Premium", premium_path()
-        li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
-            = link_to "Statistik", statistic_path()
-        li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
-          = link_to "Kontakt", contact_path()
       a.button-collapse.white-text.mobile-nav[href="#" data-activates="nav-mobile"]
         i.material-icons
           | menu
-      - if user_signed_in?
-        ul#nav-user.side-nav
-          li
-            .userView
-              .bwnet.background
-              = link_to(user_path(current_user.name)) do
-                = image_tag("https://visage.surgeplay.com/bust/256/#{current_user.id}", class: "circle white")
-              = link_to(user_path(current_user.name), class: "white-text") do
-                = current_user.name
-              - if current_user.rank
-                .label.white-text style="background-color: ##{current_user.colorcode}"
-                  = current_user.rank
-              - if current_user.online
-                .label.green.white-text
-                  | online
-          li class=('active' if (params[:controller] == "users" && params[:action] == "show" && params[:name] == current_user.name))
-                = link_to("Dein Profil", user_path(current_user.name))
-          li class=('active' if (params[:controller] == "users" && params[:action] == "statistic" && params[:name] == current_user.name))
-                = link_to("Deine Statistik", user_statistic_path(current_user.name))
-          - if (can? :index, Chatlog) || (can? :index, User)
-            li
-              .divider
-            li
-              a.subheader
-                | Intern
-          - if can? :index, Chatlog
-             li class=('active' if (params[:controller] == "chatlogs"))
-                = link_to("Chatlogs", chatlogs_path())
-          - if can? :index, User
-            li class=('active' if (params[:controller] == "users" && params[:action] == "index"))
-                = link_to("Benutzer", users_path())
-          li
-            .divider[style="margin-bottom: 20px;"]
-          li
-            = link_to(destroy_user_session_path, :method => :delete, class: "red white-text") do
-              | Abmelden
+ul#nav-mobile.side-nav
+  li class=('active' if (params[:controller] == "static" && params[:action] == "team"))
+    = link_to "Team", team_path()
+  li class=('active' if (params[:controller] == "static" && params[:action] == "maps"))
+      = link_to "Maps", maps_path()
+  li class=('active' if (params[:controller] == "static" && params[:action] == "premium"))
+      = link_to "Premium", premium_path()
+  li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
+      = link_to "Statistik", statistic_path()
+  li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
+    = link_to "Kontakt", contact_path()
+- if user_signed_in?
+  ul#nav-user.side-nav
+    li
+      .userView
+        .bwnet.background
+        = link_to(user_path(current_user.name)) do
+          = image_tag("https://visage.surgeplay.com/bust/256/#{current_user.id}", class: "circle white")
+        = link_to(user_path(current_user.name), class: "white-text") do
+          = current_user.name
+        - if current_user.rank
+          .label.white-text style="background-color: ##{current_user.colorcode}"
+            = current_user.rank
+        - if current_user.online
+          .label.green.white-text
+            | online
+    li class=('active' if (params[:controller] == "users" && params[:action] == "show" && params[:name] == current_user.name))
+          = link_to("Dein Profil", user_path(current_user.name))
+    li class=('active' if (params[:controller] == "users" && params[:action] == "statistic" && params[:name] == current_user.name))
+          = link_to("Deine Statistik", user_statistic_path(current_user.name))
+    - if (can? :index, Chatlog) || (can? :index, User)
+      li
+        .divider
+      li
+        a.subheader
+          | Intern
+    - if can? :index, Chatlog
+       li class=('active' if (params[:controller] == "chatlogs"))
+          = link_to("Chatlogs", chatlogs_path())
+    - if can? :index, User
+      li class=('active' if (params[:controller] == "users" && params[:action] == "index"))
+          = link_to("Benutzer", users_path())
+    li
+      .divider[style="margin-bottom: 20px;"]
+    li
+      = link_to(destroy_user_session_path, :method => :delete, class: "red white-text") do
+        | Abmelden
