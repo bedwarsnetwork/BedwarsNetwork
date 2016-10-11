@@ -293,7 +293,7 @@ p {
 }
 
 .parallax-container {
-  min-height: 380px;
+  min-height: 100px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
@@ -379,6 +379,11 @@ nav ul li.divider {
 }
 
 @media #{$small-and-up} {
+  
+  .parallax-container {
+    height: 150px;
+  }
+
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -399,6 +404,11 @@ nav ul li.divider {
 
 
 @media #{$medium-and-up} {
+  
+  .parallax-container {
+    height: 200px;
+  }
+
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -412,6 +422,11 @@ nav ul li.divider {
 }
 
 @media #{$large-and-up} {
+  
+  .parallax-container {
+    height: 280px;
+  }
+
   h1 {
     font-size: 50px;
   }
@@ -430,6 +445,12 @@ nav ul li.divider {
 }
 
 @media #{$extra-large-and-up} {
+  
+  .parallax-container {
+    height: 380px;
+  }
+
+
   h1 {
     font-size: 50px;
   }
