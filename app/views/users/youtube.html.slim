@@ -9,7 +9,7 @@
     .row
       .col.xs12
         .card.horizontal
-          .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+          .card-image.valign-wrapper.col.xs4.hide-on-small-only[style="padding: 10px"]
             = link_to("https://www.youtube.com/channel/#{@channel.id}", target: :blank, class: "valign") do
               = image_tag(@channel.thumbnail_url(:high))
           .card-stacked.col.xs10.m9.l8
