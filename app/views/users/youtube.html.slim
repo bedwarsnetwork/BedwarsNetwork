@@ -9,23 +9,23 @@
     .row
       .col.xs12
         .card.horizontal
-            .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
-              = link_to("https://www.youtube.com/channel/#{@channel.id}", target: :blank, class: "valign") do
-                = image_tag(@channel.thumbnail_url(:high))
-            .card-stacked.col.xs10.m9.l8
-              .card-content
-                span.card-title
-                  = @channel.title
-                ul
-                  li
-                    strong> Abonnenten:
-                    = @channel.subscriber_count
-                  li
-                    strong> Veröffentlichte Videos:
-                    = @channel.video_count
-                = link_to("https://www.youtube.com/channel/#{@channel.id}", {target: :blank, class: "waves-effect waves-light btn red"}) do
-                  => fa_icon('youtube')
-                  | Zum Kanal
+          .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+            = link_to("https://www.youtube.com/channel/#{@channel.id}", target: :blank, class: "valign") do
+              = image_tag(@channel.thumbnail_url(:high))
+          .card-stacked.col.xs10.m9.l8
+            .card-content
+              span.card-title
+                = @channel.title
+              ul
+                li
+                  strong> Abonnenten:
+                  = @channel.subscriber_count
+                li
+                  strong> Veröffentlichte Videos:
+                  = @channel.video_count
+              = link_to("https://www.youtube.com/channel/#{@channel.id}", {target: :blank, class: "waves-effect waves-light btn red"}) do
+                => fa_icon('youtube')
+                | Zum Kanal
     .row
       - @videos.each do |video|
         .col.xs12.s6.l4

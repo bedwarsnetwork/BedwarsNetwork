@@ -46,18 +46,14 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
     end
     @channel = Yt::Channel.new id: @user.youtube_id
+    
     begin
-      if @channel.subscriber_count < 500
-        redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
-      end
-      @videos = []
-      @channel.videos.each do |queriedVideo|
-        if queriedVideo.public? && (queriedVideo.title.downcase.include?("bedwars.network") || queriedVideo.description.downcase.include?("bedwars.network"))
-          @videos << queriedVideo
-        end
-      end
+      @channel.title # Check if channel exists
+      @videos = Yt::Collections::Videos.new
+      @videos.where(channel_id: @user.youtube_id, q: "bedwars.network")
     rescue => e
       redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
-    end
+    end 
+    
 	end
 end
