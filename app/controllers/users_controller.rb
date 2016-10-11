@@ -32,4 +32,32 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
 	end
+	
+	def youtube
+    if params.has_key?(:id)
+      @user = User.find_by(id: params[:id])
+    elsif params.has_key?(:name)
+      @user = User.find_by(name: params[:name])
+    end
+    if @user.nil?
+      redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+    end
+    if @user.youtube_id.nil?
+      redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
+    end
+    @channel = Yt::Channel.new id: @user.youtube_id
+    begin
+      if @channel.subscriber_count < 500
+        redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
+      end
+      @videos = []
+      @channel.videos.each do |queriedVideo|
+        if queriedVideo.public? && (queriedVideo.title.downcase.include?("bedwars.network") || queriedVideo.description.downcase.include?("bedwars.network"))
+          @videos << queriedVideo
+        end
+      end
+    rescue => e
+      redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
+    end
+	end
 end

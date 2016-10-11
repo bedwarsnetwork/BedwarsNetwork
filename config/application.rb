@@ -20,5 +20,10 @@ module BedwarsNetwork
   class Application < Rails::Application   
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
+    
+    Yt.configure do |config|
+      config.api_key = ENV["YT_API_KEY"]
+      config.log_level = :debug
+    end
   end
 end

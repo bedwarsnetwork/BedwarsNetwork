@@ -30,10 +30,19 @@
               li Das Video bzw. dessen Gameplay muss mit unseren Serverregeln im Einklang sein.
               li Das Video darf keinerlei Rechte Anderer verletzen.
               li Wir haben jederzeit das Recht, Videos ohne Angabe von Gründen zu entfernen.
+    .row
+      - @playlist.playlist_items.each do |item|
+        - if (item.public? && item.position < 12)
+          .col.xs12.s6.l4
+              .card
+                .card-content.center-align
+                  .video-container
+                    = item.video.embed_html.html_safe
+              
     .col.xs12
         .card
           .card-content.center-align
             span.card-title
-              | Impressionen
+              | Vollständige Playlist
             .video-container
               iframe[width="1280" height="720" src="https://www.youtube.com/embed?listType=playlist&list=PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW" frameborder="0" allowfullscreen="" style="width: 100%;"]

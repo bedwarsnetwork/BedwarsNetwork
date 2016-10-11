@@ -12,13 +12,30 @@
 .col.s12
   .card
     ul.linked-tabs
-      li.tab.col.s6
-        - if params[:action] == "show"
-          = link_to "Profil", user_path(@user.name), class: "active"
-        - else
-          = link_to "Profil", user_path(@user.name)
-      li.tab.col.s6
-        - if params[:action] == "statistic"
-          = link_to "Statistik", user_statistic_path(@user.name), class: "active"
-        - else
-          = link_to "Statistik", user_statistic_path(@user.name)
+      - if !@user.youtube_id.nil?
+        li.tab.col.s4
+          - if params[:action] == "show"
+            = link_to "Profil", user_path(@user.name), class: "active"
+          - else
+            = link_to "Profil", user_path(@user.name)
+        li.tab.col.s4
+          - if params[:action] == "statistic"
+            = link_to "Statistik", user_statistic_path(@user.name), class: "active"
+          - else
+            = link_to "Statistik", user_statistic_path(@user.name)
+        li.tab.col.s4
+          - if params[:action] == "youtube"
+            = link_to "YouTube", user_youtube_path(@user.name), class: "active"
+          - else
+            = link_to "YouTube", user_youtube_path(@user.name)
+      - else
+        li.tab.col.s6
+          - if params[:action] == "show"
+            = link_to "Profil", user_path(@user.name), class: "active"
+          - else
+            = link_to "Profil", user_path(@user.name)
+        li.tab.col.s6
+          - if params[:action] == "statistic"
+            = link_to "Statistik", user_statistic_path(@user.name), class: "active"
+          - else
+            = link_to "Statistik", user_statistic_path(@user.name)

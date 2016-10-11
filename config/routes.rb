@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     
     resources :chatlogs
     get 'users/:name/statistik' => 'users#statistic', :as => 'user_statistic'
+    get 'users/:name/youtube' => 'users#youtube', :as => 'user_youtube'
     get 'users/:name' => 'users#show', :as => 'user'
     resources :users
     get 'sitemap.xml' => 'sitemap#index'

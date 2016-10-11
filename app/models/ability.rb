@@ -40,6 +40,7 @@ class Ability
     
     can :show, User
     can :statistic, User
+    can :youtube, User
     
     can :show, Chatlog do |chatlog|
       access = false

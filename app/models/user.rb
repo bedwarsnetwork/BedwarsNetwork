@@ -48,6 +48,7 @@ class User
   field :lastSeen
   field :online
   field :groups
+  field :youtube_id
   embeds_many :friendships, as: :friendshipable
   
   attr_readonly :_id, :name, :displayName, :lastSeen, :online, :friends

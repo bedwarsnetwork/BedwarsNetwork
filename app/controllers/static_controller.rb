@@ -28,6 +28,7 @@ class StaticController < ApplicationController
   end
   
   def youtube
+    @playlist = Yt::Playlist.new id: 'PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW'
   end
   
   def premium
