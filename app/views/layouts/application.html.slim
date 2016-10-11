@@ -1,19 +1,42 @@
 doctype html
-html
+html lang="de"
   head
+    meta http-equiv="x-ua-compatible" content="ie=edge"
     title
       - if content_for?(:title)
         = yield(:title)
         |  | bedwars.network
       - else
         | bedwars.network | Das Bedwars-Netzwerk für Minecraft 1.9 + 1.10!
+    meta name="application-name" content="bedwars.network"
+    meta name="apple-mobile-web-app-title" content="bedwars.net"
+    meta name="description" content="bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!"
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Ubuntu'
-    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Arvo'
-    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/icon?family=Material+Icons'
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    = stylesheet_link_tag('application', 'https://fonts.googleapis.com/css?family=Ubuntu')
+    = stylesheet_link_tag('application', 'https://fonts.googleapis.com/css?family=Arvo')
+    = stylesheet_link_tag('application', 'https://fonts.googleapis.com/icon?family=Material+Icons')
+    = stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track': 'reload')
+    = javascript_include_tag('application', 'data-turbolinks-track': 'reload')
+    = favicon_link_tag('icons/apple-touch-icon-57x57.png', rel: 'apple-touch-icon', sizes: '57x57')
+    = favicon_link_tag('icons/apple-touch-icon-60x60.png', rel: 'apple-touch-icon', sizes: '60x60')
+    = favicon_link_tag('icons/apple-touch-icon-72x72.png', rel: 'apple-touch-icon', sizes: '72x72')
+    = favicon_link_tag('icons/apple-touch-icon-76x76.png', rel: 'apple-touch-icon', sizes: '76x76')
+    = favicon_link_tag('icons/apple-touch-icon-114x114.png', rel: 'apple-touch-icon', sizes: '114x114')
+    = favicon_link_tag('icons/apple-touch-icon-120x120.png', rel: 'apple-touch-icon', sizes: '120x120')
+    = favicon_link_tag('icons/apple-touch-icon-144x144.png', rel: 'apple-touch-icon', sizes: '144x144')
+    = favicon_link_tag('icons/apple-touch-icon-152x152.png', rel: 'apple-touch-icon', sizes: '152x152')
+    = favicon_link_tag('icons/apple-touch-icon-180x180.png', rel: 'apple-touch-icon', sizes: '180x180')
+    = favicon_link_tag('icons/favicon-16x16.png', rel: 'icon', type: 'image/png', sizes: '16x16')
+    = favicon_link_tag('icons/favicon-32x32.png', rel: 'icon', type: 'image/png', sizes: '32x32')
+    = favicon_link_tag('icons/favicon-96x96.png', rel: 'icon', type: 'image/png', sizes: '96x96')   
+    = favicon_link_tag('icons/android-chrome-192x192.png', rel: 'icon', type: 'image/png', sizes: '192x192')    
+    meta name="msapplication-square70x70logo" content="#{image_path('icons/smalltile.png')}"
+    meta name="msapplication-square150x150logo" content="#{image_path('icons/mediumtile.png')}"
+    meta name="msapplication-wide310x150logo" content="#{image_path('icons/widetile.png')}"
+    meta name="msapplication-square310x310logo" content="#{image_path('icons/largetile.png')}"
+    meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"
+    meta name="apple-mobile-web-app-capable" content="yes"
+    meta name="apple-mobile-web-app-status-bar-style" content="translucent"
     - if Rails.env.production?
       = render "shared/piwik"
   body
