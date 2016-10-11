@@ -1,0 +1,23 @@
+- title("Ehemalige Teammitglieder")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Ehemalige Teammitglieder
+  .section
+    .row
+      - @team.each do |user|
+        .col.xs2.m3.l4
+          .card.horizontal
+            .card-image.valign-wrapper.col.xs2.l4[style="padding: 10px"]
+              = link_to user_path(user.name) do
+                = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
+            .card-stacked.col.xs10.m9.l8
+              .card-content
+                span.card-title
+                  = link_to user.name, user_path(user.name), class: "black-text"

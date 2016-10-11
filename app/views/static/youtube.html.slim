@@ -1,0 +1,48 @@
+- title("Deine Chance")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Deine Chance
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content
+            p
+              | Nutze deine Chance! Wir veröffentlichen in unserer Playlist dein Video, welches du auf unserem Server bedwars.network aufgenommen hast.
+              br
+              | Wir geben dir somit die Chance, dass Leute auf YouTube durch diese Playlist auf deinen Channel kommen und dich abonnieren. Also nutze diese Chance!
+              br
+              | Sende hierfür den Link zu deinem Let's Play per E-Mail an deine-chance@bedwars.network!
+            br
+            p Bedingungen:
+            ul
+              li Du musst den Server bedwars.network im Titel und/oder der Beschreibung des Videos nennen.
+              li Das Video muss mindestens in HD-Auflösung verfügbar sein.
+              li Das Video sollte qualitativ hochwertig verarbeitet sein.
+              li Im Video sollen keine Wasserzeichen von bspw. kostenloser Aufnahmesoftware erkennbar sein.
+              li Das Video bzw. dessen Gameplay muss mit unseren Serverregeln im Einklang sein.
+              li Das Video darf keinerlei Rechte Anderer verletzen.
+              li Wir haben jederzeit das Recht, Videos ohne Angabe von Gründen zu entfernen.
+    .row
+      - @playlist.playlist_items.each do |item|
+        - if (item.public? && item.position < 12)
+          .col.xs12.s6.l4
+              .card
+                .card-content.center-align
+                  .video-container
+                    = item.video.embed_html.html_safe
+              
+    .col.xs12
+        .card
+          .card-content.center-align
+            span.card-title
+              | Vollständige Playlist
+            .video-container
+              iframe[width="1280" height="720" src="https://www.youtube.com/embed?listType=playlist&list=PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW" frameborder="0" allowfullscreen="" style="width: 100%;"]

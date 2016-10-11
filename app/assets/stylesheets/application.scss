@@ -1,0 +1,470 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require divascookies_style_light_bottom
+ *= require_tree .
+ *= require_self
+ */
+
+
+@import "materialize/components/color";
+$primary-color: color("light-blue", "lighten-1") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: $primary-color !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: $primary-color !default;
+
+
+$extra-small-screen-up: 481px !default; 
+$extra-small-screen: 480px !default;
+$small-screen-up: 961px !default;
+$small-screen: 960px !default;
+$medium-screen-up: 1281px !default;
+$medium-screen: 1280px !default;
+$large-screen-up: 1601px !default;
+$large-screen: 1600px !default;
+$extra-large-screen-up: 1920px !default;
+$extra-large-screen: 1921px !default;
+
+$extra-small-and-down: "only screen and (max-width : #{$extra-small-screen})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$small-only: "only screen and (min-width : #{$extra-small-screen-up}) and (max-width : #{$small-screen})" !default;
+$small-and-up: "only screen and (min-width : #{$extra-small-screen-up})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-down: "only screen and (max-width : #{$large-screen})" !default;
+$medium-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+
+
+@import "materialize";
+
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+
+  // Clear floating children
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .col {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 $gutter-width / 2;
+    min-height: 1px;
+
+    &[class*="push-"],
+    &[class*="pull-"] {
+      position: relative;
+    }
+
+    $i: 1;
+    @while $i <= $num-cols {
+      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      &.xs#{$i} {
+        width: $perc;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+      }
+      $i: $i + 1;
+    }
+
+    $i: 1;
+    @while $i <= $num-cols {
+      $perc: unquote((100 / ($num-cols / $i)) + "%");
+      &.offset-xs#{$i} {
+        margin-left: $perc;
+      }
+      &.pull-xs#{$i} {
+        right: $perc;
+      }
+      &.push-xs#{$i} {
+        left: $perc;
+      }
+      $i: $i + 1;
+    }
+    
+    @media #{$small-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.s#{$i} {
+          width: $perc;
+          margin-left: auto;
+          left: auto;
+          right: auto;
+        }
+        $i: $i + 1
+      }
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.offset-s#{$i} {
+          margin-left: $perc;
+        }
+        &.pull-s#{$i} {
+          right: $perc;
+        }
+        &.push-s#{$i} {
+          left: $perc;
+        }
+        $i: $i + 1;
+      }
+    }
+
+
+    @media #{$medium-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.m#{$i} {
+          width: $perc;
+          margin-left: auto;
+          left: auto;
+          right: auto;
+        }
+        $i: $i + 1
+      }
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.offset-m#{$i} {
+          margin-left: $perc;
+        }
+        &.pull-m#{$i} {
+          right: $perc;
+        }
+        &.push-m#{$i} {
+          left: $perc;
+        }
+        $i: $i + 1;
+      }
+    }
+
+    @media #{$large-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.l#{$i} {
+          width: $perc;
+          margin-left: auto;
+          left: auto;
+          right: auto;
+        }
+        $i: $i + 1;
+      }
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.offset-l#{$i} {
+          margin-left: $perc;
+        }
+        &.pull-l#{$i} {
+          right: $perc;
+        }
+        &.push-l#{$i} {
+          left: $perc;
+        }
+        $i: $i + 1;
+      }
+    }
+    
+    @media #{$extra-large-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.xl#{$i} {
+          width: $perc;
+          margin-left: auto;
+          left: auto;
+          right: auto;
+        }
+        $i: $i + 1;
+      }
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.offset-xl#{$i} {
+          margin-left: $perc;
+        }
+        &.pull-xl#{$i} {
+          right: $perc;
+        }
+        &.push-xl#{$i} {
+          left: $perc;
+        }
+        $i: $i + 1;
+      }
+    }
+  }
+}
+
+html body {
+  font-family: "Ubuntu", "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  font-size: 12px;
+  line-height: 20px;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.card, footer {
+  overflow: auto;
+}
+
+.bwnet-text {
+   @extend .light-blue-text, .lighten-1;
+}
+
+.bwnet {
+   @extend .light-blue, .lighten-1;
+}
+
+.bwnet-border {
+  border-color: $primary-color;
+  border-style: solid;
+}
+
+ul.linked-tabs {
+   @extend .tabs;
+}
+
+ul.linked-tabs a.active {
+  @extend .light-blue, .lighten-1, .white-text;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 20px;
+}
+#index-banner .section {
+  top: 0;
+}
+
+nav ul a, nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 20px;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 100px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.player-count {
+  display: block;
+  margin: 0
+}
+
+.player-count > * {
+  display: inline-block;
+  line-height: 60px;
+  height: 60px;
+  vertical-align: top
+}
+
+.player-count dd span {
+  padding: 2px 5px;
+  background: rgba(41, 173, 245, 1);
+  color: #fff;
+  font-size: 25px;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .25);
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-bottom-width: 3px;
+  margin-left: 3px
+}
+
+.player-count dd {
+  margin: 0px;
+}
+
+.player-count dd span.divider {
+  background: #fff;
+  color: rgba(41, 173, 245, 1);
+  border: none;
+}
+
+li.clickable a {
+  margin: 0px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+    background-color: rgba(0, 0, 0, .38);
+    border-radius: 2px;
+    color: #fff;
+    display: inline;
+    font-size: 75%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    padding: .2em .6em;
+    vertical-align: baseline;
+    white-space: nowrap
+}
+
+.card-title .label, .card-heading .flag {
+  font-size: 11px;
+  vertical-align: top;
+}
+
+nav ul li.divider {
+  height: 64px;
+  border-right: 1px solid white;
+}
+
+@media #{$small-and-up} {
+  
+  .parallax-container {
+    height: 150px;
+  }
+
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+   h1 {
+    font-size: 35px;
+  }
+  html body {
+  font-size: 14px;
+}
+  .card, footer {
+  overflow: visible;
+  }
+}
+
+
+@media #{$medium-and-up} {
+  
+  .parallax-container {
+    height: 200px;
+  }
+
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+    h1 {
+    font-size: 45px;
+  }
+}
+
+@media #{$large-and-up} {
+  
+  .parallax-container {
+    height: 280px;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+  
+  ul.collection.two-col {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    border-bottom: 0px;
+  }
+  
+  ul.collection.two-col li.collection-item:last-child {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+}
+
+@media #{$extra-large-and-up} {
+  
+  .parallax-container {
+    height: 380px;
+  }
+
+
+  h1 {
+    font-size: 50px;
+  }
+  
+  ul.collection.two-col {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    border-bottom: 0px;
+  }
+  
+  ul.collection.two-col li.collection-item:last-child {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+}
+

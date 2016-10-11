@@ -1,0 +1,34 @@
+footer.page-footer
+  - if user_signed_in?
+    .fixed-action-btn[style="bottom: 45px; right: 24px;"]
+      a.button-collapse.btn-floating.btn-large.show-on-large.bwnet.white-text.user-nav[href="#" data-activates="nav-user"]
+        = fa_icon ("user")
+  .container
+    .row
+      .col.l6.s12
+        h5.white-text
+          | bedwars.network
+        p.grey-text.text-lighten-4
+          | ist ein Minecraft Servernetzwerk, das sich auf den Spielmodus "Bedwars" spezialisiert hat.
+      .col.offset-l3.l3.s12
+        h5.white-text
+          | Connect
+        ul
+          li
+            = link_to "Twitter", "https://www.twitter.com/bedwarsnetwork", target: "_blank", class: "white-text"
+          li
+            = link_to "Facebook", "https://www.facebook.com/bedwarsnetwork", target: "_blank", class: "white-text"
+          li
+            = link_to "YouTube", "https://www.youtube.com/bedwarsnetwork", target: "_blank", class: "white-text"
+          li
+            = link_to "E-Mail", "mailto:support@bedwars.network", target: "_blank", class: "white-text"
+  .footer-copyright
+    .container
+      |  &copy 
+      = Time.now.year
+      |  bedwars.network | 
+      = link_to "Impressum und Datenschutz", imprint_path(), class: "light-blue-text text-lighten-3"
+      |  | 
+      = link_to "Allgemeine Geschäftsbedingungen", tos_path(), class: "light-blue-text text-lighten-3"
+      |  | design based on 
+      = link_to "Materialize", "https://materializecss.com", target: "_blank", class: "light-blue-text text-lighten-3"

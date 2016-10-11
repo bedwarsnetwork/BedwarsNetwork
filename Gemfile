@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'rails', '~> 5'
+# Use MongoDB
+gem 'mongoid', '~> 6'
+gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,3 +47,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'cancancan'
+gem 'devise'
+gem 'materialize-sass'
+gem 'jquery-turbolinks'
+gem 'bson'
+gem 'kaminari-mongoid'
+gem 'font-awesome-rails'
+gem 'slim-rails'
+gem 'yt'

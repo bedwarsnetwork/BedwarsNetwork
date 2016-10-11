@@ -17,9 +17,13 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module BedwarsNetwork
-  class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+  class Application < Rails::Application   
+    config.encoding = "utf-8"
+    config.time_zone = 'Berlin'
+    
+    Yt.configure do |config|
+      config.api_key = ENV["YT_API_KEY"]
+      config.log_level = :debug
+    end
   end
 end

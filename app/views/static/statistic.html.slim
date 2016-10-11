@@ -1,0 +1,117 @@
+- title("Statistik")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Statistik
+  .section
+    .row
+      .col.xs12.m6
+        .card
+          .card-content
+            span.card-title Punkte
+            - @score.each_with_index do |statistic, i|
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
+                .col.xs4.valign
+                  = link_to user_statistic_path(statistic.user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                .col.xs8.valign[style="padding: 10px"]
+                  - if i == 0
+                    span.card-title
+                       = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  - else
+                    strong
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  br
+                  = statistic.score
+                  |  Punkte 
+            .clearfix
+      .col.xs12.m6
+        .card
+          .card-content
+            span.card-title KD
+            - @kd.each_with_index do |statistic, i|
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
+                .col.xs4.valign
+                  = link_to user_statistic_path(statistic.user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                .col.xs8.valign[style="padding: 10px"]
+                  - if i == 0
+                    span.card-title
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  - else
+                    strong
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  br
+                  = statistic.kd.round
+                  |  Kills per Death 
+            .clearfix
+      .col.xs12.m6
+        .card
+          .card-content
+            span.card-title Gespielte Spiele
+            - @games.each_with_index do |statistic, i|
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
+                .col.xs4.valign
+                  = link_to user_statistic_path(statistic.user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                .col.xs8.valign[style="padding: 10px"]
+                  - if i == 0
+                    span.card-title
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  - else
+                    strong
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  br
+                  = statistic.games
+                  |  Spiele 
+            .clearfix
+      .col.xs12.m6
+        .card
+          .card-content
+            span.card-title Zerstörte Betten
+            - @destroyedBeds.each_with_index do |statistic, i|
+              div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
+                .col.xs4.valign
+                  = link_to user_statistic_path(statistic.user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                .col.xs8.valign[style="padding: 10px"]
+                  - if i == 0
+                    span.card-title
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  - else
+                    strong
+                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                  br
+                  = statistic.destroyedBeds
+                  |  Betten 
+            .clearfix
+    .divider
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content
+            span.card-title Suchen
+            br
+            .input-field.col.xs12
+              = text_field_tag(:name)
+              = label_tag(:name, "Spielername")
+            .input-field.col.xs12
+              a#search.btn.btn-block.btn-brand.disabled
+                | Spieler suchen
+            javascript:
+              $("#name").on("input change blur keyup", function() {
+                if($(this).val()) {
+                  $("a#search").attr("href", "/users/" + $(this).val() + "/statistik/");
+                  $("a#search").removeClass("disabled");
+                } else {
+                  $("a#search").addClass("disabled");
+                }
+              });
+            .clearfix
