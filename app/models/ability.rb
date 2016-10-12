@@ -10,6 +10,7 @@ class Ability
     end
     
     if user.has_role? "SeniorBuilder"
+      can :list_all, User
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
@@ -20,13 +21,14 @@ class Ability
     end
     
     if user.has_role? "Supporter"
+      can :list_all, User
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
     end
     
     if user.has_role? "Moderator"
-          can :list_all, User
+      can :list_all, User
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
