@@ -34,8 +34,10 @@
                       = content_tag(:i, "games", class: "material-icons red circle")
                     - else
                       = content_tag(:i, "attachment", class: "material-icons circle")
-                    span.title
-                      = chatlog._id
+                    - if params[:search]
+                        span.title = highlight(chatlog._id, params[:search])
+                    - else
+                      span.title = chatlog._id
                     p
                       span.grey-text.lighten-2
                         = chatlog.server

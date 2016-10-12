@@ -7,14 +7,14 @@ class UsersController < ApplicationController
   end
   
   def search
-    if (params[:search].to_s.length < 3 && !(can? :index, User))
+    if params[:search].empty? || (params[:search].to_s.length < 3 && !(can? :index, User))
       redirect_back(fallback_location: home_path, :flash => { :error => "Suchbegriff zu kurz" })
     elsif params[:search] && request.post?
       redirect_to search_result_users_path(params[:search])
     elsif params[:search] && request.get?
       @users = User.where({
         "$or" => [
-          {_id: /.*#{params[:search]}.*/i },
+          {_id: "#{params[:search]}" },
           {name: /.*#{params[:search]}.*/i }
         ]
       }).order_by(:name => 'asc').page params[:page]

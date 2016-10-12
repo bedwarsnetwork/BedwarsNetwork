@@ -31,7 +31,10 @@
                   li.collection-item.clickable
                     = link_to user_path(user.name) do
                       = image_tag("https://visage.surgeplay.com/bust/256/#{user.id}", alt: user.name, title: user.name, class: "img circle responsive-image col xs2")
-                      span.title = user.name
+                      - if params[:search]
+                        span.title = highlight(user.name, params[:search])
+                      - else
+                        span.title = user.name
                       .clearfix
               .center-align
                 = paginate @users
