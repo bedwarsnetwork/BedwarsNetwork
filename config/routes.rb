@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     resources :users, path: 'players/uuid/', only: [:edit]
     resources :users, path: 'players', only: [:update]
   
-  get '/users/uuid/:id/' => 'users#show'
-  get '/users/uuid/:id/statistic' => 'users#statistic'
-  get '/users/uuid/:id/youtube' => 'users#youtube'
+  get '/players/uuid/:id/' => 'users#show'
+  get '/players/uuid/:id/statistic' => 'users#statistic'
+  get '/players/uuid/:id/youtube' => 'users#youtube'
   
   get 'sitemap.xml' => 'sitemap#index'
   
