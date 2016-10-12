@@ -2,7 +2,7 @@ footer.page-footer
   - if user_signed_in?
     .fixed-action-btn[style="bottom: 45px; right: 24px;"]
       a.button-collapse.btn-floating.btn-large.show-on-large.bwnet.white-text.user-nav[href="#" data-activates="nav-user"]
-        = fa_icon ("user")
+        = content_tag(:i, 'person', class: 'material-icons')
   .container
     .row
       .col.l6.s12
@@ -24,11 +24,15 @@ footer.page-footer
             = link_to "E-Mail", "mailto:support@bedwars.network", target: "_blank", class: "white-text"
   .footer-copyright
     .container
-      |  &copy 
-      = Time.now.year
-      |  bedwars.network | 
-      = link_to "Impressum und Datenschutz", imprint_path(), class: "light-blue-text text-lighten-3"
-      |  | 
-      = link_to "Allgemeine Geschäftsbedingungen", tos_path(), class: "light-blue-text text-lighten-3"
-      |  | design based on 
-      = link_to "Materialize", "https://materializecss.com", target: "_blank", class: "light-blue-text text-lighten-3"
+      p
+        |  &copy 
+        = Time.now.year
+        |  bedwars.network | 
+        = link_to "Impressum und Datenschutz", imprint_path(), class: "light-blue-text text-lighten-3"
+        |  | 
+        = link_to "Allgemeine Geschäftsbedingungen", tos_path(), class: "light-blue-text text-lighten-3"
+        - if !user_signed_in?
+          |  | 
+          = link_to "Anmelden", new_user_session_path(), class: "light-blue-text text-lighten-3"
+        |  | design based on 
+        = link_to "Materialize", "https://materializecss.com", target: "_blank", class: "light-blue-text text-lighten-3"

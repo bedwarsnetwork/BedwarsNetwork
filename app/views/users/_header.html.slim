@@ -12,7 +12,7 @@
 .col.s12
   .card
     ul.linked-tabs
-      - if !@user.youtube_id.nil?
+      - if !@user.youtube_id.nil? && !@user.youtube_id.empty?
         li.tab.col.s4
           - if params[:action] == "show"
             = link_to "Profil", user_path(@user.name), class: "active"

@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require font-awesome
  *= require divascookies_style_light_bottom
  *= require_tree .
  *= require_self
@@ -53,7 +52,6 @@ $extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !defaul
 
 
 @import "materialize";
-
 
 .row {
   margin-left: auto;
@@ -376,6 +374,10 @@ li.clickable a {
 nav ul li.divider {
   height: 64px;
   border-right: 1px solid white;
+}
+
+footer.page-footer .footer-copyright {
+  height: auto;
 }
 
 @media #{$small-and-up} {

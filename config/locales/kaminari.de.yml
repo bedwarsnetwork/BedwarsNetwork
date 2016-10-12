@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -21,21 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
-  mongoid:
-    models:
-      user: 
-        one: "Spieler"
-        other: "Spieler"
-      chatlog:
-        one: "Chatlog"
-        other: "Chatlogs"
-    attributes:
-      user:
-        _id: "UUID"
-        name: "Name"
-        youtube_id: "YouTube Kanal ID"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
   helpers:
-    submit:
-      create: "%{model} erstellen"
-      update: "%{model} speichern"
-      cancel_update: "Möchtest du wirklich die Bearbeitung des %{model}s abbrechen?"
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Keine %{entry_name} gefunden"
+          one: "Zeigt <b>1</b> %{entry_name}"
+          other: "Zeigt <b>alle %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> von <b>%{total}</b>"

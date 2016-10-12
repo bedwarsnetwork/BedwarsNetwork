@@ -1,0 +1,12 @@
+- content_for :actions do
+  - if can? :update, User
+    li
+      .divider
+    li
+      a.subheader
+        => User.model_name.human
+        = @user.name
+    li class=('active' if (params[:controller] == "users" && params[:action] == "edit" && params[:id] == @user.id))
+      = link_to(edit_user_path(@user)) do
+        = content_tag(:i, 'mode_edit', class: 'material-icons')
+        | Bearbeiten
