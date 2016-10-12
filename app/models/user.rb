@@ -12,7 +12,7 @@ class User
   
   # Include default devise modules. Others available are:
   # :recoverable, :trackable, :registerable, :confirmable, :lockable, :timeoutable, :validatable and :omniauthable
-  devise :database_authenticatable, :rememberable#, :validatable
+  devise :database_authenticatable, :rememberable
 
   ## Database authenticatable
   field :encrypted_password, type: String, default: ""
@@ -49,8 +49,9 @@ class User
   field :online
   field :groups
   field :youtube_id
-  field :email
   embeds_many :friendships, as: :friendshipable
+  
+  attr_readonly :_id, :name, :displayName, :lastSeen, :online, :friends
   
   def sorted_friendships
     friendships.sort_by{|friendship| friendship.user.name}
@@ -73,11 +74,8 @@ class User
 
   end
   
-  
   def has_role?(role)
    self.groups ||= []
    groups.any?{ |s| s.casecmp(role.to_s) == 0 }
   end
-  
-
 end
