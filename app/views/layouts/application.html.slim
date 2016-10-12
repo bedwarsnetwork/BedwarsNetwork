@@ -42,13 +42,19 @@ html lang="de"
       = render "shared/piwik"
   body
     = render "shared/navigation"
-    - flash.each do |type, message|
-      - if type == "success" || type == "notice"
+    - flash.each do |type, messages|
+      color = ''
+      - if type.start_with?("success","notice")
+        - color = 'green'
+      - elsif type.start_with?("error","alert")
+        - color = 'red'
+      - if messages.is_a? Enumerable
+        - messages.each do |message|
+          javascript:
+            Materialize.toast("#{message}", 4000, "#{color}")
+      - else
         javascript:
-          Materialize.toast("#{message}", 4000, 'green')
-      - elsif type == "error" || type == "alert"
-        javascript:
-          Materialize.toast("#{message}", 4000, 'red')
+            Materialize.toast("#{messages}", 4000, "#{color}")
     = yield
     = render "shared/footer"
     = javascript_include_tag 'footer'

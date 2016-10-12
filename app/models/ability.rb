@@ -12,6 +12,7 @@ class Ability
     if user.has_role? "SeniorBuilder"
       can :index, Chatlog
       can :read, Chatlog
+      can :update, User
     end
     
     if user.has_role? "Builder"
@@ -21,11 +22,13 @@ class Ability
     if user.has_role? "Supporter"
       can :index, Chatlog
       can :read, Chatlog
+      can :update, User
     end
     
     if user.has_role? "Moderator"
       can :index, Chatlog
       can :read, Chatlog
+      can :update, User
     end
     
     if user.has_role? "PluginDeveloper"

@@ -2,7 +2,7 @@ footer.page-footer
   - if user_signed_in?
     .fixed-action-btn[style="bottom: 45px; right: 24px;"]
       a.button-collapse.btn-floating.btn-large.show-on-large.bwnet.white-text.user-nav[href="#" data-activates="nav-user"]
-        = fa_icon ("user")
+        = content_tag(:i, 'person', class: 'material-icons')
   .container
     .row
       .col.l6.s12

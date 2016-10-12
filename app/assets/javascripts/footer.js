@@ -1,4 +1,8 @@
-Waves.displayEffect();
+$(document).on('turbolinks:load', function() {
+  Waves.displayEffect();
+  Materialize.updateTextFields();
+});
+
 $('.modal-trigger').leanModal();
 $('.parallax').parallax();
 $('ul.tabs').tabs();

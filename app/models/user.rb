@@ -11,8 +11,8 @@ class User
   store_in collection: "users"
   
   # Include default devise modules. Others available are:
-  # :recoverable, :trackable, :registerable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :validatable
+  # :recoverable, :trackable, :registerable, :confirmable, :lockable, :timeoutable, :validatable and :omniauthable
+  devise :database_authenticatable, :rememberable#, :validatable
 
   ## Database authenticatable
   field :encrypted_password, type: String, default: ""
@@ -49,9 +49,11 @@ class User
   field :online
   field :groups
   field :youtube_id
+  field :email
   embeds_many :friendships, as: :friendshipable
   
-  attr_readonly :_id, :name, :displayName, :lastSeen, :online, :friends
+  attr_accessor :login
+
   
   
   def sorted_friendships
@@ -80,5 +82,6 @@ class User
    self.groups ||= []
    groups.any?{ |s| s.casecmp(role.to_s) == 0 }
   end
+  
 
 end

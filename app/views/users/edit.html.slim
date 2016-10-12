@@ -1,0 +1,24 @@
+- title(@user.name)
+= render("actions")
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      = render("header")
+    .row
+      = form_for @user do |f|
+        .col.xs12
+          .card
+            .card-content
+              .row
+                .input-field.col.xs12
+                  = f.label :youtube_id
+                  = f.text_field :youtube_id, class: 'validate'
+                
+        .col.s12
+          .card
+            .card-content
+              => f.submit :class => "waves-effect waves-light btn green"
+              = link_to "Zurück", user_path(@user.name), data: { confirm: t("helpers.submit.cancel_update", model: User.model_name.human) }, :class => "waves-effect waves-light btn red"
