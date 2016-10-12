@@ -11,15 +11,27 @@
     .row
       .col.xs12
         .card
+          .card-content
+            = form_tag(search_users_path(), :method => 'post') do
+              .input-field.col.xs12
+                = text_field_tag :search, params[:search]
+                = label_tag :search, "Name oder UUID"
+              .clearfix
+    .row
+      .col.xs12
+        .card
           .card-content.left-align
-            .collection.center-align
-              = paginate @users
-            ul.collection.two-col
-              - @users.each do |user|
-                li.collection-item.clickable
-                  = link_to user_path(user.name) do
-                    img.circle.responsive-image.col.xs2 alt="#{user.name}" src="https://crafatar.com/avatars/#{user.id}" /
-                    span.title= user.name
-                    .clearfix
-            .collection.center-align
-              = paginate @users
+            - if @users.empty?
+              | Keine Spieler gefunden...
+            - else
+              .center-align
+                = paginate @users
+              ul.collection.two-col
+                - @users.each do |user|
+                  li.collection-item.clickable
+                    = link_to user_path(user.name) do
+                      = image_tag("https://visage.surgeplay.com/bust/256/#{user.id}", alt: user.name, title: user.name, class: "img circle responsive-image col xs2")
+                      span.title = user.name
+                      .clearfix
+              .center-align
+                = paginate @users

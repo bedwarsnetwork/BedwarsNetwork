@@ -52,10 +52,6 @@ class User
   field :email
   embeds_many :friendships, as: :friendshipable
   
-  attr_accessor :login
-
-  
-  
   def sorted_friendships
     friendships.sort_by{|friendship| friendship.user.name}
   end

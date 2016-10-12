@@ -26,6 +26,7 @@ class Ability
     end
     
     if user.has_role? "Moderator"
+          can :list_all, User
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
@@ -41,6 +42,7 @@ class Ability
       end
     end
     
+    can :search, User
     can :show, User
     can :statistic, User
     can :youtube, User

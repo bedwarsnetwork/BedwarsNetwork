@@ -27,12 +27,12 @@ de:
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "&hellip;"
-    helpers:
-      page_entries_info:
-        one_page:
-          display_entries:
-            zero: "Keine %{entry_name} gefunden"
-            one: "Zeigt <b>1</b> %{entry_name}"
-            other: "Zeigt <b>alle %{count}</b> %{entry_name}"
-        more_pages:
-          display_entries: "Zeigt %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> von <b>%{total}</b> gesamt"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Keine %{entry_name} gefunden"
+          one: "Zeigt <b>1</b> %{entry_name}"
+          other: "Zeigt <b>alle %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> von <b>%{total}</b>"

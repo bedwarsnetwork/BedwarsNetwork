@@ -1,7 +1,9 @@
 de:
   mongoid:
     models:
-      user: "Spieler"
+      user: 
+        one: "Spieler"
+        other: "Spieler"
       chatlog:
         one: "Chatlog"
         other: "Chatlogs"

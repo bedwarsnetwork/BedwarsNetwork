@@ -3,8 +3,28 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   
   def index
-		@users = User.order_by(:name => 'asc').page params[:page]
+    @users = User.order_by(:name => 'asc').page params[:page]
   end
+  
+  def search
+    if (params[:search].to_s.length < 3 && !(can? :index, User))
+      redirect_back(fallback_location: home_path, :flash => { :error => "Suchbegriff zu kurz" })
+    elsif params[:search] && request.post?
+      redirect_to search_result_users_path(params[:search])
+    elsif params[:search] && request.get?
+      @users = User.where({
+        "$or" => [
+          {_id: /.*#{params[:search]}.*/i },
+          {name: /.*#{params[:search]}.*/i }
+        ]
+      }).order_by(:name => 'asc').page params[:page]
+      if @users.count == 1
+        redirect_to user_path(@users.first.name)
+      else
+        render 'index'
+      end
+		end
+	end
   
   def statistic
     if params.has_key?(:id)

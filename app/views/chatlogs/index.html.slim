@@ -10,10 +10,19 @@
           .card-content.center-align
             h1 = Chatlog.model_name.human(count: 2)
     .row
+      .col.xs12
+        .card
+          .card-content
+            = form_tag(search_chatlogs_path(), :method => 'post') do
+              .input-field.col.xs12
+                = text_field_tag :search, params[:search]
+                = label_tag :search, "Chatlog ID"
+              .clearfix
+    .row
       .col.s12
         .card
           .card-content.left-align
-            .collection.center-align
+            .center-align
               = paginate @chatlogs
             ul.collection
               - @chatlogs.each do |chatlog|
@@ -38,5 +47,5 @@
                         |  Elemente
                     .secondary-content
                       = content_tag(:i, "attachment", class: "material-icons")
-            .collection.center-align
+            .center-align
               = paginate @chatlogs

@@ -98,20 +98,8 @@
         .card
           .card-content
             span.card-title Suchen
-            br
-            .input-field.col.xs12
-              = text_field_tag(:name)
-              = label_tag(:name, "Spielername")
-            .input-field.col.xs12
-              a#search.btn.btn-block.btn-brand.disabled
-                | Spieler suchen
-            javascript:
-              $("#name").on("input change blur keyup", function() {
-                if($(this).val()) {
-                  $("a#search").attr("href", "/users/" + $(this).val() + "/statistik/");
-                  $("a#search").removeClass("disabled");
-                } else {
-                  $("a#search").addClass("disabled");
-                }
-              });
-            .clearfix
+            = form_tag(search_users_path(), :method => 'post') do
+              .input-field.col.xs12
+                = text_field_tag :search, params[:search]
+                = label_tag :search, "Spielername"
+              .clearfix
