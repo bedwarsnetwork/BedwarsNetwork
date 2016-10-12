@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: "static#home"
   
-  devise_for :users
+  devise_for :users, path: 'account'
   get '/' => 'static#home', :as => 'home'
   get '/team' => 'static#team', :as => 'team'
   get '/deine-chance' => 'static#youtube', :as => 'deine_chance'
