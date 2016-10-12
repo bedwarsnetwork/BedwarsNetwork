@@ -33,7 +33,3 @@
                   td.center-align= @statistic.deaths
                   td.center-align= @statistic.games
                   td.center-align= @statistic.destroyedBeds
-          .card-action
-            = link_to user_path(@user.name), class: "waves-effect waves-light btn bwnet" do
-              = content_tag(:i, "chevron_left", class: "material-icons left")
-              = @user.name
