@@ -6,7 +6,7 @@ namespace :deploy do
   task :start do
     on roles(:app) do      
       # modify this to suit how you want to run your app
-      execute "docker run -d -p 127.0.0.1:#{ENV['DEPLOY_LISTEN_PORT_STAGING']}:80 --restart=always --name=#{fetch(:application)} #{fetch(:application)}"
+      execute "docker run -d -p 127.0.0.1:#{ENV['DEPLOY_LISTEN_PORT_STAGING']}:80 --restart=always --name=#{fetch(:application)}.staging #{fetch(:application)}"
     end
   end
 end
