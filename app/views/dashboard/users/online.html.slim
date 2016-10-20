@@ -19,69 +19,32 @@
             table
               thead
                 th Spielername
-                th Server
+                th Zuletzt gesehen
                 th Gespielte Spiele
                 th
               tbody  
-                - @users.each do |user|
-                  tr
-                    td
-                      = link_to dashboard_user_path(user) do
-                        span.title = user.name
-                    td
-                      - if user.lastLocation
-                        = user.lastLocation
-                    td
-                      - if user.statistic
-                        = user.statistic.games
-                      - else
-                        | 0
-                    td
-                      - if user.rank
-                        => content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
-                          = user.rank
-                      - if user.banHistory
-                        span.label.orange.white-text
-                          | Hat Bannhistorie
-.divider
-.section
-  .row
-    .col.xs12
-      ul.collection.with-header
-        li.collection-header.center-align
-          h4 Etwaige Zweitaccounts
-  .row
-    - @second_account_ip_groups.each do |ip, users|
-      - if users.count > 1
-        .col.xs12
-          .card.collection.z-depth-0
-            .card-content
-              - splitted_ip = ip.split('.')
-              h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
-              table
-                thead
-                  th Spielername
-                  th Zuletzt Online
-                  th Gespielte Spiele
-                  th
-                tbody    
-                - users.each do |user|
-                  tr
-                    td
-                      = link_to dashboard_user_path(user) do
-                        span.title = user.name
-                    td
-                      - if user.online
-                        .label.green.white-text
-                          | online
-                      - elsif user.lastSeen
-                        = user.lastSeen.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
-                    td
-                      - if user.statistic
-                        = user.statistic.games
-                      - else
-                        | 0
-                    td
-                      - if user.is_banned
-                        .label.red.white-text
-                          | gebannt
+                = render @users
+- if !@users.empty?
+  .divider
+  .section
+    .row
+      .col.xs12
+        ul.collection.with-header
+          li.collection-header.center-align
+            h4 Etwaige Zweitaccounts
+    .row
+      - @second_account_ip_groups.each do |ip, users|
+        - if users.count > 1
+          .col.xs12
+            .card.collection.z-depth-0
+              .card-content
+                - splitted_ip = ip.split('.')
+                h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+                table
+                  thead
+                    th Spielername
+                    th Zuletzt gesehen
+                    th Gespielte Spiele
+                    th
+                  tbody
+                  = render users

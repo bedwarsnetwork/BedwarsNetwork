@@ -6,11 +6,17 @@
 - if !@user.friendships.empty?
   .row
     .col.xs12
-      .card
+      .card.collection.z-depth-0
         .card-content
           span.card-title Freunde
           .center-align
-            - @user.sorted_friendships.each do |friendship|
-              - if friendship.status?
-                = link_to user_path(friendship.user.name) do
-                  = image_tag("https://visage.surgeplay.com/bust/256/#{friendship.user.id}", alt: friendship.user.name, title: friendship.user.name, class: "circle", style: "height: 60px; margin: 15px;")
+          table
+            thead
+              th Spielername
+              th Zuletzt gesehen
+              th Gespielte Spiele
+              th
+            tbody    
+              - @user.sorted_friendships.each do |friendship|
+                - if friendship.status?
+                  = render friendship.user

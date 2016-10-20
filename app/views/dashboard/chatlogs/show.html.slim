@@ -14,7 +14,7 @@
         li.collection-item.avatar
           = image_tag("https://visage.surgeplay.com/bust/256/#{message.user.id}", alt: message.user.name, title: message.user.name, class: "circle")
           p
-            = link_to message.user.name, user_path(message.user.name)
+            = link_to message.user.name, dashboard_user_path(message.user)
             span.grey-text.lighten-2
               | (
               = message.timestamp.to_datetime.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")

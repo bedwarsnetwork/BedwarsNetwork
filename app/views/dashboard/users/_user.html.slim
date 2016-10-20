@@ -1,0 +1,29 @@
+tr
+  td
+    = link_to dashboard_user_path(user) do
+      span.title = user.name
+  td
+    - if user.online
+      .label.green.white-text
+        - if user.lastLocation
+          = user.lastLocation
+        - else
+          | online 
+    - elsif user.lastSeen
+      = user.lastSeen.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+  td
+    - if user.statistic
+      = user.statistic.games
+    - else
+      | 0
+  td
+    - if user.rank
+      => content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
+        = user.rank
+    - if user.banHistory
+      - if user.is_banned
+        .label.red.white-text
+          | gebannt
+      - else
+        span.label.orange.white-text
+          | Hat Bannhistorie

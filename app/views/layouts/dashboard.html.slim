@@ -40,7 +40,7 @@ html lang="de"
     meta name="apple-mobile-web-app-status-bar-style" content="translucent"
     - if Rails.env.production?
       = render "shared/piwik"
-  body
+  body.fixed-nav
     = render "shared/dashboard/navigation"
     - flash.each do |type, messages|
       color = ''
@@ -57,5 +57,5 @@ html lang="de"
             Materialize.toast("#{messages}", 4000, "#{color}")
     main
       = yield
-    /= render "shared/dashboard/footer"
+    = render "shared/dashboard/footer"
     = javascript_include_tag 'footer'
