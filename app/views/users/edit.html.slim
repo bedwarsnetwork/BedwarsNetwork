@@ -9,6 +9,7 @@
       = render("header")
     .row
       = form_for @user do |f|
+        = f.hidden_field(:name)
         .col.xs12
           .card
             .card-content

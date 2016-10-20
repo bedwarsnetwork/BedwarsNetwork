@@ -49,9 +49,11 @@ class User
   field :online
   field :groups
   field :youtube_id
+  field :ip
+  field :banHistory
   embeds_many :friendships, as: :friendshipable
   
-  attr_readonly :_id, :name, :displayName, :lastSeen, :online, :friends
+  attr_readonly :_id, :displayName, :lastSeen, :online, :friends
   
   def sorted_friendships
     friendships.sort_by{|friendship| friendship.user.name}
@@ -78,4 +80,18 @@ class User
    self.groups ||= []
    groups.any?{ |s| s.casecmp(role.to_s) == 0 }
   end
+  
+  def is_banned
+    if self.banHistory
+      if self.banHistory.last['action'] != 0 && self.banHistory.last['until'] > Date.today
+        return true
+      end
+    end
+    return false
+  end
+  
+  def statistic
+    return Bedwarsstatistic.where(uuid: self._id).first
+  end
+  
 end

@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit]
+  before_action :authenticate_user!, only: [:edit]
   load_and_authorize_resource
-  
-  def index
-    @users = User.order_by(:name => 'asc').page params[:page]
-  end
   
   def search
     if params[:search].empty? || (params[:search].to_s.length < 3 && !(can? :index, User))
@@ -21,7 +17,7 @@ class UsersController < ApplicationController
       if @users.count == 1
         redirect_to user_path(@users.first.name)
       else
-        render 'index'
+        redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
       end
 		end
 	end
@@ -112,6 +108,6 @@ class UsersController < ApplicationController
 	
 	private
 		def user_params
-			params.require(:user).permit(:youtube_id)
+			params.require(:user).permit(:youtube_id, :name)
 		end
 end

@@ -1,0 +1,41 @@
+- title(@user.name)
+= render("actions")
+= render("searchbar")
+.row
+  = render("header")
+.row
+  .col.xs12
+    - if @chatlogs.empty?
+      .card.collection.z-depth-0
+        .card-content
+          | Keine Chatlogs gefunden...
+    - else
+      .center-align
+        = paginate @chatlogs
+      ul.collection
+        - @chatlogs.each do |chatlog|
+          li.collection-item.avatar
+            = link_to dashboard_chatlog_path(chatlog) do
+              - if chatlog.server.start_with?("Lobby")
+                = content_tag(:i, "home", class: "material-icons green circle")
+              - elsif chatlog.server.start_with?("BW")
+                = content_tag(:i, "games", class: "material-icons red circle")
+              - else
+                = content_tag(:i, "attachment", class: "material-icons circle")
+              - if params[:search]
+                  span.title = highlight(chatlog._id, params[:search])
+              - else
+                span.title = chatlog._id
+              p
+                span.grey-text.lighten-2
+                  = chatlog.server
+                  |  - 
+                  = chatlog.created.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+                br
+                span.grey-text.lighten-2
+                  = chatlog.chatlogmessages.count
+                  |  Elemente
+              .secondary-content
+                = content_tag(:i, "attachment", class: "material-icons")
+        .center-align
+          = paginate @chatlogs

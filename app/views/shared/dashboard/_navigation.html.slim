@@ -1,0 +1,64 @@
+css:
+  header, main, footer {
+    padding-left: 300px;
+  }
+
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }
+    
+ul.side-nav.fixed
+  li
+    .userView.center-align
+      .bwnet.background
+      h3.white-text
+        | Dashboard
+  - if content_for?(:searchbar)
+      = yield(:searchbar)
+      li
+        .divider[style="margin: 20px 0;"]
+  li
+    = link_to(home_path()) do
+      = content_tag(:i, 'home', class: 'material-icons')
+      | Zur Website
+  - if (can? :index, Chatlog) || (can? :index, User)
+    li
+      .divider
+    li
+      a.subheader
+        | Intern
+  - if can? :index, Chatlog
+     li class=('active' if (params[:controller] == "dashboard/chatlogs"))
+        = link_to(dashboard_chatlogs_path()) do
+          = content_tag(:i, 'attach_file', class: 'material-icons')
+          = Chatlog.model_name.human(count: 2)
+  - if can? :index, User
+    li
+      ul.collapsible.collapsible-accordion
+        li
+          a.collapsible-header class=('active' if (params[:controller] == "dashboard/users"))
+            = content_tag(:i, 'people', class: 'material-icons')
+            = User.model_name.human
+          .collapsible-body
+            ul
+              li class=('active' if (params[:controller] == "dashboard/users" && params[:action] == "online"))
+                = link_to(online_dashboard_users_path()) do
+                  = content_tag(:i, 'people', class: 'material-icons')
+                  => User.model_name.human
+                  | online
+              li class=('active' if (params[:controller] == "dashboard/users" && (params[:action] == "index" || params[:action] == "search")))
+                = link_to(dashboard_users_path()) do
+                  = content_tag(:i, 'people', class: 'material-icons')
+                  | Alle 
+                  = User.model_name.human
+  - if content_for?(:actions)
+    .divider[style="margin: 20px 0;"]
+    = yield(:actions)
+  li
+    .divider[style="margin: 20px 0;"]
+  li
+    = link_to(destroy_user_session_path, :method => :delete, class: "red white-text") do
+      = content_tag(:i, 'clear', class: 'material-icons white-text')
+      | Abmelden
