@@ -65,26 +65,19 @@ ul#nav-mobile.side-nav
           = link_to(user_statistic_path(current_user.name)) do
             = content_tag(:i, 'pie_chart', class: 'material-icons')
             | Deine Statistik
-    - if (can? :index, Chatlog) || (can? :index, User)
+    - if can? :access, :dashboard
       li
-        .divider
+        .divider[style="margin: 20px 0;"]
       li
-        a.subheader
-          | Intern
-    - if can? :index, Chatlog
-       li class=('active' if (params[:controller] == "chatlogs"))
-          = link_to(chatlogs_path()) do
-            = content_tag(:i, 'attach_file', class: 'material-icons')
-            = Chatlog.model_name.human(count: 2)
-    - if can? :index, User
-      li class=('active' if (params[:controller] == "users" && params[:action] == "index"))
-          = link_to(users_path()) do
-            = content_tag(:i, 'people', class: 'material-icons')
-            = User.model_name.human
+          = link_to(online_dashboard_users_path()) do
+            = content_tag(:i, 'dashboard', class: 'material-icons')
+            | Dashboard
     - if content_for?(:actions)
-        = yield(:actions)
+      li
+        .divider[style="margin: 20px 0;"]
+      = yield(:actions)
     li
-      .divider[style="margin-bottom: 20px;"]
+      .divider[style="margin: 20px 0;"]
     li
       = link_to(destroy_user_session_path, :method => :delete, class: "red white-text") do
         = content_tag(:i, 'clear', class: 'material-icons white-text')

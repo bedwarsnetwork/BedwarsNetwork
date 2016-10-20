@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
   Waves.displayEffect();
   Materialize.updateTextFields();
 });
-
+$('.collapsible').collapsible();
 $('.modal-trigger').leanModal();
 $('.parallax').parallax();
 $('ul.tabs').tabs();

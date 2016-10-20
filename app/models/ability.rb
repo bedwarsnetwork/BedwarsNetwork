@@ -13,6 +13,7 @@ class Ability
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
+      can :access, :dashboard
     end
     
     if user.has_role? "Builder"
@@ -23,12 +24,14 @@ class Ability
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
+      can :access, :dashboard
     end
     
     if user.has_role? "Moderator"
       can :index, Chatlog
       can :read, Chatlog
       can :update, User
+      can :access, :dashboard
     end
     
     if user.has_role? "PluginDeveloper"

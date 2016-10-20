@@ -1,0 +1,28 @@
+- title("Spieler")
+= render("searchbar")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content.center-align
+        h1 = User.model_name.human(count: 2)
+.row
+  .col.xs12
+    - if @users.empty?
+      .card.collection.z-depth-0
+        .card-content
+          | Keine Spieler gefunden...
+    - else
+      .center-align
+        = paginate @users
+      ul.collection.two-col
+        - @users.each do |user|
+          li.collection-item.clickable
+            = link_to dashboard_user_path(user) do
+              = image_tag("https://visage.surgeplay.com/bust/256/#{user.id}", alt: user.name, title: user.name, class: "img circle responsive-image col xs2")
+              - if params[:search]
+                span.title = highlight(user.name, params[:search])
+              - else
+                span.title = user.name
+              .clearfix
+      .center-align
+        = paginate @users
