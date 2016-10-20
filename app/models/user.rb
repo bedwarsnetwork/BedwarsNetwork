@@ -51,6 +51,7 @@ class User
   field :youtube_id
   field :ip
   field :banHistory
+  field :lastLocation
   embeds_many :friendships, as: :friendshipable
   
   attr_readonly :_id, :displayName, :lastSeen, :online, :friends

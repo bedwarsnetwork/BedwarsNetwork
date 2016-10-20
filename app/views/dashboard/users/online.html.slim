@@ -11,62 +11,77 @@
 .section
   .row
     .col.xs12
-      - if @users.empty?
-        | Keine Spieler online...
-      - else
-        ul.collection.two-col
-          - @users.each do |user|
-            li.collection-item.clickable
-              = link_to dashboard_user_path(user) do
-                = image_tag("https://visage.surgeplay.com/bust/256/#{user.id}", alt: user.name, title: user.name, class: "img circle responsive-image col xs2")
-              = link_to dashboard_user_path(user) do
-                => user.name
-                - if user.rank
-                  = content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
-                    = user.rank
-              - if user.statistic
-                => user.statistic.games
-              - else
-                | 0 
-              | gespielte Spiele
-              br
-              - if user.banHistory
-                span.label.orange.white-text
-                  | Hat Bannhistorie
-                .clearfix
-
-.section
-  .row
-    - @second_account_ip_groups.each do |ip, users|
-      .col.xs12
-        .card.collection.z-depth-0
-          .card-content
-            - splitted_ip = ip.split('.')
-            h4 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+      .card.collection.z-depth-0
+        .card-content
+          - if @users.empty?
+            | Keine Spieler online...
+          - else
             table
               thead
                 th Spielername
-                th Zuletzt Online
+                th Server
                 th Gespielte Spiele
                 th
-              tbody    
-              - users.each do |user|
-                tr
-                  td
-                    = link_to dashboard_user_path(user) do
-                      span.title = user.name
-                  td
-                    - if user.online
-                      .label.green.white-text
-                        | online
-                    - elsif user.lastSeen
-                      = user.lastSeen.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
-                  td
-                    - if user.statistic
-                      = user.statistic.games
-                    - else
-                      | 0
-                  td
-                    - if user.is_banned
-                      .label.red.white-text
-                        | gebannt
+              tbody  
+                - @users.each do |user|
+                  tr
+                    td
+                      = link_to dashboard_user_path(user) do
+                        span.title = user.name
+                    td
+                      - if user.lastLocation
+                        = user.lastLocation
+                    td
+                      - if user.statistic
+                        = user.statistic.games
+                      - else
+                        | 0
+                    td
+                      - if user.rank
+                        => content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
+                          = user.rank
+                      - if user.banHistory
+                        span.label.orange.white-text
+                          | Hat Bannhistorie
+.divider
+.section
+  .row
+    .col.xs12
+      ul.collection.with-header
+        li.collection-header.center-align
+          h4 Etwaige Zweitaccounts
+  .row
+    - @second_account_ip_groups.each do |ip, users|
+      - if users.count > 1
+        .col.xs12
+          .card.collection.z-depth-0
+            .card-content
+              - splitted_ip = ip.split('.')
+              h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+              table
+                thead
+                  th Spielername
+                  th Zuletzt Online
+                  th Gespielte Spiele
+                  th
+                tbody    
+                - users.each do |user|
+                  tr
+                    td
+                      = link_to dashboard_user_path(user) do
+                        span.title = user.name
+                    td
+                      - if user.online
+                        .label.green.white-text
+                          | online
+                      - elsif user.lastSeen
+                        = user.lastSeen.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+                    td
+                      - if user.statistic
+                        = user.statistic.games
+                      - else
+                        | 0
+                    td
+                      - if user.is_banned
+                        .label.red.white-text
+                          | gebannt
