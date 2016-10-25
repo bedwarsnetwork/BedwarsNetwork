@@ -84,7 +84,7 @@ class User
   
   def is_banned
     if self.banHistory
-      if self.banHistory.last['action'] != 0 && self.banHistory.last['until'] > Date.today
+      if self.banHistory.last['action'] != 0 && self.banHistory.last['until'].to_datetime > Time.now
         return true
       end
     end
