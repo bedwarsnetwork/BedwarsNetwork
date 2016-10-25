@@ -1,0 +1,50 @@
+- title("Spieler Online")
+= render("searchbar")
+.section
+  .row
+    .col.xs12
+      ul.collection.with-header
+        li.collection-header.center-align
+          h1
+            => User.model_name.human(count: 2)
+            | online
+.section
+  .row
+    .col.xs12
+      .card.collection.z-depth-0
+        .card-content
+          - if @users.empty?
+            | Keine Spieler online...
+          - else
+            table
+              thead
+                th Spielername
+                th Zuletzt gesehen
+                th Gespielte Spiele
+                th
+              tbody  
+                = render @users
+- if !@users.empty?
+  .divider
+  .section
+    .row
+      .col.xs12
+        ul.collection.with-header
+          li.collection-header.center-align
+            h4 Etwaige Zweitaccounts
+    .row
+      - @second_account_ip_groups.each do |ip, users|
+        - if users.count > 1
+          .col.xs12
+            .card.collection.z-depth-0
+              .card-content
+                - splitted_ip = ip.split('.')
+                h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+                table
+                  thead
+                    th Spielername
+                    th Zuletzt gesehen
+                    th Gespielte Spiele
+                    th
+                  tbody
+                  = render users

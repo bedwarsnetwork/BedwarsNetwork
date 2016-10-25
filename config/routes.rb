@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   get '/impressum' => 'static#imprint', :as => 'imprint'
   get '/agb' => 'static#tos', :as => 'tos'
   
-  resources :chatlogs, :concerns => [:searchable, :search_paginatable, :paginatable]
+  resources :chatlogs, only: [:show]
 
-  resources :users, path: 'players', except: [:edit, :update], param: :name, :concerns => [:searchable, :search_paginatable, :paginatable] do
+  resources :users, path: 'players', except: [:edit, :update], param: :name, :concerns => [:searchable] do
     get 'statistic'
     get 'youtube'
   end
@@ -44,5 +44,14 @@ Rails.application.routes.draw do
   get '/players/uuid/:id/youtube' => 'users#youtube'
   
   get 'sitemap.xml' => 'sitemap#index'
+  
+  namespace :dashboard, layout: 'dashboard' do
+    get '/' => 'users#online', :as => 'dashboard'
+    resources :chatlogs, :concerns => [:searchable, :search_paginatable, :paginatable]
+    resources :users, path: 'players', :concerns => [:searchable, :search_paginatable, :paginatable] do
+      get 'online', :on => :collection
+      get 'chatlogs'
+    end
+  end
   
 end

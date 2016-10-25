@@ -1,8 +1,6 @@
 - content_for :actions do
   - if can? :update, User
     li
-      .divider
-    li
       a.subheader
         => User.model_name.human
         = @user.name

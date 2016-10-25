@@ -10,9 +10,13 @@ class Ability
     end
     
     if user.has_role? "SeniorBuilder"
+      can :access, :dashboard
       can :index, Chatlog
       can :read, Chatlog
+      can :index, User
       can :update, User
+      can :online, User
+      can :chatlogs, User
     end
     
     if user.has_role? "Builder"
@@ -20,15 +24,23 @@ class Ability
     end
     
     if user.has_role? "Supporter"
+      can :access, :dashboard
       can :index, Chatlog
       can :read, Chatlog
+      can :index, User
       can :update, User
+      can :online, User
+      can :chatlogs, User
     end
     
     if user.has_role? "Moderator"
+      can :access, :dashboard
       can :index, Chatlog
       can :read, Chatlog
+      can :index, User
       can :update, User
+      can :online, User
+      can :chatlogs, User
     end
     
     if user.has_role? "PluginDeveloper"

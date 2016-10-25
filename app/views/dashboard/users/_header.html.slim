@@ -1,0 +1,11 @@
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content.center-align
+        h1 style=("text-transform: none") = @user.name
+        - if @user.rank
+          = content_tag(:div, class: "chip white-text", style: "background-color: ##{@user.colorcode}") do
+            = @user.rank
+        - if @user.online
+          .chip.green.white-text
+            | online

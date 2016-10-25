@@ -1,0 +1,26 @@
+- title("Spieler")
+= render("searchbar")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content.center-align
+        h1 = User.model_name.human(count: 2)
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content
+        - if @users.empty?
+              | Keine Spieler gefunden...
+        - else
+          .center-align
+            = paginate @users
+          table
+            thead
+              th Spielername
+              th Zuletzt gesehen
+              th Gespielte Spiele
+              th
+            tbody  
+              = render @users
+          .center-align
+            = paginate @users

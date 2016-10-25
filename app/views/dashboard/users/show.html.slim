@@ -1,0 +1,22 @@
+- title(@user.name)
+= render("actions")
+= render("searchbar")
+.row
+  = render("header")
+- if !@user.friendships.empty?
+  .row
+    .col.xs12
+      .card.collection.z-depth-0
+        .card-content
+          span.card-title Freunde
+          .center-align
+          table
+            thead
+              th Spielername
+              th Zuletzt gesehen
+              th Gespielte Spiele
+              th
+            tbody    
+              - @user.sorted_friendships.each do |friendship|
+                - if friendship.status?
+                  = render friendship.user
