@@ -20,6 +20,7 @@ module BedwarsNetwork
   class Application < Rails::Application   
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
+    config.action_controller.default_url_options = { :trailing_slash => true }
     
     Yt.configure do |config|
       config.api_key = ENV["YT_API_KEY"]
