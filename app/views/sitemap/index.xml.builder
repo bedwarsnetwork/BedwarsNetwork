@@ -67,11 +67,6 @@ end
     xml.changefreq  "weekly"
     xml.priority    0.8
   end
-  xml.url do
-    xml.loc         url_for("http://www.bedwars.network" + user_statistic_path(user.name))
-    xml.changefreq  "daily"
-    xml.priority    0.8
-  end
 end
  
 end
