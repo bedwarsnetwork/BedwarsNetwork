@@ -3,7 +3,6 @@
     .nav-wrapper.container
       = link_to "bedwars.network", home_path(), id: "logo-container", class: "brand-logo white-text"
       ul.right.hide-on-med-and-down
-        
         li class=('active' if (params[:controller] == "static" && params[:action] == "team"))
           = link_to "Team", team_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "maps"))
