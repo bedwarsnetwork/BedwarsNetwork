@@ -1,0 +1,13 @@
+- flash.each do |type, messages|
+  color = ''
+  - if type.start_with?("success","notice")
+    - color = 'green'
+  - elsif type.start_with?("error","alert")
+    - color = 'red'
+  - if messages.is_a? Enumerable
+    - messages.each do |message|
+      javascript:
+        Materialize.toast("#{message}", 4000, "#{color}")
+  - else
+    javascript:
+        Materialize.toast("#{messages}", 4000, "#{color}")

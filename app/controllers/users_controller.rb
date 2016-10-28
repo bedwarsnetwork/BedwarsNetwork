@@ -36,6 +36,8 @@ class UsersController < ApplicationController
     else
       @statistic = Bedwarsstatistic.where(uuid: @user._id).first
     end
+    @page_title = ["Spieler", @user.name, "Statistik"]
+    @page_description = "Bestaune die Bedwars-Statistik von #{@user.name}."
 	end
 	
 	def show
@@ -47,6 +49,8 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
+    @page_title = ["Spieler", @user.name]
+    @page_description = "Informiere dich über den Spieler #{@user.name}."
 	end
 	
 	def youtube
@@ -71,7 +75,8 @@ class UsersController < ApplicationController
     rescue => e
       redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
     end 
-    
+    @page_title = ["Spieler", @user.name, "YouTube-Kanal"]
+    @page_description = "Siehe dir die Videos an, die #{@user.name} auf bedwars.network aufgenommen hat."
 	end
 	
 	def edit
@@ -83,10 +88,10 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
+    @page_title = ["Spieler", @user.name, "Bearbeiten"]
 	end
 	
 	def update
-	
 		if params.has_key?(:id)
       @user = User.find_by(id: params[:id])
     elsif params.has_key?(:name)
@@ -102,6 +107,7 @@ class UsersController < ApplicationController
       @user.errors.full_messages.each do |msg|
         flash[:error] << msg
       end
+      @page_title = ["Spieler", @user.name, "Bearbeiten"]
 			render 'edit'
 		end
 	end

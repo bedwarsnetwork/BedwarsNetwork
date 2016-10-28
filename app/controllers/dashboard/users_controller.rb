@@ -4,15 +4,15 @@ class Dashboard::UsersController < ApplicationController
   load_and_authorize_resource
   
   def index
+    @page_title = "Spieler"
     @users = User.order_by(:name => 'asc').page params[:page]
   end
   
   def online
+    @page_title = "Spieler online"
     @users = User.where({:online => true }).order_by(:name => 'asc').page params[:page]
-    
     user_ips = []
     @users.each{|player| user_ips << player.ip}
-
     @second_account_ip_groups = User.where({:ip.in => user_ips}).order_by(:ip => 'asc', :lastSeen => 'desc').group_by{|player| player.ip}
   end
   
@@ -31,6 +31,7 @@ class Dashboard::UsersController < ApplicationController
       if @users.count == 1
         redirect_to dashboard_user_path(@users.first)
       else
+        @page_title = ["Spieler", "Suche", params[:search]]
         render 'index'
       end
 		end
@@ -41,6 +42,7 @@ class Dashboard::UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
+    @page_title = ["Spieler", @user.name]
 	end
 	
 	def chatlogs
@@ -48,6 +50,7 @@ class Dashboard::UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
+    @page_title = ["Spieler", @user.name, "Chatlogs"]
     @chatlogs = Chatlog.where({"messages.user_id": @user._id }).order_by(:created => 'desc').page params[:page]
 	end
 	
@@ -60,10 +63,10 @@ class Dashboard::UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
+    @page_title = ["Spieler", @user.name, "Bearbeiten"]
 	end
 	
 	def update
-	
 		if params.has_key?(:id)
       @user = User.find_by(id: params[:id])
     elsif params.has_key?(:name)
@@ -79,6 +82,7 @@ class Dashboard::UsersController < ApplicationController
       @user.errors.full_messages.each do |msg|
         flash[:error] << msg
       end
+      @page_title = ["Spieler", @user.name, "Bearbeiten"]
 			render 'edit'
 		end
 	end

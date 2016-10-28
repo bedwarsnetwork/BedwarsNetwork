@@ -5,6 +5,7 @@ class Dashboard::ChatlogsController < ApplicationController
   
   def index
 		@chatlogs = Chatlog.order_by(:created => 'desc').page params[:page]
+		@page_title = "Chatlogs"
   end
   
   def search
@@ -13,6 +14,7 @@ class Dashboard::ChatlogsController < ApplicationController
     elsif params[:search] && request.post?
       redirect_to search_result_dashboard_chatlogs_path(params[:search])
     elsif params[:search] && request.get?
+      @page_title = ["Chatlogs", "Suche", params[:search]]
       @chatlogs = Chatlog.where({_id: /.*#{params[:search]}.*/i }).order_by(:created => 'desc').page params[:page]
       if @chatlogs.count == 1
         redirect_to dashboard_chatlog_path(@chatlogs.first.id)
@@ -27,6 +29,7 @@ class Dashboard::ChatlogsController < ApplicationController
     if @chatlog.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Chatlog nicht gefunden" })
     end
+    @page_title = ["Chatlog", @chatlog.id]
 	end
 	
 	private
