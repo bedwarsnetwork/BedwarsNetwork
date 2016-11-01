@@ -4,8 +4,8 @@
       a.subheader
         => User.model_name.human
         = @user.name
-    - if can? :index, Chatlog
-      li class=('active' if (params[:controller] == "dashboard/chatlogs"))
+    - if (can? :index, Chatlog) || (can? :chatlogs, User)
+      li class=('active' if (params[:controller] == "dashboard/users") && params[:action] == "chatlogs")
         = link_to(dashboard_user_chatlogs_path(@user)) do
           = content_tag(:i, 'attach_file', class: 'material-icons')
           = Chatlog.model_name.human(count: 2)
