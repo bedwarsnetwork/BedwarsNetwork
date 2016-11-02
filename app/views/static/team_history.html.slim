@@ -21,6 +21,6 @@
                 span.card-title
                   = link_to user.name, user_path(user.name), class: "black-text"
                 - if user.team_member_since && user.team_member_until
-                  = user.team_member_since.to_date.in_time_zone("Berlin").strftime("%B %Y")
+                  br> user.team_member_since.to_date.in_time_zone("Berlin").strftime("%B %Y")
                   | bis 
                   = user.team_member_until.to_date.in_time_zone("Berlin").strftime("%B %Y")
