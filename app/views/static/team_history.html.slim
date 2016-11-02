@@ -22,6 +22,6 @@
                   = link_to user.name, user_path(user.name), class: "black-text"
                 - if user.team_member_since && user.team_member_until
                   br
-                  = l(user.team_member_since, format: :month)
+                  => l(user.team_member_since, format: :month)
                   | bis 
                   = l(user.team_member_until, format: :month)
