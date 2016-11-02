@@ -1,5 +1,5 @@
 - content_for :actions do
-  - if can? :update, User
+  - if (can? :update, @user) && (@user == current_user)
     li
       a.subheader
         => User.model_name.human

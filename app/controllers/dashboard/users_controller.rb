@@ -75,21 +75,34 @@ class Dashboard::UsersController < ApplicationController
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
-		if @user.update_without_password(user_params)
-			redirect_to user_path(@user.name), :flash => { :success => "Spieler gespeichert" }
-		else
-      flash[:error] = ["Fehler beim Speichern"]
-      @user.errors.full_messages.each do |msg|
-        flash[:error] << msg
-      end
-      @page_title = ["Spieler", @user.name, "Bearbeiten"]
-			render 'edit'
-		end
+		if needs_password?(@user, user_params)
+      if @user.update(user_params)
+        bypass_sign_in(@user)
+  			redirect_to dashboard_user_path(@user), :flash => { :success => "Spieler gespeichert" }
+  			return
+  		end
+    else
+  		if @user.update_without_password(user_params)
+  			redirect_to dashboard_user_path(@user), :flash => { :success => "Spieler gespeichert" }
+  			return
+  		end
+    end
+    flash[:error] = ["Fehler beim Speichern"]
+    @user.errors.full_messages.each do |msg|
+      flash[:error] << msg
+    end
+    @page_title = ["Spieler", @user.name, "Bearbeiten"]
+		render 'edit'
 	end
 	
 	private
+	
+	  def needs_password?(user, user_params)
+			!user_params[:password].blank?
+    end
+    
 		def user_params
-			params.require(:user).permit(:youtube_id)
+			params.require(:user).permit(:youtube_id, :password, :password_confirmation, :team_member_since, :team_member_until)
 		end
 		
   def verify_access

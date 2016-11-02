@@ -5,7 +5,7 @@ class Ability
     
     user ||= User.new
     
-    if user.has_role? :Admin
+    if user.has_role? "Admin"
       can :manage, :all
     end
     
@@ -53,6 +53,8 @@ class Ability
     can :show, User
     can :statistic, User
     can :youtube, User
+    
+    can :update, User, :id => user._id
     
     can :show, Chatlog do |chatlog|
       access = false

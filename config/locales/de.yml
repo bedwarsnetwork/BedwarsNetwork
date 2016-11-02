@@ -33,6 +33,10 @@ de:
         _id: "UUID"
         name: "Name"
         youtube_id: "YouTube Kanal ID"
+        password: "Passwort"
+        password_confirmation: "Passwort bestätigen"
+        team_member_since: "Im Team seit..."
+        team_member_until: "Im Team bis..."
   helpers:
     submit:
       create: "%{model} erstellen"

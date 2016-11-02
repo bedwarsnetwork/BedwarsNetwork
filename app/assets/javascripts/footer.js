@@ -16,6 +16,7 @@ $('.button-collapse.user-nav').sideNav({
     closeOnClick: true
   }
 );
+$('.datepicker').pickadate();
 
 $.DivasCookies({
 	bannerText: "Cookies helfen uns bei der Bereitstellung unserer Website. Durch die Nutzung unserer Website erklärst du dich damit einverstanden, dass wir Cookies setzen.",

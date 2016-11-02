@@ -3,7 +3,7 @@
 .row
   = render("header")
 .row
-  = form_for @user do |f|
+  = form_for [:dashboard, @user] do |f|
     .col.xs12
       .card.collection.z-depth-0
         .card-content
@@ -11,9 +11,23 @@
             .input-field.col.xs12
               = f.label :youtube_id
               = f.text_field :youtube_id, class: 'validate'
-            
+          .row
+            .input-field.col.xs12
+              = f.label :password
+              = f.password_field :password, class: 'validate'
+            .input-field.col.xs12
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation, class: 'validate'
+          .row
+            .input-field.col.xs12
+              = f.label :team_member_since
+              = f.date_field :team_member_since, class: 'datepicker'
+            - if @user.team_member_since
+              .input-field.col.xs12
+                = f.label :team_member_until
+                = f.date_field :team_member_until, class: 'datepicker'
     .col.s12
       .card.collection.z-depth-0
         .card-content
           => f.submit :class => "waves-effect waves-light btn green"
-          = link_to "Zurück", user_path(@user.name), data: { confirm: t("helpers.submit.cancel_update", model: User.model_name.human) }, :class => "waves-effect waves-light btn red"
+          = link_to "Zurück", dashboard_user_path(@user), data: { confirm: t("helpers.submit.cancel_update", model: User.model_name.human) }, :class => "waves-effect waves-light btn red"
