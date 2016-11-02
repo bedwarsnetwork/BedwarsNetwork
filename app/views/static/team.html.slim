@@ -26,7 +26,7 @@
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
                   br> Im Team seit
-                  = user.team_member_since.to_date.in_time_zone("Berlin").strftime("%B %Y")
+                  = l(user.team_member_since, format: :month)
       - @team.select{|key| key[:_id] != "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
         .col.xs12.s6.l4
           .card.horizontal
@@ -43,7 +43,7 @@
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
                   br> Im Team seit
-                  = user.team_member_since.to_date.in_time_zone("Berlin").strftime("%B %Y")
+                  = l(user.team_member_since, format: :month)
   .section
     .row
       .col.s12.l6
