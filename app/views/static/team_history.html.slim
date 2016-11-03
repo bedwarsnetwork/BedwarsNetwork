@@ -13,15 +13,12 @@
       - @team.each do |user|
         .col.xs2.m3.l4
           .card.horizontal
-            .card-image.valign-wrapper.col.xs2.l4[style="padding: 10px"]
+            .card-image.valign-wrapper.col.xs3.l4.hide-on-extra-small-only[style="padding: 10px"]
               = link_to user_path(user.name) do
                 = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
             .card-stacked.col.xs10.m9.l8
               .card-content
-                span.card-title
+                span.card-title.flow-text
                   = link_to user.name, user_path(user.name), class: "black-text"
                 - if user.team_member_since && user.team_member_until
-                  br
-                  => l(user.team_member_since, format: :month)
-                  | bis 
-                  = l(user.team_member_until, format: :month)
+                  br #{l(user.team_member_since, format: :month)} bis #{l(user.team_member_until, format: :month)}

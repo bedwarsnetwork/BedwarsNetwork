@@ -17,55 +17,52 @@
 
 
 @import "materialize/components/color";
-$primary-color: color("light-blue", "lighten-1") !default;
-$primary-color-light: lighten($primary-color, 15%) !default;
-$primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: $primary-color !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
-$link-color: $primary-color !default;
+$primary-color: color("light-blue", "lighten-1");
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
 
-@import "materialize/components/variables";
-$extra-small-screen-up: 481px !default; 
-$extra-small-screen: 480px !default;
-$small-screen-up: 961px !default;
-$small-screen: 960px !default;
-$medium-screen-up: 1281px !default;
-$medium-screen: 1280px !default;
-$large-screen-up: 1601px !default;
-$large-screen: 1600px !default;
-$extra-large-screen-up: 1920px !default;
-$extra-large-screen: 1921px !default;
+$secondary-color: $primary-color;
+$success-color: color("green", "base");
+$error-color: color("red", "base");
+$link-color: $primary-color;
 
-$extra-small-and-down: "only screen and (max-width : #{$extra-small-screen})" !default;
-$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
-$small-only: "only screen and (min-width : #{$extra-small-screen-up}) and (max-width : #{$small-screen})" !default;
-$small-and-up: "only screen and (min-width : #{$extra-small-screen-up})" !default;
-$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-down: "only screen and (max-width : #{$large-screen})" !default;
-$medium-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})" !default;
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
-$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})" !default;
+$extra-small-screen-up: 481px; 
+$extra-small-screen: 480px;
+$small-screen-up: 961px;
+$small-screen: 960px;
+$medium-screen-up: 1281px;
+$medium-screen: 1280px;
+$large-screen-up: 1601px;
+$large-screen: 1600px;
+$extra-large-screen-up: 1920px;
+$extra-large-screen: 1921px;
+
+$extra-small-and-down: "only screen and (max-width : #{$extra-small-screen})";
+$small-and-down: "only screen and (max-width : #{$small-screen})";
+$small-only: "only screen and (min-width : #{$extra-small-screen-up}) and (max-width : #{$small-screen})";
+$small-and-up: "only screen and (min-width : #{$extra-small-screen-up})";
+$medium-and-down: "only screen and (max-width : #{$medium-screen})";
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})";
+$large-and-down: "only screen and (max-width : #{$large-screen})";
+$medium-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})";
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})";
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})";
 
 @import "materialize";
+
+
 
 html body {
   font-family: "Ubuntu", "Roboto", sans-serif;
   background-color: #f5f5f5;
-  font-size: 12px;
-  line-height: 20px;
-  text-rendering: optimizeLegibility;
-  font-weight: 400;
 }
 
 h1 {
   font-family: "Arvo", serif;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 22px;
 }
 
 .card, footer {
@@ -97,19 +94,12 @@ strong {
   font-weight: bold;
 }
 
-h1 {
-  font-size: 20px;
-}
 #index-banner .section {
   top: 0;
 }
 
 nav ul a, nav .brand-logo {
   color: #444;
-}
-
-p {
-  line-height: 20px;
 }
 
 .button-collapse {
@@ -154,7 +144,6 @@ footer.page-footer {
   padding: 2px 5px;
   background: rgba(41, 173, 245, 1);
   color: #fff;
-  font-size: 25px;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, .25);
   border: 1px solid rgba(0, 0, 0, .25);
   border-bottom-width: 3px;
@@ -183,7 +172,6 @@ li.clickable a {
     border-radius: 2px;
     color: #fff;
     display: inline;
-    font-size: 75%;
     font-style: normal;
     font-weight: 400;
     line-height: 1;
@@ -193,7 +181,6 @@ li.clickable a {
 }
 
 .card-title .label, .card-heading .flag {
-  font-size: 11px;
   vertical-align: top;
 }
 
@@ -288,12 +275,6 @@ footer.page-footer .footer-copyright {
   #index-banner .section {
     top: 10%;
   }
-   h1 {
-    font-size: 35px;
-  }
-  html body {
-  font-size: 14px;
-}
   .card, footer {
   overflow: visible;
   }
@@ -313,19 +294,12 @@ footer.page-footer .footer-copyright {
   #index-banner .section {
     top: 10%;
   }
-    h1 {
-    font-size: 45px;
-  }
 }
 
 @media #{$large-and-up} {
   
   .parallax-container {
     height: 280px;
-  }
-
-  h1 {
-    font-size: 50px;
   }
   
   ul.collection.two-col {
@@ -347,11 +321,6 @@ footer.page-footer .footer-copyright {
     height: 380px;
   }
 
-
-  h1 {
-    font-size: 50px;
-  }
-  
   ul.collection.two-col {
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
@@ -365,6 +334,167 @@ footer.page-footer .footer-copyright {
 
 }
 
+
+/////////////////////////////////////
+/////////////////////////////////////
+// Modifying Font Sizes
+/////////////////////////////////////
+/////////////////////////////////////
+
+html body, .flow-text {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1rem * (1 + (.0005 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: $extra-small-screen) {
+    font-size: 1rem;
+  }
+}
+
+.card .card-content .card-title {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.3rem * (1 + (.0005 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.3rem;
+  }
+}
+
+h1 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 2rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 2rem;
+  }
+}
+
+h2 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.9rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.9rem;
+  }
+}
+
+h3 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.8rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.8rem;
+  }
+}
+
+h4 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.7rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.7rem;
+  }
+}
+
+h5 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.6rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.6rem;
+  }
+}
+
+h6 {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.5rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.5rem;
+  }
+}
+
+.player-count dd span {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1.5rem * (1 + (.03 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: 360px) {
+    font-size: 1.5rem;
+  }
+}
+
+.label {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1rem * (1 + (.0005 * $i)) * 0.75;
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: $extra-small-screen) {
+    font-size: 1rem * 0.75;
+  }
+}
+
+
+.card-title .label, .card-heading .flag {
+  $i: 0;
+  @while $i <= $intervals {
+    @media only screen and (min-width : $extra-small-screen + ($i * $interval-size)) {
+      font-size: 1rem * (1 + (.0005 * $i));
+    }
+    $i: $i + 1;
+  }
+
+  @media only screen and (max-width: $extra-small-screen) {
+    font-size: 1rem;
+  }
+}
 
 /////////////////////////////////////
 /////////////////////////////////////
@@ -545,7 +675,7 @@ footer.page-footer .footer-copyright {
 }
 
 .hide-on-extra-small-only, .hide-on-extra-small-and-down {
-  @media #{$small-and-down} {
+  @media #{$extra-small-and-down} {
     display: none !important;
   }
 }

@@ -13,11 +13,10 @@
       - @team.select{|key| key[:_id] == "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
         .col.xs12.s6.l4
           .card.horizontal
-            .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+            .card-image.valign-wrapper.col.xs3.l4.hide-on-extra-small-only[style="padding: 10px"]
               = link_to user_path(user.name) do
-                = link_to user_path(user.name) do
-                  = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
-            .card-stacked.col.xs10.m9.l8
+                = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
+            .card-stacked.col.xs9.l8
               .card-content
                 span.card-title
                   = link_to user.name, user_path(user.name), class: "black-text"
@@ -25,15 +24,13 @@
                 - if user.rank
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
-                  br> Im Team seit
-                  = l(user.team_member_since, format: :month)
+                  br Im Team seit #{l(user.team_member_since, format: :month)}
       - @team.select{|key| key[:_id] != "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
         .col.xs12.s6.l4
           .card.horizontal
-            .card-image.valign-wrapper.col.xs2.m3.l4[style="padding: 10px"]
+            .card-image.valign-wrapper.col.xs3.l4.hide-on-extra-small-only[style="padding: 10px"]
               = link_to user_path(user.name) do
-                = link_to user_path(user.name) do
-                  = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
+                = image_tag("https://visage.surgeplay.com/full/256/#{user.id}", alt: user.name, title: user.name, style: "width: 100px", class: "valign")
             .card-stacked.col.xs10.m9.l8
               .card-content
                 span.card-title
@@ -42,8 +39,7 @@
                 - if user.rank
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
-                  br> Im Team seit
-                  = l(user.team_member_since, format: :month)
+                  br Im Team seit #{l(user.team_member_since, format: :month)}
   .section
     .row
       .col.s12.l6
