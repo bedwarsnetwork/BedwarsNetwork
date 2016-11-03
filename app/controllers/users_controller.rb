@@ -102,7 +102,9 @@ class UsersController < ApplicationController
     end
     if needs_password?(@user, user_params)
       if @user.update(user_params)
-        bypass_sign_in(@user)
+        if(@user == current_user)
+          bypass_sign_in(@user)
+        end
   			redirect_to user_path(@user.name), :flash => { :success => "Spieler gespeichert" }
   			return
   		end
