@@ -53,7 +53,7 @@ class StaticController < ApplicationController
     excluded_uuids = []
     User.where("$or" => [{"groups" => {"$in" => ["Admin", "Supporter", "Moderator", "WebDeveloper", "PluginDeveloper", "Builder", "SeniorBuilder"]}}, {"banHistory.until" => {"$gte": Date.today}}, {"lastSeen" => {"$lte": Date.today - 90.day }}]).each{|player| excluded_uuids << player.id}
     @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_uuids).limit(11);
-    @kd = Bedwarsstatistic.order(kd: :desc).where.not(uuid: excluded_uuids).limit(11);
+    @kd = Bedwarsstatistic.order(kd: :desc).where("games > 25").where.not(uuid: excluded_uuids).limit(11);
     @games = Bedwarsstatistic.order(games: :desc).where.not(uuid: excluded_uuids).limit(11);
     @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_uuids).limit(11);
   end
