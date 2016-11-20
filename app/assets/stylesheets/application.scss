@@ -364,7 +364,7 @@ html body, .flow-text {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.3rem;
   }
 }
@@ -378,7 +378,7 @@ h1 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 2rem;
   }
 }
@@ -392,7 +392,7 @@ h2 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.9rem;
   }
 }
@@ -406,7 +406,7 @@ h3 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.8rem;
   }
 }
@@ -420,7 +420,7 @@ h4 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.7rem;
   }
 }
@@ -434,7 +434,7 @@ h5 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.6rem;
   }
 }
@@ -448,7 +448,7 @@ h6 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.5rem;
   }
 }
@@ -462,7 +462,7 @@ h6 {
     $i: $i + 1;
   }
 
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: $extra-small-screen) {
     font-size: 1.5rem;
   }
 }

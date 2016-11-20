@@ -14,5 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require materialize-sprockets
+//= require sideNav
 //= require turbolinks
 //= require jquery.divascookies-0.6
