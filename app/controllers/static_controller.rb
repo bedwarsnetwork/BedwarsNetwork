@@ -3,7 +3,7 @@ class StaticController < ApplicationController
   skip_authorization_check
   
   def home
-      @page_title = 'Das Bedwars-Netzwerk für Minecraft 1.9 + 1.10!'
+      @page_title = 'Das Bedwars-Netzwerk für Minecraft 1.9 - 1.11!'
       @page_description = 'bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!'
       json = nil
     begin
