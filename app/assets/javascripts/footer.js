@@ -3,7 +3,6 @@ $(document).on('turbolinks:load', function() {
   Materialize.updateTextFields();
 });
 $('.collapsible').collapsible();
-$('.modal-trigger').leanModal();
 $('.parallax').parallax();
 $('ul.tabs').tabs();
 $('select').material_select();
