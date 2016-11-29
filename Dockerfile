@@ -20,7 +20,6 @@ RUN ["chown", "-R", "app:users", "/home/app/webapp"]
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN ["rvm", "--default", "use", "ruby-2.3.1"]
 WORKDIR /home/app/webapp
 
 RUN ["gem", "install", "bundler"]
