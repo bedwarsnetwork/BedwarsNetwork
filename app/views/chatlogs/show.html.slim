@@ -15,40 +15,43 @@
       .col.s12
         .card
           .card-content.left-align
-            ul.collection
-              - @chatlog.chatlogmessages.each do |message|
-                li.collection-item.avatar
-                  = image_tag("https://visage.surgeplay.com/bust/256/#{message.user.id}", alt: message.user.name, title: message.user.name, class: "circle")
-                  p
-                    = link_to message.user.name, user_path(message.user.name)
-                    span.grey-text.lighten-2
-                      | (
-                      = message.timestamp.to_datetime.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
-                      | )
-                  - if message.type == "EVENT"
-                    - if message.message == "PLAYER_JOIN"
-                      p.grey-text.lighten-2
-                        | Der Spieler hat den Server betreten.
-                      span.secondary-content
-                        i.material-icons.green-text
-                          | arrow_forward
-                    - elsif message.message == "PLAYER_QUIT"
-                      p.grey-text.lighten-2
-                        | Der Spieler hat den Server verlassen.
-                      span.secondary-content
-                        i.material-icons.red-text
-                          | arrow_back
-                    - else
-                      = message.message
-                  - elsif message.type == "COMMAND"
+            - if !@chatlog.complete.nil? && @chatlog.complete == true
+              ul.collection
+                - @chatlog.chatlogmessages.each do |message|
+                  li.collection-item.avatar
+                    = image_tag("https://visage.surgeplay.com/bust/256/#{message.user.id}", alt: message.user.name, title: message.user.name, class: "circle")
                     p
-                      = message.message
-                    span.secondary-content
-                      i.material-icons.grey-text
-                        | settings
-                  - elsif message.type == "MESSAGE"
-                    p
-                      = message.message
-                    span.secondary-content
-                      i.material-icons.grey-text
-                        | chat_bubble
+                      = link_to message.user.name, user_path(message.user.name)
+                      span.grey-text.lighten-2
+                        | (
+                        = message.timestamp.to_datetime.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+                        | )
+                    - if message.type == "EVENT"
+                      - if message.message == "PLAYER_JOIN"
+                        p.grey-text.lighten-2
+                          | Der Spieler hat den Server betreten.
+                        span.secondary-content
+                          i.material-icons.green-text
+                            | arrow_forward
+                      - elsif message.message == "PLAYER_QUIT"
+                        p.grey-text.lighten-2
+                          | Der Spieler hat den Server verlassen.
+                        span.secondary-content
+                          i.material-icons.red-text
+                            | arrow_back
+                      - else
+                        = message.message
+                    - elsif message.type == "COMMAND"
+                      p
+                        = message.message
+                      span.secondary-content
+                        i.material-icons.grey-text
+                          | settings
+                    - elsif message.type == "MESSAGE"
+                      p
+                        = message.message
+                      span.secondary-content
+                        i.material-icons.grey-text
+                          | chat_bubble
+            - else
+              p Dein Chatlog wird gerade erstellt. Bitte gedulde dich noch ein wenig!

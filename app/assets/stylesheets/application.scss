@@ -27,26 +27,33 @@ $success-color: color("green", "base");
 $error-color: color("red", "base");
 $link-color: $primary-color;
 
-$extra-small-screen-up: 481px; 
+
 $extra-small-screen: 480px;
-$small-screen-up: 961px;
+$extra-small-screen-up: 481px; 
+
 $small-screen: 960px;
-$medium-screen-up: 1281px;
+$small-screen-up: 961px;
+
 $medium-screen: 1280px;
-$large-screen-up: 1601px;
+$medium-screen-up: 1281px;
+
 $large-screen: 1600px;
-$extra-large-screen-up: 1920px;
-$extra-large-screen: 1921px;
+$large-screen-up: 1601px;
+
+$extra-large-screen: 1920px;
+$extra-large-screen-up: 1921px;
 
 $extra-small-and-down: "only screen and (max-width : #{$extra-small-screen})";
 $small-and-down: "only screen and (max-width : #{$small-screen})";
-$small-only: "only screen and (min-width : #{$extra-small-screen-up}) and (max-width : #{$small-screen})";
-$small-and-up: "only screen and (min-width : #{$extra-small-screen-up})";
 $medium-and-down: "only screen and (max-width : #{$medium-screen})";
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})";
 $large-and-down: "only screen and (max-width : #{$large-screen})";
-$medium-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})";
+
+$small-only: "only screen and (min-width : #{$extra-small-screen-up}) and (max-width : #{$small-screen})";
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
+$large-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})";
+
+$small-and-up: "only screen and (min-width : #{$extra-small-screen-up})";
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})";
 $large-and-up: "only screen and (min-width : #{$medium-screen-up})";
 $extra-large-and-up: "only screen and (min-width : #{$large-screen-up})";
 
@@ -334,6 +341,9 @@ footer.page-footer .footer-copyright {
 
 }
 
+.no-padding {
+  padding: 0 !important
+}
 
 /////////////////////////////////////
 /////////////////////////////////////

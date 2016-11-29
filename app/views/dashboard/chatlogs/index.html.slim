@@ -10,7 +10,7 @@
       .card.collection.z-depth-0
         .card-content
           | Keine Chatlogs gefunden...
-    - else
+    - elsif can? :list, Chatlog
       .center-align
         = paginate @chatlogs
       ul.collection
@@ -40,3 +40,12 @@
                 = content_tag(:i, "attachment", class: "material-icons")
       .center-align
         = paginate @chatlogs
+    - else
+      .card.collection.z-depth-0
+        .card-content
+          = form_tag(search_dashboard_chatlogs_path(), :method => 'post') do
+            .input-field.col.xs12
+              = content_tag(:i, "search", class: "material-icons prefix")
+              = text_field_tag :search, params[:search]
+            .clearfix
+
