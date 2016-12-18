@@ -11,6 +11,8 @@
             = link_to "Premium", premium_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
             = link_to "Statistik", statistic_path(), class: "white-text"
+        li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))
+            = link_to "FAQ", faq_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
           = link_to "Kontakt", contact_path(), class: "white-text"
       a.button-collapse.white-text.mobile-nav[href="#" data-activates="nav-mobile"]
@@ -37,6 +39,10 @@ ul#nav-mobile.side-nav
     = link_to(statistic_path()) do
       = content_tag(:i, 'pie_chart', class: 'material-icons')
       | Statistik
+  li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))
+    = link_to(faq_path()) do
+      = content_tag(:i, 'question_answer', class: 'material-icons')
+      | FAQ
   li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
     = link_to(contact_path()) do
       = content_tag(:i, 'email', class: 'material-icons')
