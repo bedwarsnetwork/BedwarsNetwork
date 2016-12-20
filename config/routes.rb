@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
 
   root to: "static#home"
-  
+
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection
   end
-  
+
   concern :searchable do
     get 'search/:search', :action => :search, :on => :collection, as: 'search_result'
     post 'search/', :action => :search, :on => :collection, :as => 'search'
   end
-  
+
   concern :search_paginatable do
     get 'search/:search/(page/:page)', :action => :search, :on => :collection
   end
-  
+
   devise_for :users, path: 'account'
   get '/' => 'static#home', :as => 'home'
   get '/team' => 'static#team', :as => 'team'
@@ -28,23 +28,24 @@ Rails.application.routes.draw do
   get '/kontakt' => 'static#contact', :as => 'contact'
   get '/impressum' => 'static#imprint', :as => 'imprint'
   get '/agb' => 'static#tos', :as => 'tos'
-  
+  get '/faq' => 'static#faq', :as => 'faq'
+
   resources :chatlogs, only: [:show]
 
   resources :users, path: 'players', except: [:edit, :update], param: :name, :concerns => [:searchable] do
     get 'statistic'
     get 'youtube'
   end
-  
+
   resources :users, path: 'players/uuid/', only: [:edit]
   resources :users, path: 'players', only: [:update]
-  
+
   get '/players/uuid/:id/' => 'users#show'
   get '/players/uuid/:id/statistic' => 'users#statistic'
   get '/players/uuid/:id/youtube' => 'users#youtube'
-  
+
   get 'sitemap.xml' => 'sitemap#index'
-  
+
   namespace :dashboard, layout: 'dashboard' do
     get '/' => 'users#online', :as => 'dashboard'
     resources :chatlogs, :concerns => [:searchable, :search_paginatable, :paginatable]
@@ -53,5 +54,5 @@ Rails.application.routes.draw do
       get 'chatlogs'
     end
   end
-  
+
 end
