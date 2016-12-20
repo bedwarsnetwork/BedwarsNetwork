@@ -11,311 +11,297 @@
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 Allgemeine Fragen über den Server:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Wie ist die Server-Adresse?
-                .collapsible-body
-                  p
-                    | Der Server ist unter der Adresse
-                    strong<> bedwars.network
-                    | zu erreichen. Sollte
-                      dies nicht funktionieren dann benutze alternativ
-                    strong<  play.bedwars.network
-                    | . Sollte das alles nicht funktionieren, dann schildere uns dein Problem per
-                      E-Mail an support@bedwars.network.
-              li
-                .collapsible-header Wo gebe ich diese Server-Adresse ein?
-                .collapsible-body
-                  p
-                    | Gehe in Minecraft auf Mehrspieler und danach im unteren
-                      Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername,
-                      sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf
-                      "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der
-                      Liste klicken und der Spielspaß beginnt!
-              li
-                .collapsible-header Hat bedwars.network einen öffentlichen Teamspeak-Server?
-                .collapsible-body
-                  p
-                    | Nein, bedwars.network hat keinen öffentlichen Teamspeak-Server,
-                      jedoch haben wir einen
-                    strong< Discord-Server
-                    | , den du unter
-                    a[href="https://discord.bedwars.network" target="_blank"]  https://
-                      discord.bedwars.network
-                    | erreichen kannst.
-              li
-                .collapsible-header Wo finde ich die Regeln des Servers?
-                .collapsible-body
-                  p
-                    | Die Regeln kannst du unter
-                    a[href="https://www.bedwars.network/agb/"]  https://www.bedwars.network/agb/
-                    |  finden,
-                      ein Verstoß gegen die Regeln wird mit unverzüglich mit mindestens einem
-                      temporären Bann geahndet, weswegen die die Regeln befolgen solltest.
-              li
-                .collapsible-header Wie lange dauert es in der Regel eine Antwort auf meine E-Mail zu erhalten?
-                .collapsible-body
-                  p
-                    | Dies kommt auf die Auslastung des Teams und das Thema deiner
-                      Anfrage an. Auf einfache Fragen bekommst du im Regelfall nach
-                    strong<> einem Tag
-                    |  und bei Bewerbungen im Regelfall spätestens
-                    strong<> drei Tagen
-                    |  eine erste Antwort.
-              li
-                .collapsible-header Was hebt den Server von anderen Bedwars-Servern ab?
-                .collapsible-body
-                  p
-                    | Wir haben uns wie auch der Servername schon besagt auf Bedwars
-                      spezialisiert und können uns daher viel mehr auf diesen Spielmodus
-                      fokussieren. Abgesehen von dem normalen Bedwars kannst du bei uns
-                      auch
-                    strong< Lucky-Bedwars
-                    | , also Bedwars mit Lucky Blöcken, und
-                    strong< WarGear-Bedwars
-                    | , also Bedwars mit TNT-Kanonenen in sogenannten WarGears, spielen.
-                      Desweiteren bieten wir mit unseren
-                    strong<> Special-Maps
-                    | Bedwars auf Maps an, die du so noch nie gesehen hast.
-              li
-                .collapsible-header An wen kann ich mich bei Problemen wenden?
-                .collapsible-body
-                  p
-                    | Du kannst bei Problemen entweder direkt auf dem Server mittels des Befehls
-                    strong.bwnet-text<>
-                      | /support
-                    | Hilfe von einem Moderator anfordern. Sollte kein
-                      Moderator online sein oder du hast Probleme auf den Server zu kommen,
-                      dann kannst du auch jederzeit eine E-Mail mit deinem Problem an
-                      support@bedwars.network senden.
-              li
-                .collapsible-header Mit welchen Versionen kann man auf dem Server spielen?
-                .collapsible-body
-                  p
-                    | Der Server kann mit allen Minecraft-Versionen von
-                    strong<> 1.9 bis 1.11
-                    | betreten werden. Wir werden in Zukunft auch weiterhin unseren Server auf
-                      den neusten Versionen laufen lassen.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 Allgemeines
+          li
+            .collapsible-header Wie lautet die Server-Adresse?
+            .collapsible-body
+              p
+                | Der Server ist unter der Adresse
+                strong<> bedwars.network
+                | zu erreichen. Sollte
+                  dies nicht funktionieren dann benutze alternativ
+                strong<  play.bedwars.network
+                | . Sollte das alles nicht funktionieren, dann schildere uns dein Problem per
+                  E-Mail an support@bedwars.network.
+          li
+            .collapsible-header Wo gebe ich diese Server-Adresse ein?
+            .collapsible-body
+              p
+                | Gehe in Minecraft auf Mehrspieler und danach im unteren
+                  Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername,
+                  sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf
+                  "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der
+                  Liste klicken und der Spielspaß beginnt!
+          li
+            .collapsible-header Hat bedwars.network einen öffentlichen Teamspeak-Server?
+            .collapsible-body
+              p
+                | Nein, bedwars.network hat keinen öffentlichen Teamspeak-Server, jedoch haben wir einen
+                strong< Discord-Server
+                | , den du unter
+                =<> link_to('discord.bedwars.network', 'https://discord.bedwars.network', target: '_blank')
+                | erreichen kannst.
+          li
+            .collapsible-header Wo finde ich die Regeln des Servers?
+            .collapsible-body
+              p
+                | Die Regeln kannst du unter
+                =<> link_to('www.bedwars.network/agb/', 'https://www.bedwars.network/agb/')
+                | finden,
+                  ein Verstoß gegen die Regeln wird mit unverzüglich mit mindestens einem
+                  temporären Bann geahndet, weswegen die die Regeln befolgen solltest.
+          li
+            .collapsible-header Wie lange dauert es in der Regel eine Antwort auf meine E-Mail zu erhalten?
+            .collapsible-body
+              p
+                | Dies kommt auf die Auslastung des Teams und das Thema deiner
+                  Anfrage an. Auf einfache Fragen bekommst du im Regelfall nach
+                strong<> einem Tag
+                |  und bei Bewerbungen im Regelfall spätestens
+                strong<> drei Tagen
+                |  eine erste Antwort.
+          li
+            .collapsible-header Was hebt den Server von anderen Bedwars-Servern ab?
+            .collapsible-body
+              p
+                | Wir haben uns wie auch der Servername schon besagt auf Bedwars
+                  spezialisiert und können uns daher viel mehr auf diesen Spielmodus
+                  fokussieren. Abgesehen von dem normalen Bedwars kannst du bei uns
+                  auch
+                strong< Lucky-Bedwars
+                | , also Bedwars mit Lucky Blöcken, und
+                strong< WarGear-Bedwars
+                | , also Bedwars mit TNT-Kanonenen in sogenannten WarGears, spielen.
+                  Desweiteren bieten wir mit unseren
+                strong<> Special-Maps
+                | Bedwars auf Maps an, die du so noch nie gesehen hast.
+          li
+            .collapsible-header An wen kann ich mich bei Problemen wenden?
+            .collapsible-body
+              p
+                | Du kannst bei Problemen entweder direkt auf dem Server mittels des Befehls
+                strong.bwnet-text<>
+                  | /support
+                | Hilfe von einem Moderator anfordern. Sollte kein
+                  Moderator online sein oder du hast Probleme auf den Server zu kommen,
+                  dann kannst du auch jederzeit eine E-Mail mit deinem Problem an
+                  support@bedwars.network senden.
+          li
+            .collapsible-header Mit welchen Versionen kann man auf dem Server spielen?
+            .collapsible-body
+              p
+                | Der Server kann mit allen Minecraft-Versionen von
+                strong<> 1.9 bis 1.11
+                | betreten werden. Wir werden in Zukunft auch weiterhin unseren Server auf
+                  den neusten Versionen laufen lassen.
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 Einsendungen:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Wo kann ich selbstgebaute Maps einsenden?
-                .collapsible-body
-                  p
-                    | Wir freuen uns, wenn Spieler ihre gebauten Maps einsenden. Wenn du
-                      eine gute Bedwars Map für uns gebaut hast, dann sende sie bitte per E-
-                      Mail unter support@bedwars.network ein. Du kannst direkt den
-                      komprimierten Ordner der Welt oder eine Schematic-Datei schicken.
-              li
-                .collapsible-header Ich habe eine Idee bzw. einen Verbesserungsvorschlag. Wo kann ich diesen einsenden?
-                .collapsible-body
-                  p
-                    | Wir freuen uns immer über Feedback von unseren Spielern. Bitte sende
-                      Feedback und auch Kritik per E-Mail an support@bedwars.network.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 Einsendungen
+          li
+            .collapsible-header Wo kann ich selbstgebaute Maps einsenden?
+            .collapsible-body
+              p
+                | Wir freuen uns, wenn Spieler ihre gebauten Maps einsenden. Wenn du
+                  eine gute Bedwars Map für uns gebaut hast, dann sende sie bitte per E-
+                  Mail unter support@bedwars.network ein. Du kannst direkt den
+                  komprimierten Ordner der Welt oder eine Schematic-Datei schicken.
+          li
+            .collapsible-header Ich habe eine Idee bzw. einen Verbesserungsvorschlag. Wo kann ich diesen einsenden?
+            .collapsible-body
+              p
+                | Wir freuen uns immer über Feedback von unseren Spielern. Bitte sende
+                  Feedback und auch Kritik per E-Mail an support@bedwars.network.
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 Bann, Report und Entbannungsanträge:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Wie und wo kann man Spieler melden?
-                .collapsible-body
-                  p
-                    | Du kannst Spieler auf dem Server mit dem Befehl
-                    strong.bwnet-text<>
-                      | /report &#60;Spielername&#62; &#60;Grund&#62;
-                    | melden. Sofern ein Moderator online ist, wird
-                      er versuchen deinem Report nachzugehen. Um ganz sicher zu sein, dass
-                      wir uns um den Spieler kümmern, schicke uns am besten Beweismaterial
-                      per E-Mail an support@bedwars.network.
-              li
-                .collapsible-header  Ich habe einen Bug gefunden, wo kann ich ihn melden?
-                .collapsible-body
-                  p
-                    | Wir werden uns so schnell wie möglich um diesen Bug kümmern, bitte
-                      sende ihn per E-Mail an support@bedwars.network.
-              li
-                .collapsible-header Ich wurde zu unrecht gebannt, was kann ich tun?
-                .collapsible-body
-                  p
-                    | Wenn du denkst, dass du zu unrecht gebannt wurdest, dann sende bitte
-                      einen ausführlichen Entbannungsantrag an support@bedwars.network.
-              li
-                .collapsible-header Wie muss ich bei einem Chatvertoß vorgehen?
-                .collapsible-body
-                  p
-                    | Falls du noch auf dem Server bist, wo der Chatverstoß geschehen ist,
-                      kannst du den Befehl
-                    strong.bwnet-text<>
-                      | /chatlog
-                    | benutzen und uns die dir angezeigte Chatlog-ID per E-Mail an support@bedwars.network senden.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 Allgemeines
+          li
+            .collapsible-header Wie und wo kann man Spieler melden?
+            .collapsible-body
+              p
+                | Du kannst Spieler auf dem Server mit dem Befehl
+                strong.bwnet-text<>
+                  | /report &#60;Spielername&#62; &#60;Grund&#62;
+                | melden. Sofern ein Moderator online ist, wird
+                  er versuchen deinem Report nachzugehen. Um ganz sicher zu sein, dass
+                  wir uns um den Spieler kümmern, schicke uns am besten Beweismaterial
+                  per E-Mail an support@bedwars.network.
+          li
+            .collapsible-header  Ich habe einen Bug gefunden, wo kann ich ihn melden?
+            .collapsible-body
+              p
+                | Wir werden uns so schnell wie möglich um diesen Bug kümmern, bitte
+                  sende ihn per E-Mail an support@bedwars.network.
+          li
+            .collapsible-header Ich wurde zu unrecht gebannt, was kann ich tun?
+            .collapsible-body
+              p
+                | Wenn du denkst, dass du zu unrecht gebannt wurdest, dann sende bitte
+                  einen ausführlichen Entbannungsantrag an support@bedwars.network.
+          li
+            .collapsible-header Wie muss ich bei einem Chatvertoß vorgehen?
+            .collapsible-body
+              p
+                | Falls du noch auf dem Server bist, wo der Chatverstoß geschehen ist,
+                  kannst du den Befehl
+                strong.bwnet-text<>
+                  | /chatlog
+                | benutzen und uns die dir angezeigte Chatlog-ID per E-Mail an support@bedwars.network senden.
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 Premium/Shop:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Was für Vorteile hat der Premiumrang und wo/wie kann ich ihn kaufen?
-                .collapsible-body
-                  p
-                    | Durch das Bezahlen eines Premiumranges unterstützt du die
-                      Finanzierung und des Ausbau des Servernetzwerks. Den Premiumrang
-                      kannst du dir ab 5,00 € unter
-                    a[href="https://buy.bedwars.network"]  https://buy.bedwars.network
-                    |  kaufen. Weitere Details erfährst du unter
-                    a[href="https://www.bedwars.network/premium/"]  https://www.bedwars.network/premium/
-                    | .
-              li
-                .collapsible-header Welche Bezahlmöglichkeiten habe ich beim Kauf eines Premiumranges?
-                .collapsible-body
-                  p
-                    | Die Abwicklung des Kaufs erfolgt entweder über
-                    strong<> PayPal
-                    | oder
-                    strong< Paymentwall
-                    | .
-                    strong<> PayPal
-                    | unterstützt u.A. Zahlungen via dein
-                    strong< PayPal-Guthaben
-                    | , per
-                    strong<> Kreditkarte
-                    | und per
-                    strong< Lastschrift
-                    | , wohingegen du bei
-                    strong<> Paymentwall
-                    | u.A. mit einer
-                    strong<> Paysafecard
-                    | zahlen kannst. Wenn du magst, dann kannst du den Betrag auch direkt auf unser Konto
-                    strong< überweisen
-                    | . Um die Kontodaten zu bekommen, schreibe uns eine E-Mail an support@bedwars.network.
-              li
-                .collapsible-header Wie lange dauert es bis ich den Premiumrang bekomme?
-                .collapsible-body
-                  p
-                    | Im Regelfall bekommst du den Premiumrang auf unseren Server nach
-                    strong< 15 Minuten
-                    | , jedoch kann es in seltenen Fällen bis zu
-                    strong<> 24 Stunden
-                    | dauern.
-              li
-                .collapsible-header Ich habe meine Käufe nicht erhalten, was soll ich tun?
-                .collapsible-body
-                  p
-                    | Wenn du deine Käufe nicht erhalten haben solltest, dann sende bitte
-                      eine E-Mail an support@bedwars.network. Wir werden uns das Problem
-                      ansehen, bei einer Bestätigung deines Kaufes werden wir dir so schnell
-                      wie möglich deinen Premiumrang zur Verfügung stellen.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 Premium/Shop
+          li
+            .collapsible-header Was für Vorteile hat der Premiumrang und wo/wie kann ich ihn kaufen?
+            .collapsible-body
+              p
+                | Durch das Bezahlen eines Premiumranges unterstützt du die
+                  Finanzierung und des Ausbau des Servernetzwerks. Den Premiumrang
+                  kannst du dir ab 5,00 € unter
+                a[href="https://buy.bedwars.network"]  https://buy.bedwars.network
+                |  kaufen. Weitere Details erfährst du unter
+                a[href="https://www.bedwars.network/premium/"]  https://www.bedwars.network/premium/
+                | .
+          li
+            .collapsible-header Welche Bezahlmöglichkeiten habe ich beim Kauf eines Premiumranges?
+            .collapsible-body
+              p
+                | Die Abwicklung des Kaufs erfolgt entweder über
+                strong<> PayPal
+                | oder
+                strong< Paymentwall
+                | .
+                strong<> PayPal
+                | unterstützt u.A. Zahlungen via dein
+                strong< PayPal-Guthaben
+                | , per
+                strong<> Kreditkarte
+                | und per
+                strong< Lastschrift
+                | , wohingegen du bei
+                strong<> Paymentwall
+                | u.A. mit einer
+                strong<> Paysafecard
+                | zahlen kannst. Wenn du magst, dann kannst du den Betrag auch direkt auf unser Konto
+                strong< überweisen
+                | . Um die Kontodaten zu bekommen, schreibe uns eine E-Mail an support@bedwars.network.
+          li
+            .collapsible-header Wie lange dauert es bis ich den Premiumrang bekomme?
+            .collapsible-body
+              p
+                | Im Regelfall bekommst du den Premiumrang auf unseren Server nach
+                strong< 15 Minuten
+                | , jedoch kann es in seltenen Fällen bis zu
+                strong<> 24 Stunden
+                | dauern.
+          li
+            .collapsible-header Ich habe meine Käufe nicht erhalten, was soll ich tun?
+            .collapsible-body
+              p
+                | Wenn du deine Käufe nicht erhalten haben solltest, dann sende bitte
+                  eine E-Mail an support@bedwars.network. Wir werden uns das Problem
+                  ansehen, bei einer Bestätigung deines Kaufes werden wir dir so schnell
+                  wie möglich deinen Premiumrang zur Verfügung stellen.
 
-              li
-                .collapsible-header Kann man seine Statistiken zurücksetzen?
-                .collapsible-body
-                  p
-                    | Nein, aktuell ist dies nicht möglich.
+          li
+            .collapsible-header Kann man seine Statistiken zurücksetzen?
+            .collapsible-body
+              p
+                | Nein, aktuell ist dies nicht möglich.
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 Bewerbungen:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Wie kann ich ein Teammitglied werden?
-                .collapsible-body
-                  p
-                    | Wenn du denkst, du hättest das Potenzial dazu ein Teammitglied zu
-                      werden, sende eine Bewerbung an bewerbung@bedwars.network. Weitere
-                      Informationen, insbesondere zu den Voraussetzungen findest du unter
-                    a[href="https://www.bedwars.network/bewerbung/"]  https://www.bedwars.network/bewerbung/
-                    | .
-              li
-                .collapsible-header Gibt es einen YouTube-Rang und wenn ja wie kann ich ihn bekommen?
-                .collapsible-body
-                  p
-                    | Die Vergabe des YouTube-Ranges wird iniduell per E-Mail vereinbart.
-                    br
-                    | Wenn du der Meinung bist, du solltest den YouTube-Rang bekommen,
-                      sende eine entsprechende E-Mail an support@bedwars.network.
-              li
-                .collapsible-header Sucht ihr noch Teammitglieder?
-                .collapsible-body
-                  p
-                    | Wir sind grundsätzlich immer offen und suchen somit jederzeit
-                    strong<> qualifizierte
-                    | und
-                    strong<> aktive
-                    | Mitglieder.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 Bewerbungen
+          li
+            .collapsible-header Wie kann ich ein Teammitglied werden?
+            .collapsible-body
+              p
+                | Wenn du denkst, du hättest das Potenzial dazu ein Teammitglied zu
+                  werden, sende eine Bewerbung an bewerbung@bedwars.network. Weitere
+                  Informationen, insbesondere zu den Voraussetzungen findest du unter
+                a[href="https://www.bedwars.network/bewerbung/"]  https://www.bedwars.network/bewerbung/
+                | .
+          li
+            .collapsible-header Gibt es einen YouTube-Rang und wenn ja wie kann ich ihn bekommen?
+            .collapsible-body
+              p
+                | Die Vergabe des YouTube-Ranges wird iniduell per E-Mail vereinbart.
+                br
+                | Wenn du der Meinung bist, du solltest den YouTube-Rang bekommen,
+                  sende eine entsprechende E-Mail an support@bedwars.network.
+          li
+            .collapsible-header Sucht ihr noch Teammitglieder?
+            .collapsible-body
+              p
+                | Wir sind grundsätzlich immer offen und suchen somit jederzeit
+                strong<> qualifizierte
+                | und
+                strong<> aktive
+                | Mitglieder.
   .section
     .row
       .col.xs12
-        .card
-          .card-content
-            span.card-title
-              h6 In-Game:
-            ul.collapsible data-collapsible="expandable"
-              li
-                .collapsible-header Wie kann man in einem Bedwars-Spiel global schreiben?
-                .collapsible-body
-                  p
-                    | Um in einem Bedwars-Spiel global zu schreiben, musst du vor deiner
-                      Nachricht entweder
-                    strong.bwnet-text<> @a
-                    | ,
-                    strong.bwnet-text<> @
-                    | oder
-                    strong.bwnet-text<> @all
-                    | schreiben.
-              li
-                .collapsible-header Wie füge ich Freunde hinzu?
-                .collapsible-body
-                  p
-                    | Du kannst Freude mithilfe des Befehls
-                    strong.bwnet-text<>
-                      | /friend add &#60;Spielername&#62;
-                    | hinzufügen. Weitere Befehle kannst du sehen mit
-                    strong.bwnet-text<
-                      | /friend help
-                    | .
-              li
-                .collapsible-header Wie füge ich Freunde zu meiner Party hinzu?
-                .collapsible-body
-                  P
-                    | Um Freunde zu deiner Party hinzuzufügen, kannst du den Befehl
-                    strong.bwnet-text<>
-                      | /party invite &#60;Spielername&#62;
-                    | benutzen, du kannst auch Freunde über das
-                    strong<> Freundeinventar
-                    | einladen. Du kannst weitere Befehle sehen mit
-                    strong.bwnet-text<>
-                      | /party help
-                    | .
-              li
-                .collapsible-header Wie schreibt man Spielern persönlich?
-                .collapsible-body
-                  p
-                    | Um Spielern persönlich zu schreiben musst du mit ihnen befreundet
-                      sein. Danach kannst du
-                    strong.bwnet-text<>
-                      | /msg &#60;Spielername&#62; &#60;Nachricht&#62;
-                    | benutzen.
-              li
-                .collapsible-header Behalte ich meine Statistiken/Käufe wenn ich meinen Namen ändere?
-                .collapsible-body
-                  p
-                    | Ja, da unsere Käufe und Statistiken per „UUID“ gespeichert werden.
+        ul.collapsible.collection.with-header data-collapsible='expandable'
+          li.collection-header
+            h6 In-Game
+          li
+            .collapsible-header Wie kann man in einem Bedwars-Spiel global schreiben?
+            .collapsible-body
+              p
+                | Um in einem Bedwars-Spiel global zu schreiben, musst du vor deiner
+                  Nachricht entweder
+                strong.bwnet-text<> @a
+                | ,
+                strong.bwnet-text<> @
+                | oder
+                strong.bwnet-text<> @all
+                | schreiben.
+          li
+            .collapsible-header Wie füge ich Freunde hinzu?
+            .collapsible-body
+              p
+                | Du kannst Freude mithilfe des Befehls
+                strong.bwnet-text<>
+                  | /friend add &#60;Spielername&#62;
+                | hinzufügen. Weitere Befehle kannst du sehen mit
+                strong.bwnet-text<
+                  | /friend help
+                | .
+          li
+            .collapsible-header Wie füge ich Freunde zu meiner Party hinzu?
+            .collapsible-body
+              P
+                | Um Freunde zu deiner Party hinzuzufügen, kannst du den Befehl
+                strong.bwnet-text<>
+                  | /party invite &#60;Spielername&#62;
+                | benutzen, du kannst auch Freunde über das
+                strong<> Freundeinventar
+                | einladen. Du kannst weitere Befehle sehen mit
+                strong.bwnet-text<>
+                  | /party help
+                | .
+          li
+            .collapsible-header Wie schreibt man Spielern persönlich?
+            .collapsible-body
+              p
+                | Um Spielern persönlich zu schreiben musst du mit ihnen befreundet
+                  sein. Danach kannst du
+                strong.bwnet-text<>
+                  | /msg &#60;Spielername&#62; &#60;Nachricht&#62;
+                | benutzen.
+          li
+            .collapsible-header Behalte ich meine Statistiken/Käufe wenn ich meinen Namen ändere?
+            .collapsible-body
+              p
+                | Ja, da unsere Käufe und Statistiken per „UUID“ gespeichert werden.
