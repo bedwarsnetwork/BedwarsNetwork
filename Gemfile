@@ -57,3 +57,7 @@ gem 'kaminari-mongoid'
 gem 'slim-rails'
 gem 'yt'
 gem 'meta-tags'
+
+group :development do
+  gem 'brakeman', :require => false
+end
