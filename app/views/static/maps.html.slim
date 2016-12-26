@@ -37,6 +37,13 @@
       .col.xs12.s6.l4
         .card
           .card-image
+            = image_tag("maps/platforms.png", class: "materialboxed", :data => {caption: "Platforms"})
+            span.card-title
+              | Platforms
+              =< content_tag(:span, "8x1", class: "label white-text red")
+      .col.xs12.s6.l4
+        .card
+          .card-image
             = image_tag("maps/subnautica.png", class: "materialboxed", :data => {caption: "Subnautica"})
             span.card-title
               | Subnautica
@@ -170,6 +177,13 @@
       .col.xs12
         .card-panel.center-align
           h5 5er-Teams
+      .col.xs12.s6.l4
+        .card
+          .card-image
+            = image_tag("maps/starships.png", class: "materialboxed", :data => {caption: "StarShips"})
+            span.card-title
+              | StarShips
+              =< content_tag(:span, "2x5", class: "label white-text red")
       .col.xs12.s6.l4
         .card
           .card-image
