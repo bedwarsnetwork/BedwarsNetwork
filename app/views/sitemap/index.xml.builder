@@ -1,5 +1,5 @@
 xml.instruct!
- 
+
 xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
 xml.url do
   xml.loc         "http://www.bedwars.network"
@@ -62,6 +62,12 @@ xml.url do
 end
 
 xml.url do
+  xml.loc         "http://www.bedwars.network/faq"
+  xml.changefreq  "monthly"
+  xml.priority    0.9
+end
+
+xml.url do
   xml.loc         "http://www.bedwars.network/impressum"
   xml.changefreq  "monthly"
   xml.priority    0.7
@@ -72,7 +78,7 @@ xml.url do
   xml.changefreq  "monthly"
   xml.priority    0.7
 end
- 
+
 @users.each do |user|
   xml.url do
     xml.loc         url_for("http://www.bedwars.network" + user_path(user.name))
@@ -80,5 +86,5 @@ end
     xml.priority    0.5
   end
 end
- 
+
 end
