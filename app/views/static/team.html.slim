@@ -1,6 +1,6 @@
 #index-banner.parallax-container
   .parallax
-    = image_tag("header/index.png")
+    = image_tag("header/team.png")
 .container
   .section
     .row
@@ -52,7 +52,7 @@
           .card-action
             = link_to({controller: "static", action: "application"}, {class: "waves-effect waves-light btn bwnet"}) do
               = content_tag(:i, "info_outline", class: "material-icons left")
-              | Bewerbung 
+              | Bewerbung
       .col.s12.l6
         .card
           .card-content
@@ -63,4 +63,4 @@
           .card-action
             = link_to({controller: "static", action: "team_history"}, {class: "waves-effect waves-light btn bwnet"}) do
               = content_tag(:i, "history", class: "material-icons left")
-              | Ehemalige Teammitglieder 
+              | Ehemalige Teammitglieder
