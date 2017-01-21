@@ -105,6 +105,10 @@ strong {
   top: 0;
 }
 
+.card p + p, .card .card-content p + p {
+  margin-top: 10px;
+}
+
 nav ul a, nav .brand-logo {
   color: #444;
 }
