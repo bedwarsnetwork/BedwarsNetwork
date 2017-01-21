@@ -63,12 +63,11 @@
               #test1.col.xs12
                 p
                   | Minecraft ist ein Open-World-Spiel ohne ein fest vorgegebenes Spielziel. Das Hauptaugenmerk liegt auf der Erkundung und Entdeckung der von Höhlen und Dungeons durchzogenen Spielwelt sowie dem Bau eigener Gebäude und Vorrichtungen. Der Spieler kann Rohstoffe abbauen ("Mine"), diese zu anderen Gegenständen weiterverarbeiten ("Craft") und gegen Monster kämpfen. (Quelle:
-                  a[href="https://de.wikipedia.org/wiki/Minecraft" target="_blank"]
-                    | Wikipedia
+                  =< link_to('Wikipedia', 'https://de.wikipedia.org/wiki/Minecraft', target: '_blank')
                   | )
               #test2.col.xs12
                 p
-                  | Bedwars ist ein Minigame innerhalb von Minecraft. Man spiel hierbei auf Mehrspieler-Servern im Internet. In einer Runde gibt es mehrere Teams, welche alle als Ziel haben, als letztes Team zu überleben. Spieler können sich gegenseitig angreifen und töten, aber erscheinen immer wieder - solange das Team noch ein Bett hat. Ziel ist es also auch, das Bett des anderen Teams zu zerstören, sodass sich die Spielerzahl des anderen Teams reduziert. Das Team, das zuletzt noch einen Spieler in der Runde hat, gewinnt.
+                  | Bedwars ist ein Minigame innerhalb von Minecraft. Man spielt hierbei auf Mehrspieler-Servern im Internet. In einer Runde gibt es mehrere Teams, welche alle als Ziel haben, als letztes Team zu überleben. Spieler können sich gegenseitig angreifen und töten, aber erscheinen immer wieder - solange das Team noch ein Bett hat. Ziel ist es also auch, das Bett des anderen Teams zu zerstören, sodass sich die Spielerzahl des anderen Teams reduziert. Das Team, das zuletzt noch einen Spieler in der Runde hat, gewinnt.
               #test3.col.xs12
                 p
                   | Gehe in Minecraft auf Mehrspieler und danach im unteren Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername, sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der Liste klicken und der Spielspaß beginnt!
@@ -79,11 +78,10 @@
           .card-content.center-align
             span.card-title
               | News von Twitter
-              a[href="https://twitter.com/bedwarsnetwork" target="_blank"]
-                | @bedwarsnetwork
+              =< link_to('@bedwarsnetwork', 'https://twitter.com/bedwarsnetwork', target: '_blank')
             p
-              a.twitter-timeline[href="https://twitter.com/bedwarsnetwork" data-widget-id="674197251946913792" data-tweet-limit="3" data-chrome="noheader nofooter noborders" data-aria-polite="assertive"]
-                | Tweets von @bedwarsnetwork
+              = link_to('Tweets von @bedwarsnetwork', 'https://twitter.com/bedwarsnetwork', data: {"widget-id": "674197251946913792", "tweet-limit": "3", chrome: "noheader nofooter noborders", "aria-polite": "assertive"}, class: "twitter-timeline", target: '_blank')
+
       .col.xs12.l4
         .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
@@ -94,7 +92,7 @@
             p.margin-bottom-lg.text-center
               i
                 | Diese Videos sind hier aufgrund des Projekts
-                => link_to("Deine Chance", deine_chance_path())
+                =<> link_to("Deine Chance", deine_chance_path())
                 | veröffentlicht worden.
       .col.xs12.l4
         .card style="height:400px;overflow-y: auto;"
