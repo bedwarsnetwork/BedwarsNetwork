@@ -9,7 +9,7 @@ gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -54,6 +54,7 @@ gem 'materialize-sass'
 gem 'jquery-turbolinks'
 gem 'bson'
 gem 'kaminari-mongoid'
+gem 'kaminari-actionview'
 gem 'slim-rails'
 gem 'yt'
 gem 'meta-tags'
