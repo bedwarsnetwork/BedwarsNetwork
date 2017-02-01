@@ -1,4 +1,4 @@
-FROM phusion/passenger-ruby23:0.9.19
+FROM phusion/passenger-ruby24:latest
 
 # Set correct environment variables.
 ENV HOME /root
@@ -6,7 +6,7 @@ ENV HOME /root
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-RUN bash -lc 'rvm --default use ruby-2.3.1'
+RUN bash -lc 'rvm --default use ruby-2.4.0'
 
 RUN rm -f /etc/service/nginx/down
 
