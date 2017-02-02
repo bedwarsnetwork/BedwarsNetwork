@@ -1,7 +1,7 @@
 FROM phusion/passenger-ruby24:0.9.20
 
 # Set correct environment variables.
-ENV HOME /home/app/webapp
+ENV HOME /root
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
