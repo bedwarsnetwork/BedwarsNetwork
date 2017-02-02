@@ -20,6 +20,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/app/webapp
 
+RUN usermod -a -G rvm app
+
 USER app
 
 RUN rvm --default use ruby-2.3.1
