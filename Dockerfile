@@ -6,8 +6,6 @@ ENV HOME /root
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-RUN bash -lc 'rvm --default use ruby-2.3.1'
-
 RUN rm -f /etc/service/nginx/down
 
 RUN rm /etc/nginx/sites-enabled/default
@@ -23,6 +21,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 WORKDIR /home/app/webapp
 
 USER app
+
+RUN bash -lc 'rvm --default use ruby-2.3.1'
 
 RUN ["gem", "install", "bundler"]
 
