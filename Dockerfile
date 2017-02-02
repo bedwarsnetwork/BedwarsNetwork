@@ -20,12 +20,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/app/webapp
 
-USER app
-
 RUN ["gem", "install", "bundler"]
 
 ENV SECRET_KEY_BASE 687c705fe313cfdcc185b5a0d858666328892ee0eb8e5fb9a090a0bb4f5c64b5fc5bb6c8f8ac2778277e13ac8829ba4995f363a77ca6ab8cbf17249c1e955fa2
 RUN ["bundle", "install"]
 RUN ["rake", "assets:precompile"]
-
-USER root
