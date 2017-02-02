@@ -1,7 +1,7 @@
-FROM phusion/passenger-ruby23:0.9.19
+FROM phusion/passenger-ruby24:0.9.20
 
 # Set correct environment variables.
-ENV HOME /root
+ENV HOME /home/app/webapp
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
@@ -20,11 +20,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/app/webapp
 
-RUN usermod -a -G rvm app
-
 USER app
-
-RUN rvm --default use ruby-2.3.1
 
 RUN ["gem", "install", "bundler"]
 
