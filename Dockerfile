@@ -1,4 +1,6 @@
-FROM phusion/passenger-ruby24:0.9.20
+FROM phusion/passenger-ruby23:0.9.20
+
+RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
 # Set correct environment variables.
 ENV HOME /root
@@ -16,11 +18,9 @@ RUN mkdir /home/app/webapp
 COPY . /home/app/webapp
 RUN ["chown", "-R", "app:users", "/home/app/webapp"]
 
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
-
 WORKDIR /home/app/webapp
 
-RUN bash -lc 'rvm --default use ruby-2.4.0'
+RUN bash -lc 'rvm --default use ruby-2.3.3'
 
 RUN ["gem", "install", "bundler"]
 
