@@ -22,7 +22,7 @@ WORKDIR /home/app/webapp
 
 USER app
 
-RUN bash -lc 'rvm --default use ruby-2.3.1'
+RUN rvm --default use ruby-2.3.1
 
 RUN ["gem", "install", "bundler"]
 
