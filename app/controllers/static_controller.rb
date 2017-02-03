@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'timeout'
 class StaticController < ApplicationController
   skip_authorization_check
   
@@ -7,7 +8,7 @@ class StaticController < ApplicationController
       @page_description = 'bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!'
       json = nil
     begin
-      json = open("https://mcapi.ca/query/5.9.29.67/info")
+      Timeout::timeout(5){json = open("https://mcapi.ca/query/5.9.29.67/info")}
     rescue => e
       puts e.inspect
     end
