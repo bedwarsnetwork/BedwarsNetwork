@@ -28,4 +28,37 @@
                   .input-field.col.xs12.m6
                     = f.check_box :remember_me
                     = f.label :remember_me, "Angemeldet bleiben..."
+
+
+
+            = link_to "Registrieren", "#regpw", class: "btn-flat"
+            | oder
+            = link_to "Passwort vergessen", "#regpw", class: "btn-flat"
+            .modal id="regpw"
+              .modal-content
+                ul.collection.with-header data-collapsible='expandable'
+                  li.collection-header
+                    h6 Registrieren
+                    li
+                    .collapsible-header
+                      p
+                        | Um dich zu Registrieren joinst du in Minecraft auf
+                        strong<> bedwars.network
+                        | und gibst da
+                        strong.bwnet-text<>
+                          | /password [DEIN PASSWORT]
+                        | ein.
+                ul.collection.with-header data-collapsible='expandable'
+                  li.collection-header
+                    h6 Passwort vergessen?
+                    li
+                    .collapsible-header
+                      p
+                        | Um dein Passwort zurückzusetzen joinst du in Minecraft auf
+                        strong<> bedwars.network
+                        | und gibst da
+                        strong.bwnet-text<>
+                          | /password [DEIN PASSWORT]
+                        | ein.
+
             = render "devise/shared/links"

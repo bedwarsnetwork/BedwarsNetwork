@@ -17,6 +17,12 @@ $('.button-collapse.user-nav').sideNav({
 );
 $('.datepicker').pickadate();
 
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+
+
 $.DivasCookies({
 	bannerText: "Cookies helfen uns bei der Bereitstellung unserer Website. Durch die Nutzung unserer Website erklärst du dich damit einverstanden, dass wir Cookies setzen.",
 	acceptButtonText: "OK",
