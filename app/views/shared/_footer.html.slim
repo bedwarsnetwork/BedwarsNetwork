@@ -25,14 +25,14 @@ footer.page-footer
   .footer-copyright
     .container
       p
-        |  &copy 
+        |  &copy
         = Time.now.year
-        |  bedwars.network | 
+        |  bedwars.network |
         = link_to "Impressum und Datenschutz", imprint_path(), class: "light-blue-text text-lighten-3"
-        |  | 
+        |  |
         = link_to "Allgemeine Geschäftsbedingungen", tos_path(), class: "light-blue-text text-lighten-3"
         - if !user_signed_in?
-          |  | 
+          |  |
           = link_to "Anmelden", new_user_session_path(), class: "light-blue-text text-lighten-3"
-        |  | design based on 
+        |  | design based on
         = link_to "Materialize", "https://materializecss.com", target: "_blank", class: "light-blue-text text-lighten-3"
