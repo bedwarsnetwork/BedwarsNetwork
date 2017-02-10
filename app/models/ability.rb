@@ -23,7 +23,7 @@ class Ability
       can :user_manage, User
     end
 
-    if user.has_role? "Supporter"
+    if user.has_role? "Supporter" or user.has_role? "Moderator"
       can :access, :dashboard
 
       can :chatlog_manage, Chatlog
@@ -31,13 +31,6 @@ class Ability
       can :user_manage, User
     end
 
-    if user.has_role? "Moderator"
-      can :access, :dashboard
-
-      can :chatlog_manage, Chatlog
-
-      can :user_manage, User
-    end
 
     can :user_perms, User
 
