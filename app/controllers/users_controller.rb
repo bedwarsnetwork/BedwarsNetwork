@@ -18,6 +18,7 @@ class UsersController < ApplicationController
         redirect_to user_path(@users.first.name)
       else
         redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+        return
       end
 		end
 	end
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
     end
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+      return
     else
       @statistic = Bedwarsstatistic.where(uuid: @user._id).first
     end
@@ -48,6 +50,7 @@ class UsersController < ApplicationController
     end
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+      return
     end
     @page_title = ["Spieler", @user.name]
     @page_description = "Informiere dich über den Spieler #{@user.name}."
@@ -74,6 +77,7 @@ class UsersController < ApplicationController
       @videos.where(channel_id: @user.youtube_id, q: "bedwars.network")
     rescue => e
       redirect_back(fallback_location: home_path, :flash => { :error => "YouTube nicht gefunden" })
+      return
     end 
     @page_title = ["Spieler", @user.name, "YouTube-Kanal"]
     @page_description = "Siehe dir die Videos an, die #{@user.name} auf bedwars.network aufgenommen hat."
@@ -87,6 +91,7 @@ class UsersController < ApplicationController
     end
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+      return
     end
     @page_title = ["Spieler", @user.name, "Bearbeiten"]
 	end
@@ -99,6 +104,7 @@ class UsersController < ApplicationController
     end
     if @user.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
+      return
     end
     if needs_password?(@user, user_params)
       if @user.update(user_params)
