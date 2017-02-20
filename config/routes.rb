@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/maps' => 'static#maps', :as => 'maps'
   get '/premium' => 'static#premium', :as => 'premium'
   get '/statistik' => 'static#statistic', :as => 'statistic'
+  get '/statistik/bedwars' => 'static#statistic_bedwars', :as => 'statistic_bedwars'
+  get '/statistik/herkunft' => 'static#statistic_country', :as => 'statistic_country'
   get '/kontakt' => 'static#contact', :as => 'contact'
   get '/impressum' => 'static#imprint', :as => 'imprint'
   get '/agb' => 'static#tos', :as => 'tos'

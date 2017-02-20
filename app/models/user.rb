@@ -48,12 +48,14 @@ class User
   field :lastSeen
   field :online
   field :groups
+  field :location
   field :youtube_id
   field :ip
   field :banHistory
   field :lastLocation
   field :team_member_since, type: Date
   field :team_member_until, type: Date
+  #embeds_one :location, class_name: "Location"
   embeds_many :friendships, as: :friendshipable
   
   attr_readonly :_id, :displayName, :lastSeen, :online, :friends

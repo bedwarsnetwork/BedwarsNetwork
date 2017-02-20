@@ -48,8 +48,12 @@ class StaticController < ApplicationController
   end
   
   def statistic
-    @page_title = 'Statistik'
-    @page_description = 'Die Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
+    redirect_to statistic_bedwars_path()
+  end
+  
+  def statistic_bedwars
+    @page_title = ['Statistik', 'Bedwars']
+    @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
     @users = User.order_by(:name => 'asc')
     excluded_uuids = []
     User.where("$or" => [{"groups" => {"$in" => ["Admin", "Supporter", "Moderator", "WebDeveloper", "PluginDeveloper", "Builder", "SeniorBuilder"]}}, {"banHistory.until" => {"$gte": Date.today}}, {"lastSeen" => {"$lte": Date.today - 90.day }}]).each{|player| excluded_uuids << player.id}
@@ -57,6 +61,43 @@ class StaticController < ApplicationController
     @kd = Bedwarsstatistic.order(kd: :desc).where("games > 25").where.not(uuid: excluded_uuids).limit(11);
     @games = Bedwarsstatistic.order(games: :desc).where.not(uuid: excluded_uuids).limit(11);
     @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_uuids).limit(11);
+  end
+  
+  def statistic_country
+    @page_title = ['Statistik', 'Herkunft']
+    @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
+    @global_count = User.all.count
+    users_by_country = User.where({"location": { "$exists": true }}).group_by{|user| user.location[:country]}
+    @countries = Hash.new
+    @countries_translated = Hash.new
+    @locations = Hash.new
+    users_by_country.each do |country, users|
+      unless country.nil?
+        country_name = country
+        country_object = ISO3166::Country.find_country_by_name(country)
+        unless country_object.nil?
+          country_name = country_object.translation('de')
+        end
+        country_count = users.count()
+        @countries[country] = country_count
+        @countries_translated[country_name] = country_count
+        
+        city_hash = {}
+        users.each do |user|
+          unless user.location[:city].nil?
+            if city_hash[user.location[:city]].nil?
+              city_hash[user.location[:city]] = 1
+            else
+              city_hash[user.location[:city]] = city_hash[user.location[:city]] +1
+            end
+          end
+        end
+        city_hash = city_hash.sort_by{|city, count| count}.reverse!
+        @locations[country] = city_hash
+      end
+    end
+    @countries = @countries.sort_by{|country, count| count}.reverse!
+    @countries_translated = @countries_translated.sort_by{|country, count| count}.reverse!
   end
   
   def contact

@@ -1,0 +1,58 @@
+#index-banner.parallax-container
+  .parallax
+    = image_tag("header/index.png")
+.container
+  .section
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            h1 Statistik
+  .section
+    .row
+      .col.s12
+        .card
+          ul.linked-tabs
+            li.tab.col.s6
+              - if params[:action] == "statistic_bedwars"
+                = link_to "Bedwars-Statistik", statistic_bedwars_path(), class: "active"
+              - else
+                = link_to "Bedwars-Statistik", statistic_bedwars_path()
+            li.tab.col.s6
+              - if params[:action] == "statistic_country"
+                = link_to "Herkunft-Statistik", statistic_country_path(), class: "active"
+              - else
+                = link_to "Herkunft-Statistik", statistic_country_path()
+    .row
+      .col.xs12
+        .card
+          .card-content.center-align
+            span.card-title
+              | Registrierte Spieler
+            dl class="player-count text-center"
+              dd
+                - if !@global_count.nil?
+                  - @global_count.to_s.split("").each do |letter|
+                    span
+                      = letter
+                - else
+                  - "------".split("").each do |letter|
+                    span
+                      = letter
+      .col.xs12.m6
+        .card
+          .card-content
+            = pie_chart @countries_translated
+      .col.xs12.m6
+        .card
+          .card-content
+            = geo_chart @countries, label: "Spieler"
+      -@countries.each_with_index do |country,index|
+        -if index < 6
+          .col.xs12.m4
+            .card
+              .card-content
+                - country_object = ISO3166::Country.find_country_by_name(country.first)
+                = country_object.translation('de')
+                br
+                = geo_chart(@locations[country.first].values_at(0..100), library:{region: country_object.alpha2, displayMode: "markers"})
