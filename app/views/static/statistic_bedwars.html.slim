@@ -10,6 +10,20 @@
             h1 Statistik
   .section
     .row
+      .col.s12
+        .card
+          ul.linked-tabs
+            li.tab.col.s6
+              - if params[:action] == "statistic_bedwars"
+                = link_to "Bedwars-Statistik", statistic_bedwars_path(), class: "active"
+              - else
+                = link_to "Bedwars-Statistik", statistic_bedwars_path()
+            li.tab.col.s6
+              - if params[:action] == "statistic_country"
+                = link_to "Herkunft-Statistik", statistic_country_path(), class: "active"
+              - else
+                = link_to "Herkunft-Statistik", statistic_country_path()
+    .row
       .col.xs12.center-align
         span.grey-text style="font-size: 10px;"
           | Die Statistik enthält aus Gründen der Vergleichbarkeit keine Teammitglieder. Ebenso ausgeblendet sind Spieler, die gegen die Regeln verstoßen oder seit mehr als 90 Tagen den Server nicht mehr betreten haben.

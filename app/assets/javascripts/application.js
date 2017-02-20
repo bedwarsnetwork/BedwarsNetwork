@@ -17,3 +17,4 @@
 //= require sideNav
 //= require turbolinks
 //= require jquery.divascookies-0.6
+//= require chartkick
