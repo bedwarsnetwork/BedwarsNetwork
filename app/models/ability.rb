@@ -5,34 +5,41 @@ class Ability
 
     user ||= User.new
 
-    alias_action :index, :search, :show, :to => :chatlog_manage
-    alias_action :index, :update, :online, :chatlogs, :to => :user_manage
-    alias_action :search, :show, :statistic, :youtube, :to => :user_perms
 
-
-    if user.has_role? "Admin"
-      can :manage, :all
-    end
-
-    if user.has_role? "SeniorBuilder"
+    def team
       can :access, :dashboard
 
-      can :chatlog_manage, Chatlog
-      can :list, Chatlog
+      can :index, Chatlog
+      can :search, Chatlog
+      can :show, Chatlog
 
-      can :user_manage, User
+      can :index, User
+      can :update, User
+      can :online, User
+      can :chatlogs, User
     end
 
     if user.has_role? "Supporter" or user.has_role? "Moderator"
-      can :access, :dashboard
-
-      can :chatlog_manage, Chatlog
-
-      can :user_manage, User
+      if team
+      end
     end
 
+    if user.has_role? "SeniorBuilder"
+      if team
+        can :list, Chatlog
+      end
+    end
 
-    can :user_perms, User
+    if user.has_role? "Admin"
+      if team
+        can :manage, :all
+      end
+    end
+
+    can :search, User
+    can :show, User
+    can :statistic, User
+    can :youtube, User
 
     can :update, User, :id => user._id
 
