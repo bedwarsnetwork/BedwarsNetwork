@@ -58,6 +58,8 @@ gem 'kaminari-actionview'
 gem 'slim-rails'
 gem 'yt'
 gem 'meta-tags'
+gem 'chartkick'
+gem 'countries'
 
 group :development do
   gem 'brakeman', :require => false
