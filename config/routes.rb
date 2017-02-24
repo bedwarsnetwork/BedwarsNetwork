@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/team/history' => 'static#team_history', :as => 'team_history'
   get '/maps' => 'static#maps', :as => 'maps'
   get '/premium' => 'static#premium', :as => 'premium'
-  get '/statistik' => 'static#statistic', :as => 'statistic'
+  get '/statistik' => 'static#statistic_bedwars', :as => 'statistic'
   get '/statistik/bedwars' => 'static#statistic_bedwars', :as => 'statistic_bedwars'
   get '/statistik/herkunft' => 'static#statistic_country', :as => 'statistic_country'
   get '/kontakt' => 'static#contact', :as => 'contact'

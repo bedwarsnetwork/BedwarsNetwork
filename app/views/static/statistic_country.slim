@@ -55,4 +55,4 @@
                 - country_object = ISO3166::Country.find_country_by_name(country.first)
                 = country_object.translation('de')
                 br
-                = geo_chart(@locations[country.first].values_at(0..100), library:{region: country_object.alpha2, displayMode: "markers"})
+                = geo_chart(@locations[country.first].values_at(0..25), library:{region: country_object.alpha2, displayMode: "markers"})

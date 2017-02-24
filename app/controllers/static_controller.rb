@@ -47,10 +47,6 @@ class StaticController < ApplicationController
     @page_description = 'Die wenigsten Minecraft-Spieler beschäftigen sich mit dem Thema Server und die Kosten hierfür. Seid fair und unterstützt uns bei der Finanzierung.'
   end
   
-  def statistic
-    redirect_to statistic_bedwars_path()
-  end
-  
   def statistic_bedwars
     @page_title = ['Statistik', 'Bedwars']
     @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
@@ -82,7 +78,8 @@ class StaticController < ApplicationController
         @countries[country] = country_count
         @countries_translated[country_name] = country_count
         
-        city_hash = {}
+        city_hash = Hash.new
+        city_hash_reduced = Hash.new
         users.each do |user|
           unless user.location[:city].nil?
             if city_hash[user.location[:city]].nil?
