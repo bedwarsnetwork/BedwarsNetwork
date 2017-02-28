@@ -6,7 +6,7 @@ class Ability
     user ||= User.new
 
 
-    def team
+    def load_team_perms
       can :access, :dashboard
 
       can :index, Chatlog
@@ -20,20 +20,17 @@ class Ability
     end
 
     if user.has_role? "Supporter" or user.has_role? "Moderator"
-      if team
-      end
+      load_team_perms
     end
 
     if user.has_role? "SeniorBuilder"
-      if team
-        can :list, Chatlog
-      end
+      load_team_perms
+      can :list, Chatlog
     end
 
     if user.has_role? "Admin"
-      if team
-        can :manage, :all
-      end
+      load_team_perms
+      can :manage, :all
     end
 
     can :search, User
