@@ -9,42 +9,43 @@
 .row
   .col.xs12
     ul.collection
-      - @chatlog.chatlogmessages.each do |message|
-        li.collection-item.avatar
-          = image_tag("https://visage.surgeplay.com/bust/256/#{message.user.id}", alt: message.user.name, title: message.user.name, class: "circle")
-          p
-            = link_to message.user.name, dashboard_user_path(message.user)
-            span.grey-text.lighten-2
-              | (
-              = message.timestamp.to_datetime.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
-              | )
-          - if message.type == "EVENT"
-            - if message.message == "PLAYER_JOIN"
-              p.grey-text.lighten-2
-                | Der Spieler hat den Server betreten.
-              span.secondary-content
-                i.material-icons.green-text
-                  | arrow_forward
-            - elsif message.message == "PLAYER_QUIT"
-              p.grey-text.lighten-2
-                | Der Spieler hat den Server verlassen.
-              span.secondary-content
-                i.material-icons.red-text
-                  | arrow_back
-            - else
-              = message.message
-          - elsif message.type == "COMMAND"
+      - @chatlog.messages.each do |message|
+        -if message.type != "COMMAND" or (message.type == "COMMAND" and can? :seeCommand, @chatlog)
+          li.collection-item.avatar
+            = image_tag("https://visage.surgeplay.com/bust/256/#{message.user.id}", alt: message.user.name, title: message.user.name, class: "circle")
             p
-              = message.message
-            span.secondary-content
-              i.material-icons.grey-text
-                | settings
-          - elsif message.type == "MESSAGE"
-            p
-              = message.message
-            span.secondary-content
-              i.material-icons.grey-text
-                | chat_bubble
+              = link_to message.user.name, dashboard_user_path(message.user)
+              span.grey-text.lighten-2
+                | (
+                = message.timestamp.to_datetime.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+                | )
+            - if message.type == "EVENT"
+              - if message.message == "PLAYER_JOIN"
+                p.grey-text.lighten-2
+                  | Der Spieler hat den Server betreten.
+                span.secondary-content
+                  i.material-icons.green-text
+                    | arrow_forward
+              - elsif message.message == "PLAYER_QUIT"
+                p.grey-text.lighten-2
+                  | Der Spieler hat den Server verlassen.
+                span.secondary-content
+                  i.material-icons.red-text
+                    | arrow_back
+              - else
+                = message.message
+            - elsif message.type == "COMMAND"
+              p
+                = message.message
+              span.secondary-content
+                i.material-icons.grey-text
+                  | settings
+            - elsif message.type == "MESSAGE"
+              p
+                = message.message
+              span.secondary-content
+                i.material-icons.grey-text
+                  | chat_bubble
     - if can? :index, Chatlog
       .collection
         = link_to "Zur Übersicht", dashboard_chatlogs_path(), class: "collection-item bwnet active"

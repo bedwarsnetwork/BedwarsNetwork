@@ -1,0 +1,17 @@
+tr
+  td
+    = session.start.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+  td
+    - if can? :ip, session
+      = session.ip_address
+    - else
+      - splitted_ip = session.ip_address.split('.')
+      | #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+  td
+    = session.location.country_name
+  td
+    - if session.end
+      = session.end.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+    - else
+      span.label.green.white-text
+        | Aktiv

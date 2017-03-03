@@ -37,8 +37,11 @@
           .col.xs12
             .card.collection.z-depth-0
               .card-content
-                - splitted_ip = ip.split('.')
-                h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
+                - if can? :ip, session
+                  = ip
+                - else
+                  - splitted_ip = ip.split('.')
+                  h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX
                 table
                   thead
                     th Spielername

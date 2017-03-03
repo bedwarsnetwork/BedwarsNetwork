@@ -1,0 +1,22 @@
+tr
+  td
+    - if ban.action == 1
+      - if ban.until.in_time_zone("Berlin") > DateTime.now 
+        span.label.red.white-text
+          | Gebannt
+      - else
+        span.label.gray.white-text
+          | Gebannt
+    - elsif ban.action == 0
+      span.label.green.white-text
+        | Entbannt
+  td
+    = ban.timestamp.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+  td
+    = ban.reason
+  td
+    - if ban.until && ban.until.in_time_zone("Berlin") == DateTime.new(2221, 12, 31, 23, 0, 0)
+      span.label.red.white-text
+        | permanent
+    - elsif ban.until
+      = ban.until.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")

@@ -4,18 +4,14 @@ class Ability
   def initialize(user)
     
     user ||= User.new
-    
-    if user.has_role? "Admin"
-      can :manage, :all
-    end
-    
-    if user.has_role? "SeniorBuilder"
+
+    def load_team_perms
       can :access, :dashboard
-      
+
       can :index, Chatlog
-      can :list, Chatlog
       can :search, Chatlog
       can :show, Chatlog
+      can :seeCommand, Chatlog
       
       can :index, User
       can :update, User
@@ -23,42 +19,32 @@ class Ability
       can :chatlogs, User
     end
 
-    if user.has_role? "Supporter"
-      can :access, :dashboard
-      
-      can :index, Chatlog
-      can :search, Chatlog
-      can :show, Chatlog
-      
-      can :index, User
-      can :update, User
-      can :online, User
-      can :chatlogs, User
+
+    if user.has_role? "Moderator" or user.has_role? "ModeratorJunior"
+      load_team_perms
     end
-    
-    if user.has_role? "Moderator"
-      can :access, :dashboard
-      
-      can :index, Chatlog
-      can :search, Chatlog
-      can :show, Chatlog
-      
-      can :index, User
-      can :update, User
-      can :online, User
-      can :chatlogs, User
+
+    if user.has_role? "BuilderSenior"
+      load_team_perms
+      can :list, Chatlog
     end
-    
+
+    if user.has_role? "Admin"
+      load_team_perms
+      can :manage, :all
+    end
+
     can :search, User
     can :show, User
     can :statistic, User
     can :youtube, User
-    
+
+
     can :update, User, :id => user._id
     
     can :show, Chatlog do |chatlog|
       access = false
-      chatlog.chatlogmessages.each do |message|
+      chatlog.messages.each do |message|
         access = message.user == user
           break if access
         end

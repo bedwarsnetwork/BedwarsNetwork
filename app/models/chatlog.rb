@@ -7,6 +7,6 @@ class Chatlog
   field :server
   field :created
   field :complete
-  embeds_many :chatlogmessages, store_as: :messages
+  embeds_many :messages, as: :chatlogmessageable, class_name: "Chatlogmessage"
   
 end

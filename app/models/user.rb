@@ -44,28 +44,31 @@ class User
   
   field :_id
   field :name
-  field :displayName
-  field :lastSeen
+  field :display_name
   field :online
   field :groups
-  field :location
   field :youtube_id
-  field :ip
-  field :banHistory
-  field :lastLocation
+  field :bans
+  field :last_location
   field :team_member_since, type: Date
   field :team_member_until, type: Date
   #embeds_one :location, class_name: "Location"
+  embeds_many :sessions, as: :sessionable
   embeds_many :friendships, as: :friendshipable
+  embeds_many :bans, as: :bannable
   
   attr_readonly :_id, :displayName, :lastSeen, :online, :friends
   
   def sorted_friendships
-    friendships.sort_by{|friendship| friendship.user.name}
+    friendships.sort_by{|friendship| friendship.user.name.downcase}
+  end
+  
+  def sorted_sessions
+    sessions.sort_by{|session| session.start}.reverse!
   end
   
   def mccolorcode
-    /(§[0-9|a,b,c,d,e,f])/.match(displayName)
+    /(§[0-9|a,b,c,d,e,f])/.match(display_name)
   end
   
   def rank
@@ -87,8 +90,8 @@ class User
   end
   
   def is_banned
-    if self.banHistory
-      if self.banHistory.last['action'] != 0 && self.banHistory.last['until'].to_datetime > Time.now
+    self.bans.each do |ban|
+      if ban.is_active?
         return true
       end
     end

@@ -4,7 +4,8 @@ class Location
   paginates_per 50
   
   field :city
-  field :state
-  field :country
+  field :region_name
+  field :country_name
+  embedded_in :locationable, polymorphic: true
   
 end

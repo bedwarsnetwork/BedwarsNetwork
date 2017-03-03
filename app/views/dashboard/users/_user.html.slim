@@ -5,12 +5,12 @@ tr
   td
     - if user.online
       .label.green.white-text
-        - if user.lastLocation
-          = user.lastLocation
+        - if user.last_location
+          = user.last_location
         - else
           | online 
-    - elsif user.lastSeen
-      = user.lastSeen.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+    - elsif user.sessions.last.end
+      = user.sessions.last.end.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
   td
     - if user.statistic
       = user.statistic.games
@@ -20,7 +20,7 @@ tr
     - if user.rank
       => content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
         = user.rank
-    - if user.banHistory
+    - if user.bans.size > 0
       - if user.is_banned
         .label.red.white-text
           | gebannt

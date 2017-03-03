@@ -5,6 +5,7 @@ class Dashboard::ChatlogsController < ApplicationController
   
   def index
 		@chatlogs = Chatlog.order_by(:created => 'desc').page params[:page]
+		@active_chatlogs = Chatlog.where(:complete => false).order_by(:created => 'desc').page params[:page]
 		@page_title = "Chatlogs"
   end
   

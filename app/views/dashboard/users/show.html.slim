@@ -2,6 +2,38 @@
 = render("searchbar")
 .row
   = render("header")
+- if !@user.bans.empty?
+  .row
+    .col.xs12
+      .card.collection.z-depth-0
+        .card-content
+          span.card-title Bans
+          .center-align
+          table
+            thead
+              th
+              th Datum
+              th Grund
+              th Ende
+            tbody    
+              - @user.bans.each do |ban|
+                = render ban
+- if !@user.sessions.empty?
+  .row
+    .col.xs12
+      .card.collection.z-depth-0
+        .card-content
+          span.card-title Sessions
+          .center-align
+          table
+            thead
+              th Start
+              th IP
+              th Ort
+              th Ende
+            tbody    
+              - @user.sorted_sessions.take(10).each do |session|
+                = render session
 - if !@user.friendships.empty?
   .row
     .col.xs12

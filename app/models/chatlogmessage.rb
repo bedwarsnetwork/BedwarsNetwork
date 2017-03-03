@@ -7,5 +7,7 @@ class Chatlogmessage
   field :timestamp
   field :type
   belongs_to :user
+  
+  embedded_in :chatlogmessageable, polymorphic: true
 
 end

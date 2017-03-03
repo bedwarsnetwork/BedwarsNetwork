@@ -34,7 +34,7 @@
                   = chatlog.created.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
                 br
                 span.grey-text.lighten-2
-                  = chatlog.chatlogmessages.count
+                  = chatlog.messages.count
                   |  Elemente
               .secondary-content
                 = content_tag(:i, "attachment", class: "material-icons")
@@ -48,4 +48,33 @@
               = content_tag(:i, "search", class: "material-icons prefix")
               = text_field_tag :search, params[:search]
             .clearfix
+      .center-align
+        = paginate @active_chatlogs
+      ul.collection
+        - @active_chatlogs.each do |chatlog|
+          li.collection-item.avatar
+            = link_to dashboard_chatlog_path(chatlog) do
+              - if chatlog.server.start_with?("Lobby")
+                = content_tag(:i, "home", class: "material-icons green circle")
+              - elsif chatlog.server.start_with?("BW")
+                = content_tag(:i, "games", class: "material-icons red circle")
+              - else
+                = content_tag(:i, "attachment", class: "material-icons circle")
+              - if params[:search]
+                  span.title = highlight(chatlog._id, params[:search])
+              - else
+                span.title = chatlog._id
+              p
+                span.grey-text.lighten-2
+                  = chatlog.server
+                  |  - 
+                  = chatlog.created.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
+                br
+                span.grey-text.lighten-2
+                  = chatlog.messages.count
+                  |  Elemente
+              .secondary-content
+                = content_tag(:i, "attachment", class: "material-icons")
+      .center-align
+        = paginate @active_chatlogs
 
