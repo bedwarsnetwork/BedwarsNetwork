@@ -63,7 +63,13 @@ class StaticController < ApplicationController
     @page_title = ['Statistik', 'Herkunft']
     @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
     @global_count = User.all.count
-    users_by_country = User.where({"location": { "$exists": true }}).group_by{|user| user.location[:country]}
+    users_by_country = User.all.group_by{|user| 
+      if user.sorted_sessions.first && user.sorted_sessions.first.location && user.sorted_sessions.first.location.country_name
+        user.sorted_sessions.first.location.country_name
+      else
+        nil
+      end
+    }
     @countries = Hash.new
     @countries_translated = Hash.new
     @locations = Hash.new
@@ -81,11 +87,11 @@ class StaticController < ApplicationController
         city_hash = Hash.new
         city_hash_reduced = Hash.new
         users.each do |user|
-          unless user.location[:city].nil?
-            if city_hash[user.location[:city]].nil?
-              city_hash[user.location[:city]] = 1
+          unless user.sorted_sessions.first.location[:city].nil?
+            if city_hash[user.sorted_sessions.first.location.city].nil?
+              city_hash[user.sorted_sessions.first.location.city] = 1
             else
-              city_hash[user.location[:city]] = city_hash[user.location[:city]] +1
+              city_hash[user.sorted_sessions.first.location.city] = city_hash[user.sorted_sessions.first.location.city] +1
             end
           end
         end
