@@ -32,7 +32,7 @@
                   = chatlog.created.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
                 br
                 span.grey-text.lighten-2
-                  = chatlog.chatlogmessages.count
+                  = chatlog.messages.count
                   |  Elemente
               .secondary-content
                 = content_tag(:i, "attachment", class: "material-icons")

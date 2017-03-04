@@ -38,7 +38,7 @@
             .card.collection.z-depth-0
               .card-content
                 - if can? :ip, session
-                  = ip
+                  h5 = ip
                 - else
                   - splitted_ip = ip.split('.')
                   h5 #{splitted_ip[0]}.#{splitted_ip[1]}.#{splitted_ip[2]}.XXX

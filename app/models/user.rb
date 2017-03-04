@@ -67,6 +67,10 @@ class User
     sessions.sort_by{|session| session.start}.reverse!
   end
   
+  def sorted_bans
+    bans.sort_by{|ban| ban.timestamp}
+  end
+  
   def mccolorcode
     /(§[0-9|a,b,c,d,e,f])/.match(display_name)
   end
@@ -90,10 +94,8 @@ class User
   end
   
   def is_banned
-    self.bans.each do |ban|
-      if ban.is_active?
-        return true
-      end
+    if self.sorted_bans.last.action != 0 && self.sorted_bans.last.is_active?
+      return true
     end
     return false
   end
