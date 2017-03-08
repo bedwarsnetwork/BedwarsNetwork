@@ -94,7 +94,7 @@ class User
   end
   
   def is_banned
-    if self.sorted_bans.last.action != 0 && self.sorted_bans.last.is_active?
+    if !self.bans.empty? && self.bans.last.action != 0 && self.bans.last.is_active?
       return true
     end
     return false

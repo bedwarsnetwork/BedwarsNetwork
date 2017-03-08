@@ -22,7 +22,7 @@ class StaticController < ApplicationController
   def team
     @page_title = 'Team'
     @page_description = 'Ein Server bedeutet jede Menge Arbeit. Dafür benötigt man ein kleines, zuverlässiges und qualifiziertes Team.'
-    @team = User.where(:groups.in => ["Admin", "Supporter", "Moderator", "WebDeveloper", "PluginDeveloper", "Builder", "SeniorBuilder"]).sort_by{|user| user.name}
+    @team = User.where(:groups.in => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]).sort_by{|user| user.name}
   end
   
   def team_history
@@ -52,7 +52,11 @@ class StaticController < ApplicationController
     @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
     @users = User.order_by(:name => 'asc')
     excluded_uuids = []
-    User.where("$or" => [{"groups" => {"$in" => ["Admin", "Supporter", "Moderator", "WebDeveloper", "PluginDeveloper", "Builder", "SeniorBuilder"]}}, {"banHistory.until" => {"$gte": Date.today}}, {"lastSeen" => {"$lte": Date.today - 90.day }}]).each{|player| excluded_uuids << player.id}
+    User.where("$or" => [{"groups" => {"$in" => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]}}, {"bans.until" => {"$gte": Date.today}}, {"sessions.end" => {"$lte": Date.today - 90.day }}]).each do |user|
+      unless user.is_banned && user.sorted_sessions.last.end && user.sorted_sessions.last.end > Date.today - 90.day
+        excluded_uuids << user.id
+      end
+    end
     @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_uuids).limit(11);
     @kd = Bedwarsstatistic.order(kd: :desc).where("games > 25").where.not(uuid: excluded_uuids).limit(11);
     @games = Bedwarsstatistic.order(games: :desc).where.not(uuid: excluded_uuids).limit(11);
