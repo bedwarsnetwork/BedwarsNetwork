@@ -14,12 +14,15 @@
             .card-content
               .row
                 .input-field.col.xs12
+                  = f.label :dob
+                  = f.text_field :dob, class: 'validate'
+                .input-field.col.xs12
                   = f.label :password
                   = f.password_field :password, class: 'validate'
                 .input-field.col.xs12
                   = f.label :password_confirmation
                   = f.password_field :password_confirmation, class: 'validate'
-                
+
         .col.s12
           .card
             .card-content

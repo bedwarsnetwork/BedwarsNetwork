@@ -22,7 +22,7 @@
 de:
   mongoid:
     models:
-      user: 
+      user:
         one: "Spieler"
         other: "Spieler"
       chatlog:
@@ -35,6 +35,7 @@ de:
         youtube_id: "YouTube Kanal ID"
         password: "Passwort"
         password_confirmation: "Passwort bestätigen"
+        dob: "Geburtstag"
         team_member_since: "Im Team seit..."
         team_member_until: "Im Team bis..."
   helpers:
