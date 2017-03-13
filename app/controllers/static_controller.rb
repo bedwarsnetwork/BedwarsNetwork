@@ -2,7 +2,7 @@ require 'open-uri'
 require 'timeout'
 class StaticController < ApplicationController
   skip_authorization_check
-  
+
   def home
       @page_title = 'Das Bedwars-Netzwerk für Minecraft 1.9 - 1.11!'
       @page_description = 'bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!'
@@ -24,7 +24,7 @@ class StaticController < ApplicationController
     @page_description = 'Ein Server bedeutet jede Menge Arbeit. Dafür benötigt man ein kleines, zuverlässiges und qualifiziertes Team.'
     @team = User.where(:groups.in => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]).sort_by{|user| user.name}
   end
-  
+
   def team_history
     @page_title = 'Ehemalige Teammitglieder'
     @page_description = 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
@@ -35,18 +35,18 @@ class StaticController < ApplicationController
     @page_title = 'Maps'
     @page_description = 'bedwars.network bietet individuell gestaltete Bedwars-Maps für spannende Bedwars-Runden.'
   end
-  
+
   def youtube
     @page_title = 'Deine Chance'
     @page_description = 'Mit dem Projekt "Deine Chance" möchte bedwars.network angehenden YouTubern eine Plattform bieten.'
     @playlist = Yt::Playlist.new id: 'PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW'
   end
-  
+
   def premium
     @page_title = 'Premium'
     @page_description = 'Die wenigsten Minecraft-Spieler beschäftigen sich mit dem Thema Server und die Kosten hierfür. Seid fair und unterstützt uns bei der Finanzierung.'
   end
-  
+
   def statistic_bedwars
     @page_title = ['Statistik', 'Bedwars']
     @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
@@ -62,12 +62,12 @@ class StaticController < ApplicationController
     @games = Bedwarsstatistic.order(games: :desc).where.not(uuid: excluded_uuids).limit(11);
     @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_uuids).limit(11);
   end
-  
+
   def statistic_country
     @page_title = ['Statistik', 'Herkunft']
     @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
     @global_count = User.all.count
-    users_by_country = User.all.group_by{|user| 
+    users_by_country = User.all.group_by{|user|
       if user.sorted_sessions.first && user.sorted_sessions.first.location && user.sorted_sessions.first.location.country_name
         user.sorted_sessions.first.location.country_name
       else
@@ -87,7 +87,7 @@ class StaticController < ApplicationController
         country_count = users.count()
         @countries[country] = country_count
         @countries_translated[country_name] = country_count
-        
+
         city_hash = Hash.new
         city_hash_reduced = Hash.new
         users.each do |user|
@@ -106,21 +106,21 @@ class StaticController < ApplicationController
     @countries = @countries.sort_by{|country, count| count}.reverse!
     @countries_translated = @countries_translated.sort_by{|country, count| count}.reverse!
   end
-  
+
   def contact
     @page_title = 'Kontakt'
     @page_description = 'Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern und zum Stellen von Entbannungsanträgen kannst du uns jederzeit kontaktieren.'
   end
-  
+
   def imprint
     @page_title = 'Impressum und Datenschutz'
   end
-  
+
   def tos
     @page_title = 'Allgemeine Geschäftsbedingungen'
     @page_description = 'Die Allgemeine Geschäftsbedingungen für unseren Server und den Shop.'
   end
-  
+
   def application
     @page_title = 'Bewerbung'
     @page_description = 'Wir suchen jederzeit Team-Mitglieder, mit denen wir gemeinsam unser Netzwerk ausbauen können.'
