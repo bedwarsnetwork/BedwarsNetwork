@@ -52,8 +52,9 @@ class User
   field :last_location
   field :team_member_since, type: Date
   field :team_member_until, type: Date
-  field :dob
+  field :info, type: Array
   #embeds_one :location, class_name: "Location"
+  #embeds_one :infos, as: :infoable
   embeds_many :sessions, as: :sessionable
   embeds_many :friendships, as: :friendshipable
   embeds_many :bans, as: :bannable

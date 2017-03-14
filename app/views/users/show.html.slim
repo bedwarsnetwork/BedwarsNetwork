@@ -6,7 +6,22 @@
   .section
     .row
       = render("header")
-      div.fb-like data-share="true" data-with="450" data-show-faces="true"
+
+    - if !@user.info.empty?
+      .row
+        .col.s12
+          ul.collection
+            - if !@user.info['dob'].empty?
+              li.collection-item.avatar
+                i.material-icons.circle.large stars
+                span.title Geburtstag:
+                p #{@user.info['dob']}
+            -if !@user.info['website'].empty?
+              li.collection-item.avatar
+                i.material-icons.circle.large web
+                span.title Webseite:
+                p #{@user.info['website']}
+
     - if !@user.friendships.empty?
       .row
         .col.s12
