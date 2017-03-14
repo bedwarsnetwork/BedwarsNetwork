@@ -20,7 +20,8 @@
               li.collection-item.avatar
                 i.material-icons.circle.large web
                 span.title Webseite:
-                p #{@user.info['website']}
+                p
+                  = link_to "#{@user.info['website']}", "http://#{@user.info['website']}", target: "_blank"
 
     - if !@user.friendships.empty?
       .row
