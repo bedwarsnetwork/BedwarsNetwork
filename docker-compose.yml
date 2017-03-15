@@ -1,0 +1,15 @@
+web:
+  container_name: "www.bedwars.network-${RAILS_ENV:-staging}"
+  build: .
+  ports:
+    - "8080:80"
+  volumes:
+    - .:/home/app/webapp
+  volumes_from:
+    - gems
+  env_file:
+    - environment.env
+gems:
+  image: busybox
+  volumes:
+    - /ruby_gems

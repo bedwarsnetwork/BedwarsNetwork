@@ -43,21 +43,14 @@ namespace :deploy do
   task :build do
     on roles(:app) do
       #build the actual docker image, tagging the push for the remote repo
-      execute "cd #{fetch(:release_path)} && docker build -t #{fetch(:application)} ."
+      execute "cd #{fetch(:release_path)} && docker-compose build"
     end
   end
   after :build, :stop
   task :stop do
     on roles(:app) do
       # in case the app isn't running on the other end
-      execute "docker stop #{fetch(:application)};true"
-    end
-  end
-  after :stop, :remove
-  task :remove do
-    on roles(:app) do
-      # have to remove it otherwise --restart=always will run it again on reboot!
-      execute "docker rm #{fetch(:application)};true"
+      execute "docker up"
     end
   end
 end
