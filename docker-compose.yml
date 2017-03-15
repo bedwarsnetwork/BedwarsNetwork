@@ -1,5 +1,5 @@
 web:
-  container_name: www.bedwars.network-${RAILS_ENV:-staging}
+  container_name: www.bedwars.network-${RAILS_ENV}
   build: .
   ports:
     - "8080:80"
