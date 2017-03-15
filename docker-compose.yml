@@ -7,7 +7,7 @@ web:
   volumes_from:
     - gems
   env_file:
-    - environment.env
+    - ../../env.list
   container_name: www.bedwars.network-${RAILS_ENV}
 gems:
   image: busybox
