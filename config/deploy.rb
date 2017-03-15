@@ -7,8 +7,6 @@ set :repo_url, 'git@github.com:bedwarsnetwork/www.bedwars.network.git'
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :name, "www.bedwars.network-#{fetch(:rails_env)}"
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -40,20 +38,24 @@ task :deploy do
   end
 end
 
+
+set :name, "www.bedwars.network"
+
 namespace :deploy do
   after :updated, :build
   task :build do
     on roles(:app) do
-      execute "cd #{fetch(:release_path)} && echo 'NAME=#{fetch(:name)}' > .env"
-      execute "cd #{fetch(:release_path)} && echo 'EXTERNAL_PORT=3012' > .env"
+      execute "cd #{fetch(:release_path)} && echo 'NAME=#{fetch(:name)}-#{fetch(:rails_env)}' > .env"
+      execute "cd #{fetch(:release_path)} && echo 'EXTERNAL_PORT=#{fetch(:external_port)}' >> .env"
       execute "cd #{fetch(:release_path)} && docker-compose build"
     end
   end
   after :build, :stop
-  task :start do
+  task :stop do
     on roles(:app) do
       # in case the app isn't running on the other end
-      execute "cd #{fetch(:release_path)} && docker-compose up -d"
+      execute "cd #{fetch(:release_path)} && docker stop #{fetch(:name)}-#{fetch(:rails_env)};true"
+      execute "cd #{fetch(:release_path)} && docker rm #{fetch(:name)}-#{fetch(:rails_env)};true"
     end
   end
   after :stop, :start
