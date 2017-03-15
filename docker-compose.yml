@@ -1,5 +1,4 @@
 web:
-  container_name: www.bedwars.network-${RAILS_ENV}
   build: .
   ports:
     - "8080:80"
@@ -9,6 +8,7 @@ web:
     - gems
   env_file:
     - environment.env
+  container_name: www.bedwars.network-${RAILS_ENV}
 gems:
   image: busybox
   volumes:

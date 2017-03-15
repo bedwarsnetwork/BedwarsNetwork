@@ -50,7 +50,7 @@ namespace :deploy do
   task :stop do
     on roles(:app) do
       # in case the app isn't running on the other end
-      execute "docker up"
+      execute "docker-compose up"
     end
   end
 end
