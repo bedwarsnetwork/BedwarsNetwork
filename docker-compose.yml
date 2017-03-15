@@ -4,4 +4,4 @@ web:
     - "${EXTERNAL_PORT}:80"
   env_file:
     - ../../env.list
-  container_name: www.bedwars.network-${RAILS_ENV}
+  container_name: ${NAME}
