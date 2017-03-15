@@ -42,8 +42,9 @@ namespace :deploy do
   after :updated, :build
   task :build do
     on roles(:app) do
-      #build the actual docker image, tagging the push for the remote repo
-      execute "RAILS_ENV=production && cd #{fetch(:release_path)} && docker-compose build"
+      execute "cd #{fetch(:release_path)} && echo 'RAILS_ENV=#{fetch(:rails_env)}' > .env"
+      execute "cd #{fetch(:release_path)} && echo 'EXTERNAL_PORT=3012' >> .env"
+      execute "cd #{fetch(:release_path)} && docker-compose build"
     end
   end
   after :build, :start
