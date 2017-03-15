@@ -60,6 +60,7 @@ gem 'yt'
 gem 'meta-tags'
 gem 'chartkick'
 gem 'countries'
+gem 'cucumber'
 
 group :development do
   gem 'brakeman', :require => false

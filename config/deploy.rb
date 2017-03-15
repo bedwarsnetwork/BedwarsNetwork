@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.7.2'
+lock '3.8.0'
 
 set :application, 'www.bedwars.network'
 set :repo_url, 'git@github.com:bedwarsnetwork/www.bedwars.network.git'
@@ -38,26 +38,31 @@ task :deploy do
   end
 end
 
+
+set :name, "www.bedwars.network"
+
 namespace :deploy do
   after :updated, :build
   task :build do
     on roles(:app) do
-      #build the actual docker image, tagging the push for the remote repo
-      execute "cd #{fetch(:release_path)} && docker build -t #{fetch(:application)} ."
+      execute "cd #{fetch(:release_path)} && echo 'NAME=#{fetch(:name)}-#{fetch(:rails_env)}' > .env"
+      execute "cd #{fetch(:release_path)} && echo 'EXTERNAL_PORT=#{fetch(:external_port)}' >> .env"
+      execute "cd #{fetch(:release_path)} && docker-compose build"
     end
   end
   after :build, :stop
   task :stop do
     on roles(:app) do
       # in case the app isn't running on the other end
-      execute "docker stop #{fetch(:application)};true"
+      execute "cd #{fetch(:release_path)} && docker stop #{fetch(:name)}-#{fetch(:rails_env)};true"
+      execute "cd #{fetch(:release_path)} && docker rm #{fetch(:name)}-#{fetch(:rails_env)};true"
     end
   end
-  after :stop, :remove
-  task :remove do
+  after :stop, :start
+  task :start do
     on roles(:app) do
-      # have to remove it otherwise --restart=always will run it again on reboot!
-      execute "docker rm #{fetch(:application)};true"
+      # in case the app isn't running on the other end
+      execute "cd #{fetch(:release_path)} && docker-compose up -d"
     end
   end
 end
