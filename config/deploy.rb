@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.7.2'
+lock '3.8.0'
 
 set :application, 'www.bedwars.network'
 set :repo_url, 'git@github.com:bedwarsnetwork/www.bedwars.network.git'
@@ -43,14 +43,14 @@ namespace :deploy do
   task :build do
     on roles(:app) do
       #build the actual docker image, tagging the push for the remote repo
-      execute "cd #{fetch(:release_path)} && docker-compose build"
+      execute "RAILS_ENV=production && cd #{fetch(:release_path)} && docker-compose build"
     end
   end
-  after :build, :stop
-  task :stop do
+  after :build, :start
+  task :start do
     on roles(:app) do
       # in case the app isn't running on the other end
-      execute "docker-compose up"
+      execute "cd #{fetch(:release_path)} && docker-compose up"
     end
   end
 end
