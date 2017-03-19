@@ -12,7 +12,7 @@ class Dashboard::UsersController < ApplicationController
     @page_title = "Spieler online"
     @users = User.where({:online => true }).order_by(:name => 'asc').page params[:page]
     user_ips = []
-    @users.each{|player| puts player.sorted_sessions.first.ip_address; user_ips << player.sorted_sessions.first.ip_address}
+    @users.each{|player| user_ips << player.sorted_sessions.first.ip_address}
     @second_account_ip_groups = User.where({:'sessions.ip_address'.in => user_ips}).order_by(:lastSeen => 'desc').group_by{|player| player.sorted_sessions.first.ip_address}.to_a.reverse.to_h
   end
   

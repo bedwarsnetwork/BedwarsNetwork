@@ -52,10 +52,23 @@ class StaticController < ApplicationController
     @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
     @users = User.order_by(:name => 'asc')
     excluded_uuids = []
-    User.where("$or" => [{"groups" => {"$in" => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]}}, {"bans.until" => {"$gte": Date.today}}, {"sessions.end" => {"$lte": Date.today - 90.day }}]).each do |user|
-      unless user.is_banned && user.sorted_sessions.last.end && user.sorted_sessions.last.end > Date.today - 90.day
-        excluded_uuids << user.id
-      end
+    project = {"$project" => {
+        "_id" => 1,
+        "groups" => 1,
+        "last_ban_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$bans" , -1 ]}, 0]},
+        "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]}
+      }
+    }
+    match = {"$match" => {
+        "$or" => [
+          {"groups" => {"$in" => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]}},
+          {"last_ban_entry.until"    => { "$gte" => Date.today}},
+          {"last_session_entry.end"    => { "$lte" => Date.today - 90.day}} 
+        ]
+      }
+    }
+    User.collection.aggregate([project, match]).each do |entry|
+      excluded_uuids << entry['_id']
     end
     @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_uuids).limit(11);
     @kd = Bedwarsstatistic.order(kd: :desc).where("games > 25").where.not(uuid: excluded_uuids).limit(11);
@@ -67,44 +80,41 @@ class StaticController < ApplicationController
     @page_title = ['Statistik', 'Herkunft']
     @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
     @global_count = User.all.count
-    users_by_country = User.all.group_by{|user| 
-      if user.sorted_sessions.first && user.sorted_sessions.first.location && user.sorted_sessions.first.location.country_name
-        user.sorted_sessions.first.location.country_name
-      else
-        nil
-      end
-    }
-    @countries = Hash.new
-    @countries_translated = Hash.new
-    @locations = Hash.new
-    users_by_country.each do |country, users|
-      unless country.nil?
-        country_name = country
-        country_object = ISO3166::Country.find_country_by_name(country)
-        unless country_object.nil?
-          country_name = country_object.translation('de')
+    
+      
+      @countries = Hash.new
+      @locations = Hash.new
+      
+     data = User.collection.aggregate([{"$project" => {
+        "_id" => 1,
+        "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]},
+
+      }
+    },
+    {"$match" => { "$nor"=> [ { "last_session_entry.location" => nil}]  }},
+    { "$group" => 
+        { "_id" => {"city" =>"$last_session_entry.location.city", "country" => "$last_session_entry.location.country_name"},
+            "count" => { "$sum" => 1 }}
+     },
+     { "$group" => 
+        { "_id" => "$_id.country",
+            "cities" => { "$push"=>  { "city" => "$_id.city", "count" => "$count" }},
+            "count" => { "$sum" => "$count"}}
+     },
+     { "$sort"=> { "count" => -1 } }])
+     
+    data.each do |country|
+      @countries[country['_id']] = country['count']
+      sorted_cities = country['cities'].sort_by{|city| city['count']}.reverse
+      city_hash = Hash.new
+      sorted_cities.delete_if{|city| city['city'] == nil}
+      sorted_cities.each_with_index do |city, index|
+        if index < 25
+          city_hash[city['city']] = city['count']
         end
-        country_count = users.count()
-        @countries[country] = country_count
-        @countries_translated[country_name] = country_count
-        
-        city_hash = Hash.new
-        city_hash_reduced = Hash.new
-        users.each do |user|
-          unless user.sorted_sessions.first.location[:city].nil?
-            if city_hash[user.sorted_sessions.first.location.city].nil?
-              city_hash[user.sorted_sessions.first.location.city] = 1
-            else
-              city_hash[user.sorted_sessions.first.location.city] = city_hash[user.sorted_sessions.first.location.city] +1
-            end
-          end
-        end
-        city_hash = city_hash.sort_by{|city, count| count}.reverse!
-        @locations[country] = city_hash
       end
+      @locations[country['_id']] = city_hash
     end
-    @countries = @countries.sort_by{|country, count| count}.reverse!
-    @countries_translated = @countries_translated.sort_by{|country, count| count}.reverse!
   end
   
   def contact

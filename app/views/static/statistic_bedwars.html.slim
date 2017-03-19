@@ -32,17 +32,18 @@
           .card-content
             span.card-title Punkte
             - @score.each_with_index do |statistic, i|
+              - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
-                  = link_to user_statistic_path(statistic.user.name) do
-                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                  = link_to user_statistic_path(user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: user.name, title: user.name, class: "responsive-img")
                 .col.xs8.valign[style="padding: 10px"]
                   - if i == 0
                     span.card-title
-                       = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   - else
                     strong
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                      = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
                   = statistic.score
                   |  Punkte 
@@ -52,17 +53,18 @@
           .card-content
             span.card-title Kills/Death
             - @kd.each_with_index do |statistic, i|
+              - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
-                  = link_to user_statistic_path(statistic.user.name) do
-                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                  = link_to user_statistic_path(user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: user.name, title: user.name, class: "responsive-img")
                 .col.xs8.valign[style="padding: 10px"]
                   - if i == 0
                     span.card-title
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   - else
                     strong
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                      = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
                   = statistic.kd.round
                   |  Kills/Death
@@ -72,17 +74,18 @@
           .card-content
             span.card-title Gespielte Spiele
             - @games.each_with_index do |statistic, i|
+              - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
-                  = link_to user_statistic_path(statistic.user.name) do
-                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                  = link_to user_statistic_path(user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: user.name, title: user.name, class: "responsive-img")
                 .col.xs8.valign[style="padding: 10px"]
                   - if i == 0
                     span.card-title
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   - else
                     strong
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                      = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
                   = statistic.games
                   |  Spiele 
@@ -92,17 +95,18 @@
           .card-content
             span.card-title Zerstörte Betten
             - @destroyedBeds.each_with_index do |statistic, i|
+              - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
                 .col.xs4.valign
-                  = link_to user_statistic_path(statistic.user.name) do
-                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: statistic.user.name, title: statistic.user.name, class: "responsive-img")
+                  = link_to user_statistic_path(user.name) do
+                    = image_tag("https://visage.surgeplay.com/bust/#{statistic.uuid}", alt: user.name, title: user.name, class: "responsive-img")
                 .col.xs8.valign[style="padding: 10px"]
                   - if i == 0
                     span.card-title
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   - else
                     strong
-                      = link_to(statistic.user.name, user_statistic_path(statistic.user.name), class: "black-text")
+                      = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
                   = statistic.destroyedBeds
                   |  Betten 

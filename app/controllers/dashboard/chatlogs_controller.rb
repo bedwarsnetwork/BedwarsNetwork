@@ -11,7 +11,7 @@ class Dashboard::ChatlogsController < ApplicationController
   
   def search
     if params[:search].empty?
-      redirect_to chatlogs_path()
+      redirect_to dashboard_chatlogs_path()
     elsif params[:search] && request.post?
       redirect_to search_result_dashboard_chatlogs_path(params[:search])
     elsif params[:search] && request.get?
