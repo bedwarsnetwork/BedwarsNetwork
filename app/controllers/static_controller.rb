@@ -28,7 +28,7 @@ class StaticController < ApplicationController
   def team_history
     @page_title = 'Ehemalige Teammitglieder'
     @page_description = 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
-    @team = User.where(:id.in => ["5d59be43-5667-42bc-9832-8b5a9ba39eac", "5b2fc196-e77c-42e5-a9df-8cccd316aa51", "35353b71-aff3-4206-b10f-bcc4002d9e39", "7e09962c-933b-4898-81c3-cee70aac130a", "680c2134-22ce-43ed-abdf-194511cd154c", "01142b30-0b3d-4ce6-8715-b3ffeed7cdeb", "a24bed88-aaf6-49e0-8f65-32db9284a9ed", "4db687b8-6b2b-4f56-906b-62f80cc7d00d", "e75e7e60-ea1a-42ca-8da5-54d04b85fdc3"]).sort_by{|user| user.name}
+    @team = User.where(:id.in => ["5d59be43-5667-42bc-9832-8b5a9ba39eac", "5b2fc196-e77c-42e5-a9df-8cccd316aa51", "35353b71-aff3-4206-b10f-bcc4002d9e39", "7e09962c-933b-4898-81c3-cee70aac130a", "680c2134-22ce-43ed-abdf-194511cd154c", "01142b30-0b3d-4ce6-8715-b3ffeed7cdeb", "a24bed88-aaf6-49e0-8f65-32db9284a9ed", "4db687b8-6b2b-4f56-906b-62f80cc7d00d", "e75e7e60-ea1a-42ca-8da5-54d04b85fdc3", "4552bcb5-dd56-49fe-b898-f47d20a81be1"]).sort_by{|user| user.name}
   end
 
   def maps

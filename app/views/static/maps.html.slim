@@ -140,6 +140,13 @@
       .col.xs12.s6.l4
         .card
           .card-image
+            = image_tag("maps/fireice.png", class: "materialboxed", :data => {caption: "Fire & Ice"})
+            span.card-title
+             | Fire & Ice
+             =< content_tag(:span, "4x3", class: "label white-text red")
+      .col.xs12.s6.l4
+        .card
+          .card-image
             = image_tag("maps/frozentowers.png", class: "materialboxed", :data => {caption: "FrozenTowers"})
             span.card-title
              | FrozenTowers
@@ -198,6 +205,13 @@
       .col.xs12
         .card-panel.center-align
           h5 5er-Teams
+      .col.xs12.s6.l4
+        .card
+          .card-image
+            = image_tag("maps/port.png", class: "materialboxed", :data => {caption: "Port"})
+            span.card-title
+              | Port
+              =< content_tag(:span, "4x5", class: "label white-text red")
       .col.xs12.s6.l4
         .card
           .card-image
