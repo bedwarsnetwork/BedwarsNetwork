@@ -49,7 +49,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'cancancan'
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise'
 gem 'materialize-sass'
 gem 'jquery-turbolinks'
 gem 'bson'

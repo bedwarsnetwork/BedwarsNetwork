@@ -1,6 +1,5 @@
 class Dashboard::UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_filter :verify_access
+  before_action :authenticate_user!, :verify_access
   load_and_authorize_resource
   
   def index
