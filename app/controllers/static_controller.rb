@@ -71,8 +71,8 @@ class StaticController < ApplicationController
       excluded_uuids << entry['_id']
     end
     @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_uuids).limit(11);
-    @kd = Bedwarsstatistic.order(kd: :desc).where("games > 25").where.not(uuid: excluded_uuids).limit(11);
-    @games = Bedwarsstatistic.order(games: :desc).where.not(uuid: excluded_uuids).limit(11);
+    @kd = Bedwarsstatistic.order('kills / deaths DESC').where("games > 25").where.not(uuid: excluded_uuids).limit(11);
+    @games = Bedwarsstatistic.order('wins + loses DESC').where.not(uuid: excluded_uuids).limit(11);
     @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_uuids).limit(11);
   end
   
