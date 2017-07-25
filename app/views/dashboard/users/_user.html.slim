@@ -13,7 +13,7 @@ tr
       = user.sessions.last.end.in_time_zone("Berlin").strftime("%d.%m.%Y - %H:%M Uhr")
   td
     - if user.statistic
-      = user.statistic.games
+      = (user.statistic.wins + user.statistic.loses)
     - else
       | 0
   td
