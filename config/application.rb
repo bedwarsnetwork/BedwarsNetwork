@@ -17,7 +17,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module BedwarsNetwork
-  class Application < Rails::Application   
+  class Application < Rails::Application  
+    config.exceptions_app = self.routes 
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
     config.action_controller.default_url_options = { :trailing_slash => true }

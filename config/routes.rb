@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   root to: "static#home"
+  
+  get "/404" => "errors#not_found"
+  get "/422" => "errors#change_rejected"
+  get "/500" => "errors#internal_server_error"
 
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection
