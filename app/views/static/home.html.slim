@@ -16,34 +16,48 @@
               | Das Bedwars-Netzwerk für Minecraft 1.9 - 1.12!
   .section
     .row
-      .col.xs12.m6
-        .card style="height: 150px;"
-          .card-content.center-align
-            p.card-title
-              | Serveradresse:
-              br
-              h6.light-blue-text.text-lighten-1
-                | bedwars.network
-      .col.xs12.m6
-        .card style="height: 150px;"
-          .card-content.center-align
-            p.card-title
-              | Spieler online:
-            dl class="player-count text-center"
-              dd
-                - if !@server_query.nil? && @server_query['status']
-                  - @server_query['players']['online'].to_s.split("").each do |letter|
-                    span
-                      = letter
-                  span.divider
-                    |/
-                  - @server_query['players']['max'].to_s.split("").each do |letter|
-                    span
-                      = letter
-                - else
-                  - "------".split("").each do |letter|
-                    span
-                      = letter
+      - if !@server_query.nil? && @server_query['status'] && @server_query['players']['online'] >= 5
+        .col.xs12.m6
+          .card style="height: 150px;"
+            .card-content.center-align
+              p.card-title
+                | Serveradresse:
+                br
+                h6.light-blue-text.text-lighten-1
+                  | bedwars.network
+        .col.xs12.m6
+          .card style="height: 150px;"
+            .card-content.center-align
+              p.card-title
+                | Spieler online:
+              dl class="player-count text-center"
+                dd
+                  
+                    - @server_query['players']['online'].to_s.split("").each do |letter|
+                      span
+                        = letter
+                    span.divider
+                      |/
+                    - @server_query['players']['max'].to_s.split("").each do |letter|
+                      span
+                        = letter
+      - else 
+        .col.xs12.m6
+          .card style="height: 150px;"
+            .card-content.center-align
+              p.card-title
+                | Serveradresse:
+                br
+                h6.light-blue-text.text-lighten-1
+                  | bedwars.network
+        .col.xs12.m6
+          .card style="height: 150px;"
+            .card-content.center-align
+              p.card-title
+                | 
+                br
+                h6.light-blue-text.text-lighten-1
+                  | Joine jetzt!
   .section
     .row
       .col.xs12

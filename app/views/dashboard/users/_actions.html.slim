@@ -1,9 +1,12 @@
 - content_for :actions do
-  - if (can? :update, @user) || (can? :index, Chatlog)
     li
       a.subheader
         => User.model_name.human
         = @user.name
+      li class=('active' if (params[:controller] == "dashboard/users") && params[:action] == "chatlogs")
+        = link_to(user_path(@user.name)) do
+          = content_tag(:i, 'person', class: 'material-icons')
+          = User.model_name.human(count: 2)
     - if (can? :index, Chatlog) || (can? :chatlogs, User)
       li class=('active' if (params[:controller] == "dashboard/users") && params[:action] == "chatlogs")
         = link_to(dashboard_user_chatlogs_path(@user)) do
