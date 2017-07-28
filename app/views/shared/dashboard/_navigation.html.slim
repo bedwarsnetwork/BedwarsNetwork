@@ -20,28 +20,41 @@ ul#nav-dashboard.side-nav.fixed
         li
           a.subheader
             | Intern
-      - if can? :show, Chatlog
+      - if can? :index, User
+        li
+          ul.collapsible
+            li
+              a.collapsible-header class=('active' if (params[:controller] == "dashboard/users"))
+                    = content_tag(:i, 'people', class: 'material-icons')
+                    = User.model_name.human
+              .collapsible-body
+                ul
+                  li class=('active' if (params[:controller] == "dashboard/users" && params[:action] == "online"))
+                    = link_to(online_dashboard_users_path()) do
+                      = content_tag(:i, 'people', class: 'material-icons')
+                      => User.model_name.human
+                      | online
+                  li class=('active' if (params[:controller] == "dashboard/users" && (params[:action] == "index" || params[:action] == "search")))
+                    = link_to(dashboard_users_path()) do
+                      = content_tag(:i, 'people', class: 'material-icons')
+                      | Alle 
+                      = User.model_name.human
+      - elsif can? :online, User
+        li class=('active' if (params[:controller] == "dashboard/users"))
+          = link_to(online_dashboard_users_path()) do
+            = content_tag(:i, 'people', class: 'material-icons')
+            => User.model_name.human
+            | online
+      - if can? :index, Chatlog
          li class=('active' if (params[:controller] == "dashboard/chatlogs"))
             = link_to(dashboard_chatlogs_path()) do
               = content_tag(:i, 'attach_file', class: 'material-icons')
               = Chatlog.model_name.human(count: 2)
-      - if can? :index, User
-        li
-          a.collapsible-header class=('active' if (params[:controller] == "dashboard/users"))
-                = content_tag(:i, 'people', class: 'material-icons')
-                = User.model_name.human
-          .collapsible-body
-            ul
-              li class=('active' if (params[:controller] == "dashboard/users" && params[:action] == "online"))
-                = link_to(online_dashboard_users_path()) do
-                  = content_tag(:i, 'people', class: 'material-icons')
-                  => User.model_name.human
-                  | online
-              li class=('active' if (params[:controller] == "dashboard/users" && (params[:action] == "index" || params[:action] == "search")))
-                = link_to(dashboard_users_path()) do
-                  = content_tag(:i, 'people', class: 'material-icons')
-                  | Alle 
-                  = User.model_name.human
+      - if can? :index, Serverstatistic
+         li class=('active' if (params[:controller] == "dashboard/serverstatistics"))
+            = link_to(dashboard_serverstatistics_path()) do
+              = content_tag(:i, 'pie_chart', class: 'material-icons')
+              = Serverstatistic.model_name.human(count: 2)
       - if content_for?(:actions)
         .divider[style="margin: 20px 0;"]
         = yield(:actions)

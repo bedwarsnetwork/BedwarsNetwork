@@ -2,7 +2,7 @@
 = render("searchbar")
 .row
   = render("header")
-- if !@user.bans.empty?
+- if !@user.bans.empty? and can? :ban, User
   .row
     .col.xs12
       .card.collection.z-depth-0
@@ -18,7 +18,7 @@
             tbody    
               - @user.bans.each do |ban|
                 = render ban
-- if !@user.sessions.empty?
+- if !@user.sessions.empty? and can? :ban, User
   .row
     .col.xs12
       .card.collection.z-depth-0

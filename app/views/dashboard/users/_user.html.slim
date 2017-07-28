@@ -20,7 +20,7 @@ tr
     - if user.rank
       => content_tag(:span, class: "label white-text", style: "background-color: ##{user.colorcode}") do
         = user.rank
-    - if user.bans.size > 0
+    - if user.bans.size > 0 and can? :ban, user
       - if user.is_banned
         .label.red.white-text
           | gebannt

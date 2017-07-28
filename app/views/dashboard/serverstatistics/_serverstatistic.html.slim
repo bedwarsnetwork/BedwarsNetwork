@@ -1,0 +1,4 @@
+tr
+  td
+    = link_to dashboard_serverstatistic_path(serverstatistic._id.in_time_zone("Berlin").strftime("%Y-%m-%d")) do
+      span.title = serverstatistic._id.in_time_zone("Berlin").strftime("%A, %d.%m.%Y")

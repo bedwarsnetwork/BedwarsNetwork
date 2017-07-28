@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 
   namespace :dashboard, layout: 'dashboard' do
     get '/' => 'users#online', :as => 'dashboard'
+    resources :serverstatistics, :concerns => [:searchable, :search_paginatable, :paginatable]
     resources :chatlogs, :concerns => [:searchable, :search_paginatable, :paginatable]
     resources :users, path: 'players', :concerns => [:searchable, :search_paginatable, :paginatable] do
       get 'online', :on => :collection

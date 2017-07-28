@@ -23,7 +23,7 @@
                 th
               tbody  
                 = render @users
-- if !@users.empty?
+- if !@users.empty? and can? :ban, User
   .divider
   .section
     .row

@@ -28,6 +28,9 @@ de:
       chatlog:
         one: "Chatlog"
         other: "Chatlogs"
+      serverstatistic: 
+        one: "Server-Statistik"
+        other: "Server-Statistiken"
     attributes:
       user:
         _id: "UUID"

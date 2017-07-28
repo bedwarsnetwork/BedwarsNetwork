@@ -1,0 +1,18 @@
+/= render("searchbar")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content.center-align
+        h1 = @serverstatistic.id.in_time_zone("Berlin").strftime("%A, %d.%m.%Y")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content
+        span.card-title Spieler online
+        = line_chart(@serverstatistic.mapped_players_online, points: false, curve: false, xtitle: "Zeit", ytitle: "Spieler")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content
+        span.card-title Individuelle Spieler
+        = line_chart(@serverstatistic.mapped_players_individual, points: false, xtitle: "Zeit", ytitle: "Spieler")

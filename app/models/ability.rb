@@ -7,26 +7,37 @@ class Ability
 
     def load_team_perms
       can :access, :dashboard
-
+      can :online, User
+      can :index, Serverstatistic
+      can :show, Serverstatistic
+    end
+    
+    def load_mod_perms
       can :index, Chatlog
       can :search, Chatlog
       can :show, Chatlog
       can :seeCommand, Chatlog
       
+      can :ban, User
+      can :chatlogs, User
       can :index, User
       can :update, User
-      can :online, User
-      can :chatlogs, User
     end
 
 
     if user.has_role? "Moderator" or user.has_role? "ModeratorJunior"
       load_team_perms
+      load_mod_perms
     end
 
     if user.has_role? "BuilderSenior"
       load_team_perms
+      load_mod_perms
       can :list, Chatlog
+    end
+    
+    if user.has_role? "Builder" or user.has_role? "DeveloperWeb" or user.has_role? "DeveloperPlugin"
+      load_team_perms
     end
 
     if user.has_role? "Admin"
@@ -38,7 +49,6 @@ class Ability
     can :show, User
     can :statistic, User
     can :youtube, User
-
 
     can :update, User, :id => user._id
     

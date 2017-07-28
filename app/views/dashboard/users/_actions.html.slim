@@ -1,5 +1,5 @@
 - content_for :actions do
-  - if (can? :update, User) || (can? :index, Chatlog)
+  - if (can? :update, @user) || (can? :index, Chatlog)
     li
       a.subheader
         => User.model_name.human
@@ -9,7 +9,7 @@
         = link_to(dashboard_user_chatlogs_path(@user)) do
           = content_tag(:i, 'attach_file', class: 'material-icons')
           = Chatlog.model_name.human(count: 2)
-    - if can? :update, User
+    - if can? :update, @user
       li class=('active' if (params[:controller] == "users" && params[:action] == "edit" && params[:id] == @user.id))
         = link_to(edit_dashboard_user_path(@user)) do
           = content_tag(:i, 'mode_edit', class: 'material-icons')

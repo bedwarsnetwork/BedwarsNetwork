@@ -17,7 +17,7 @@
         - @chatlogs.each do |chatlog|
           li.collection-item.avatar
             = link_to dashboard_chatlog_path(chatlog) do
-              - if chatlog.server.start_with?("Lobby")
+              - if chatlog.server.start_with?("Hub") or chatlog.server.start_with?("Lobby")
                 = content_tag(:i, "home", class: "material-icons green circle")
               - elsif chatlog.server.start_with?("BW")
                 = content_tag(:i, "games", class: "material-icons red circle")
@@ -54,7 +54,7 @@
         - @active_chatlogs.each do |chatlog|
           li.collection-item.avatar
             = link_to dashboard_chatlog_path(chatlog) do
-              - if chatlog.server.start_with?("Lobby")
+              - if chatlog.server.start_with?("Hub") or chatlog.server.start_with?("Lobby")
                 = content_tag(:i, "home", class: "material-icons green circle")
               - elsif chatlog.server.start_with?("BW")
                 = content_tag(:i, "games", class: "material-icons red circle")

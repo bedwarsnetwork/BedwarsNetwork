@@ -1,0 +1,22 @@
+/= render("searchbar")
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content.center-align
+        h1 = Serverstatistic.model_name.human(count: 2)
+.row
+  .col.xs12
+    .card.collection.z-depth-0
+      .card-content
+        - if @serverstatistics.empty?
+              | Keine Statistiken gefunden...
+        - else
+          .center-align
+            = paginate @serverstatistics
+          table
+            thead
+              th Datum
+            tbody  
+              = render @serverstatistics
+          .center-align
+            = paginate @serverstatistics
