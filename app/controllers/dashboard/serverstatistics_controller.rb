@@ -33,7 +33,7 @@ class Dashboard::ServerstatisticsController < ApplicationController
     if @serverstatistic.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Spieler nicht gefunden" })
     end
-    @page_title = ["Spieler", @serverstatistic._id.in_time_zone("Berlin").strftime("%A, %d.%m.%Y")]
+    @page_title = ["Server-Statistik", @serverstatistic._id.in_time_zone("Berlin").strftime("%A, %d.%m.%Y")]
 	end
 
 	

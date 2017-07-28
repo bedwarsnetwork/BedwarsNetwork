@@ -14,37 +14,22 @@ ul#nav-dashboard.side-nav.fixed
         = link_to(home_path()) do
           = content_tag(:i, 'home', class: 'material-icons')
           | Zur Website
-      - if (can? :index, Chatlog) || (can? :index, User)
+      - if can? :online, User or can? :index, Chatlog or can? :index, User or can? :index, Serverstatistic
         li
           .divider
         li
           a.subheader
             | Intern
-      - if can? :index, User
-        li
-          ul.collapsible
-            li
-              a.collapsible-header class=('active' if (params[:controller] == "dashboard/users"))
-                    = content_tag(:i, 'people', class: 'material-icons')
-                    = User.model_name.human
-              .collapsible-body
-                ul
-                  li class=('active' if (params[:controller] == "dashboard/users" && params[:action] == "online"))
-                    = link_to(online_dashboard_users_path()) do
-                      = content_tag(:i, 'people', class: 'material-icons')
-                      => User.model_name.human
-                      | online
-                  li class=('active' if (params[:controller] == "dashboard/users" && (params[:action] == "index" || params[:action] == "search")))
-                    = link_to(dashboard_users_path()) do
-                      = content_tag(:i, 'people', class: 'material-icons')
-                      | Alle 
-                      = User.model_name.human
-      - elsif can? :online, User
-        li class=('active' if (params[:controller] == "dashboard/users"))
+      - if can? :online, User
+        li class=('active' if (params[:controller] == "dashboard/users" && params[:action] == "online"))
           = link_to(online_dashboard_users_path()) do
+            = content_tag(:i, 'dashboard', class: 'material-icons')
+            => Dashboard
+      - if can? :index, User
+        li class=('active' if (params[:controller] == "dashboard/users" && (params[:action] == "index" || params[:action] == "search")))
+          = link_to(dashboard_users_path()) do
             = content_tag(:i, 'people', class: 'material-icons')
             => User.model_name.human
-            | online
       - if can? :index, Chatlog
          li class=('active' if (params[:controller] == "dashboard/chatlogs"))
             = link_to(dashboard_chatlogs_path()) do
