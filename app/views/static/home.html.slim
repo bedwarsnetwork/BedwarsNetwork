@@ -8,12 +8,11 @@
         .card
           .card-content.center-align
             h1
-              | Willkommen auf
+              = t('.welcome_on')
               br
               span.light-blue-text.text-lighten-1
                 | bedwars.network
-            p
-              | Das Bedwars-Netzwerk für Minecraft 1.9 - 1.12!
+            p = t('.slogan')
   .section
     .row
       - if !@server_query.nil? && @server_query['status'] && @server_query['players']['online'] >= 5
@@ -21,7 +20,8 @@
           .card style="height: 150px;"
             .card-content.center-align
               p.card-title
-                | Serveradresse:
+                = t('.server_address')
+                | :
                 br
                 h6.light-blue-text.text-lighten-1
                   | bedwars.network
@@ -29,24 +29,23 @@
           .card style="height: 150px;"
             .card-content.center-align
               p.card-title
-                | Spieler online:
+                = t('.players_online')
+                | :
               dl class="player-count text-center"
                 dd
                   
                     - @server_query['players']['online'].to_s.split("").each do |letter|
-                      span
-                        = letter
+                      span = letter
                     span.divider
                       |/
                     - @server_query['players']['max'].to_s.split("").each do |letter|
-                      span
-                        = letter
+                      span = letter
       - else 
         .col.xs12.m6
           .card style="height: 150px;"
             .card-content.center-align
               p.card-title
-                | Serveradresse:
+                = t('.server_address')
                 br
                 h6.light-blue-text.text-lighten-1
                   | bedwars.network
@@ -56,8 +55,7 @@
               p.card-title
                 | 
                 br
-                h6.light-blue-text.text-lighten-1
-                  | Joine jetzt!
+                h6.light-blue-text.text-lighten-1 = t('.join_now')
   .section
     .row
       .col.xs12
@@ -67,31 +65,27 @@
               ul.tabs.tabs-fixed-width
                 li.tab.col.xs3
                   a[href="#test1"]
-                    | Was ist Minecraft?
+                    = t('.whats_minecraft')
                 li.tab.col.xs3
                   a[href="#test2"]
-                    | Was ist Bedwars?
+                    = t('.whats_bedwars')
                 li.tab.col.xs3
                   a[href="#test3"]
-                    | Wie spiele ich Bedwars?
+                    = t('.how_to_play_bedwars')
               #test1.col.xs12
-                p
-                  | Minecraft ist ein Open-World-Spiel ohne ein fest vorgegebenes Spielziel. Das Hauptaugenmerk liegt auf der Erkundung und Entdeckung der von Höhlen und Dungeons durchzogenen Spielwelt sowie dem Bau eigener Gebäude und Vorrichtungen. Der Spieler kann Rohstoffe abbauen ("Mine"), diese zu anderen Gegenständen weiterverarbeiten ("Craft") und gegen Monster kämpfen. (Quelle:
-                  =< link_to('Wikipedia', 'https://de.wikipedia.org/wiki/Minecraft', target: '_blank')
+                p = t('.whats_minecraft_text')
                   | )
               #test2.col.xs12
-                p
-                  | Bedwars ist ein Minigame innerhalb von Minecraft. Man spielt hierbei auf Mehrspieler-Servern im Internet. In einer Runde gibt es mehrere Teams, welche alle als Ziel haben, als letztes Team zu überleben. Spieler können sich gegenseitig angreifen und töten, aber erscheinen immer wieder - solange das Team noch ein Bett hat. Ziel ist es also auch, das Bett des anderen Teams zu zerstören, sodass sich die Spielerzahl des anderen Teams reduziert. Das Team, das zuletzt noch einen Spieler in der Runde hat, gewinnt.
+                p = t('.whats_bedwars_text')
               #test3.col.xs12
-                p
-                  | Gehe in Minecraft auf Mehrspieler und danach im unteren Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername, sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der Liste klicken und der Spielspaß beginnt!
+                p = t('.how_to_play_bedwars_text')
   .section
     .row
       .col.xs12.l4
         .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
-              | News von Twitter
+              = t('.twitter_news')
               =< link_to('@bedwarsnetwork', 'https://twitter.com/bedwarsnetwork', target: '_blank')
             p
               = link_to('Tweets von @bedwarsnetwork', 'https://twitter.com/bedwarsnetwork', data: {"widget-id": "674197251946913792", "tweet-limit": "3", chrome: "noheader nofooter noborders", "aria-polite": "assertive"}, class: "twitter-timeline", target: '_blank')
@@ -100,7 +94,7 @@
         .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
-              | Impressionen
+              = t('.impressions')
             .video-container
               iframe[width="1280" height="720" src="https://www.youtube.com/embed?listType=playlist&list=PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW" frameborder="0" allowfullscreen="" style="width: 100%;"]
             p.margin-bottom-lg.text-center
@@ -112,6 +106,6 @@
         .card style="height:400px;overflow-y: auto;"
           .card-content.center-align
             span.card-title
-              | Public Voice Server
+              = t('.public_voice_server')
             iframe[src="https://discordapp.com/widget?id=185305236762525697" width="350" height="300" allowtransparency="true" frameborder="0" style="width: 100%"]
 = javascript_include_tag '//platform.twitter.com/widgets.js'

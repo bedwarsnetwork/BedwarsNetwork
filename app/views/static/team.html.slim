@@ -24,7 +24,9 @@
                 - if user.rank
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
-                  br Im Team seit #{l(user.team_member_since, format: :month)}
+                  br
+                  => t('.team_member_since')
+                  = l(user.team_member_since, format: :month)
       - @team.select{|key| key[:_id] != "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
         .col.xs12.s6.l4
           .card.horizontal
@@ -39,20 +41,20 @@
                 - if user.rank
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
-                  br Im Team seit #{l(user.team_member_since, format: :month)}
+                  br
+                  => t('.team_member_since')
+                  = l(user.team_member_since, format: :month)
   .section
     .row
       .col.s12.l6
         .card
           .card-content
-            span.card-title
-              | Bewirb dich bei uns!
-            p
-              | Wir suchen regelmäßig neue Mitglieder für unser Team. Schau doch einmal auf unserer Seite "Bewerbung" vorbei, wen wir gerade suchen!
+            span.card-title = t('.apply_title')
+            p = t('.apply_text')
           .card-action
             = link_to({controller: "static", action: "application"}, {class: "waves-effect waves-light btn bwnet"}) do
               = content_tag(:i, "info_outline", class: "material-icons left")
-              | Bewerbung
+              = t('.apply_button')
       .col.s12.l6
         .card
           .card-content

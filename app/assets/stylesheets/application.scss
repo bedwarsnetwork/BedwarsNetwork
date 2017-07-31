@@ -72,6 +72,10 @@ body {
   flex-direction: column;
 }
 
+.translation_missing {
+  color: red;
+}
+
 main {
   flex: 1 0 auto;
 }

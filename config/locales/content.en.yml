@@ -1,0 +1,36 @@
+en:
+  global:
+    nav:
+      home: 'Home'
+      team: 'Team'
+      maps: 'Maps'
+      premium: 'Premium'
+      statistics: 'Statistics'
+      faq: 'FAQ'
+      contact: 'Contact'
+    footer:
+      connect: 'Connect'
+      description: 'is a Minecraft server network highly specialized in and focusing on "Bedwars".'
+      imprint_and_privacy: 'imprint and privacy (de)'
+      tos: 'terms of service (de)'
+  static:
+    home:
+      welcome_on: 'Welcome on'
+      slogan: 'The Bedwars-Network for Minecraft 1.9 - 1.12!'
+      server_address: 'Server Address'
+      players_online: 'Players Online'
+      join_now: 'Join Now!'
+      whats_minecraft: 'What is Minecraft?'
+      whats_minecraft_text: 'Minecraft ist ein Open-World-Spiel ohne ein fest vorgegebenes Spielziel. Das Hauptaugenmerk liegt auf der Erkundung und Entdeckung der von Höhlen und Dungeons durchzogenen Spielwelt sowie dem Bau eigener Gebäude und Vorrichtungen. Der Spieler kann Rohstoffe abbauen ("Mine"), diese zu anderen Gegenständen weiterverarbeiten ("Craft") und gegen Monster kämpfen.'
+      whats_bedwars: 'What is Bedwars?'
+      whats_bedwars_text: 'Bedwars ist ein Minigame innerhalb von Minecraft. Man spielt hierbei auf Mehrspieler-Servern im Internet. In einer Runde gibt es mehrere Teams, welche alle als Ziel haben, als letztes Team zu überleben. Spieler können sich gegenseitig angreifen und töten, aber erscheinen immer wieder - solange das Team noch ein Bett hat. Ziel ist es also auch, das Bett des anderen Teams zu zerstören, sodass sich die Spielerzahl des anderen Teams reduziert. Das Team, das zuletzt noch einen Spieler in der Runde hat, gewinnt.'
+      how_to_play_bedwars: 'How can I play Bedwars?'
+      how_to_play_bedwars_text: 'Gehe in Minecraft auf Mehrspieler und danach im unteren Fensterbereich auf "Server hinzufügen". Dort trägst du bei Servername, sowie bei Serveradresse "bedwars.network" ein. Mit einem Klick auf "Fertig" speicherst du den Eintrag. Nun kannst du auf den Server in der Liste klicken und der Spielspaß beginnt!'
+      twitter_news: 'News via Twitter'
+      impressions: 'Impressions'
+      public_voice_server: 'Public Voice Server'
+    team:
+      team_member_since: 'Team Member since'
+      apply_title: 'Become a team member!'
+      apply_text: 'Wir suchen regelmäßig neue Mitglieder für unser Team. Schau doch einmal auf unserer Seite "Bewerbung" vorbei, wen wir gerade suchen!'
+      apply_button: 'Application (de)'

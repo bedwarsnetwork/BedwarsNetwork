@@ -4,9 +4,14 @@ class StaticController < ApplicationController
   skip_authorization_check
   
   def home
+    if params[:locale] == :de
       @page_title = 'Das Bedwars-Netzwerk für Minecraft 1.9 - 1.12!'
       @page_description = 'bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!'
-      json = nil
+    else
+      @page_title = 'The Bedwars-Network for Minecraft 1.9 - 1.12!'
+      @page_description = 'bedwars.network is a Minecraft server highly specialized in and focusing on "Bedwars". You will experience "Bedwars" like you have never seen before!'
+    end
+    json = nil
     begin
       Timeout::timeout(5){json = open("https://mcapi.ca/query/5.9.29.67/info")}
     rescue => e
@@ -20,24 +25,41 @@ class StaticController < ApplicationController
   end
 
   def team
+    if params[:locale] == :de
+      @page_description = 'Ein Server bedeutet jede Menge Arbeit. Dafür benötigt man ein kleines, zuverlässiges und qualifiziertes Team.'
+    else
+      @page_description = 'A server means a lot of work. Therefor a small, reliable and qualified team is needed.'
+    end
     @page_title = 'Team'
-    @page_description = 'Ein Server bedeutet jede Menge Arbeit. Dafür benötigt man ein kleines, zuverlässiges und qualifiziertes Team.'
     @team = User.where(:groups.in => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]).sort_by{|user| user.name}
   end
   
   def team_history
-    @page_title = 'Ehemalige Teammitglieder'
-    @page_description = 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
+    if params[:locale] == :de
+      @page_title = 'Ehemalige Teammitglieder'
+      @page_description = 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
+    else
+      @page_title = 'Former Team Members'
+      @page_description = 'Every single helping hand is undescribable valuable. Therefor the former team members shall never be forgotten.'
+    end
     @team = User.where(:team_member_until.exists => true).sort_by{|user| user.name}
   end
 
   def maps
+    if params[:locale] == :de
+      @page_description = 'bedwars.network bietet individuell gestaltete Bedwars-Maps für spannende Bedwars-Runden.'
+    else
+      @page_description = 'bedwars.network offers individual designed Bedwars maps for thrilling Bedwars games.'
+    end
     @page_title = 'Maps'
-    @page_description = 'bedwars.network bietet individuell gestaltete Bedwars-Maps für spannende Bedwars-Runden.'
   end
   
   def youtube
-    @page_title = 'Deine Chance'
+    if params[:locale] == :de
+      @page_title = 'Deine Chance'
+    else
+      @page_title = 'Your Chance'
+    end
     @page_description = 'Mit dem Projekt "Deine Chance" möchte bedwars.network angehenden YouTubern eine Plattform bieten.'
     @playlist = Yt::Playlist.new id: 'PLtHe_LObuvpOFvm28hCEFhqGA-lsQN3WW'
   end
@@ -48,8 +70,14 @@ class StaticController < ApplicationController
   end
   
   def statistic_bedwars
-    @page_title = ['Statistik', 'Bedwars']
-    @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
+    if params[:locale] == :de
+      @page_title = ['Statistiken', 'Bedwars']
+      @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
+    else
+      @page_title = ['Statistics', 'Bedwars']
+      @page_description = 'The Bedwars statistics show the best players per single category.'
+    end
+
     @users = User.order_by(:name => 'asc')
     excluded_uuids = []
     project = {"$project" => {
@@ -77,8 +105,13 @@ class StaticController < ApplicationController
   end
   
   def statistic_country
-    @page_title = ['Statistik', 'Herkunft']
-    @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
+    if params[:locale] == :de
+      @page_title = ['Statistiken', 'Herkunft']
+      @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
+    else
+      @page_title = ['Statistics', 'Location']
+      @page_description = 'The location statistics show the origin of the players on our server'
+    end
     @global_count = User.all.count
     
       
@@ -118,8 +151,13 @@ class StaticController < ApplicationController
   end
   
   def contact
-    @page_title = 'Kontakt'
-    @page_description = 'Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern und zum Stellen von Entbannungsanträgen kannst du uns jederzeit kontaktieren.'
+    if params[:locale] == :de
+      @page_title = 'Kontakt'
+      @page_description = 'Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern und zum Stellen von Entbannungsanträgen kannst du uns jederzeit kontaktieren.'
+    else
+      @page_title = 'Contact'
+      @page_description = 'For general inquries, questions regarding the server, reports and appeals you can contact us at any time.'
+    end
   end
   
   def imprint
