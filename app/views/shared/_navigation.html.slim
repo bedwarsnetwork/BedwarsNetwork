@@ -10,7 +10,7 @@
         li class=('active' if (params[:controller] == "static" && params[:action] == "premium"))
             = link_to t('global.nav.premium'), premium_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
-            = link_to t('global.nav.statistics'), statistic_path(), class: "white-text"
+            = link_to t('global.nav.statistics'), statistics_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))
             = link_to t('global.nav.faq'), faq_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
@@ -36,7 +36,7 @@ ul#nav-mobile.side-nav
       = content_tag(:i, 'star', class: 'material-icons')
       = t('global.nav.premium')
   li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
-    = link_to(statistic_path()) do
+    = link_to(statistics_path()) do
       = content_tag(:i, 'pie_chart', class: 'material-icons')
       = t('global.nav.statistics')
   li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))

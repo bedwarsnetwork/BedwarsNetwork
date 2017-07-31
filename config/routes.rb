@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   root to: "static#home"
 
-  get '/bewerbung' => 'static#application', :as => 'application'
+  get '/bewerbung' => 'static#application'
+  get '/deine-chance' => 'static#youtube'
   
   localized do
     get "/404" => "errors#not_found"
@@ -25,16 +26,17 @@ Rails.application.routes.draw do
     devise_for :users, path: 'account'
     get '/' => 'static#home', :as => 'home'
     get '/team' => 'static#team', :as => 'team'
-    get '/your-chance' => 'static#youtube', :as => 'deine_chance'
+    get '/your-chance' => 'static#youtube', :as => 'your_chance'
     get '/youtube' => 'static#youtube', :as => 'youtube'
     get '/team/history' => 'static#team_history', :as => 'team_history'
     get '/maps' => 'static#maps', :as => 'maps'
     get '/premium' => 'static#premium', :as => 'premium'
-    get '/statistics' => 'static#statistic_bedwars', :as => 'statistic'
-    get '/statistics/bedwars' => 'static#statistic_bedwars', :as => 'statistic_bedwars'
-    get '/statistics/location' => 'static#statistic_country', :as => 'statistic_country'
+    get '/statistics' => 'static#statistic_bedwars', :as => 'statistics'
+    get '/statistics/bedwars' => 'static#statistic_bedwars', :as => 'statistics_bedwars'
+    get '/statistics/location' => 'static#statistic_country', :as => 'statistics_country'
     get '/contact' => 'static#contact', :as => 'contact'
     get '/faq' => 'static#faq', :as => 'faq'
+    get '/application' => 'static#application', :as => 'application'
     get '/imprint' => 'static#imprint', :as => 'imprint'
     get '/tos' => 'static#tos', :as => 'tos'
   

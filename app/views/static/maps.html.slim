@@ -12,7 +12,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 1er-Teams
+          h5 = t('.team1')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -60,7 +60,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 2er-Teams
+          h5 = t('.team2')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -129,7 +129,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 3er-Teams
+          h5 = t('.team3')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -170,7 +170,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 4er-Teams
+          h5 = t('.team4')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -204,7 +204,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 5er-Teams
+          h5 = t('.team5')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -238,7 +238,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 Special Maps
+          h5 = t('.special')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -265,7 +265,7 @@
     .row
       .col.xs12
         .card-panel.center-align
-          h5 WarGear-Bedwars
+          h5 = t('.wargear')
       .col.xs12.s6.l4
         .card
           .card-image
@@ -276,17 +276,14 @@
       .col.xs12.s6.l4
         .card
           .card-content
-            span.card-title
-              | Was ist ein WarGear?
-            p
-              | WarGears sind in Minecraft erbaute Kampfmaschinen, die aus TNT-Kanonen, Redstone-Technik und einer starken Panzerung bestehen.
+            span.card-title = t('.wargear_explanation_title')
+            p = t('.wargear_explanation_text')
       .col.xs12.s6.l4
         .card
           .card-image
             = image_tag("myplayplanet.png")
             span.card-title.activator
-              font style="font-size: 70%"
-                | Server-Empfehlung:
+              font style="font-size: 70%" = t('.server_recommendation')
               br
                 i myplayplanet.net
           .card-reveal
@@ -307,11 +304,9 @@
       .col.s12
         .card
           .card-content
-            span.card-title
-              | Du kannst gut bauen?
-            p
-              | Wir suchen regelmäßig neue erfahrene Mitglieder für unser Bau-Team. Schau doch einmal auf unserer Seite "Bewerbung" vorbei!
+            span.card-title = t('.apply_builder_title')
+            p = t('.apply_builder_text')
           .card-action
             = link_to({controller: "static", action: "application"}, {class: "waves-effect waves-light btn bwnet"}) do
               = content_tag(:i, "info_outline", class: "material-icons left")
-              | Bewerbung
+              = t('.apply_builder_button')

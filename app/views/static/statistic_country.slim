@@ -15,14 +15,14 @@
           ul.linked-tabs
             li.tab.col.s6
               - if params[:action] == "statistic_bedwars"
-                = link_to "Bedwars-Statistik", statistic_bedwars_path(), class: "active"
+                = link_to "Bedwars-Statistik", statistics_bedwars_path(), class: "active"
               - else
-                = link_to "Bedwars-Statistik", statistic_bedwars_path()
+                = link_to "Bedwars-Statistik", statistics_bedwars_path()
             li.tab.col.s6
               - if params[:action] == "statistic_country"
-                = link_to "Herkunft-Statistik", statistic_country_path(), class: "active"
+                = link_to "Herkunft-Statistik", statistics_country_path(), class: "active"
               - else
-                = link_to "Herkunft-Statistik", statistic_country_path()
+                = link_to "Herkunft-Statistik", statistics_country_path()
     .row
       .col.xs12
         .card

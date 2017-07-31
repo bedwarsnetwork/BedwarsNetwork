@@ -7,13 +7,11 @@
       .col.xs12
         .card
           .card-content.center-align
-            h1 Kontakt
+            h1 = t('global.nav.contact')
   .section
     .row
       .col.xs12
         .card
           .card-content
-            span.card-title
-              | Fragen? Kontaktiere uns!
-            p
-              | Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern (mit Videobeweis bitte per YouTube-Link) und zum Stellen von Entbannungsanträgen kannst du uns jederzeit unter support@bedwars.network kontaktieren. Wir freuen uns auf deine E-Mail!
+            span.card-title = t('.contact_title')
+            p = t('.contact_text')

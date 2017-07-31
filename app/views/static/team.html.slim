@@ -58,11 +58,9 @@
       .col.s12.l6
         .card
           .card-content
-            span.card-title
-              | Ehemalige Teammitglieder
-            p
-              | Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.
+            span.card-title = t('.team_history_title')
+            p = t('.team_history_text')
           .card-action
             = link_to({controller: "static", action: "team_history"}, {class: "waves-effect waves-light btn bwnet"}) do
               = content_tag(:i, "history", class: "material-icons left")
-              | Ehemalige Teammitglieder
+              = t('.team_history_button')
