@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   check_authorization :unless => :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  skip_around_action :set_locale_from_url
   layout :get_layout
   
   rescue_from CanCan::AccessDenied do |exception|
@@ -10,7 +11,8 @@ class ApplicationController < ActionController::Base
   end
   
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = params[:locale] || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
+    logger.debug "Locale: #{I18n.locale}"
   end
   
   def get_layout
@@ -23,8 +25,5 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
   end
-  
-  # def default_url_options
-  #   { locale: I18n.locale }
-  # end
+
 end

@@ -1,0 +1,56 @@
+en:
+  global:
+    nav:
+      home: 'Home'
+      team: 'Team'
+      maps: 'Maps'
+      premium: 'Premium (de)'
+      statistics: 'Statistics (de)'
+      faq: 'FAQ (de)'
+      contact: 'Contact'
+    footer:
+      connect: 'Connect'
+      description: 'is a Minecraft server network highly specialized in and focusing on "Bedwars".'
+      imprint_and_privacy: 'imprint and privacy (de)'
+      tos: 'terms of service (de)'
+  static:
+    home:
+      welcome_on: 'Welcome on'
+      slogan: 'The Bedwars-Network for Minecraft 1.9 - 1.12!'
+      server_address: 'Server Address'
+      players_online: 'Players Online'
+      join_now: 'Join Now!'
+      whats_minecraft: 'What is Minecraft?'
+      whats_minecraft_text: 'Minecraft is an open-world game without a fixed game goal. The main focus is the exploration and discovery of the world of caves and dungeons, as well as building own buildings. The player can mine resources ("mine"), process them to other objects ("craft") and fight monsters.'
+      whats_bedwars: 'What is Bedwars?'
+      whats_bedwars_text: "Bedwars is a minigame within Minecraft. You play on multiplayer servers on the Internet. In a round, there are several teams, all of which have the goal of surviving as the last team. Players can attack each other and kill, but appear again and again - as long as the team still has a bed. The goal is also to destroy the other team's bed, reducing the number of players on the other team. The team that has a player in the round wins."
+      how_to_play_bedwars: 'How can I play Bedwars?'
+      how_to_play_bedwars_text: 'Open Minecraft, go to "Multiplayer" and then click "Add Server" in the bottom pane. There you enter "bedwars.network" as the "Server Name" and the "Server Address" . Click "Done" to save the entry. Now you can click on the server in the list and start playing the game!'
+      twitter_news: 'News via Twitter'
+      impressions: 'Impressions'
+      public_voice_server: 'Public Voice Server'
+    team:
+      team_member_since: 'Team Member since'
+      apply_title: 'Become a Team Member!'
+      apply_text: 'We are always looking for German speaking new team members. If you are interested, have a look on our page "Application".'
+      apply_button: 'Application (de)'
+      team_history_title: 'Former Team Members'
+      team_history_text: 'Every single helping hand is undescribable valuable. Therefor our former team members shall never be forgotten.'
+      team_history_button: 'Former Team Members'
+    maps:
+      team1: '1 vs. 1'
+      team2: '2 vs. 2'
+      team3: '3 vs. 3'
+      team4: '4 vs. 4'
+      team5: '5 vs. 5'
+      special: 'Special-Maps'
+      wargear: 'WarGear-Bedwars'
+      wargear_explanation_title: "What's a WarGear?"
+      wargear_explanation_text: 'WarGears are combat machines consisting of TNT guns, Redstone technology and strong armor.'
+      server_recommendation: "Server Recommendation"
+      apply_builder_title: 'You are good at building in Minecraft?'
+      apply_builder_text: 'We are always looking for experiences German speaking new team members. If you are interested, have a look on our page "Application".'
+      apply_builder_button: 'Application (de)'
+    contact:
+      contact_title: 'Questions? Contact us!'
+      contact_text: 'For general inquries, questions regarding the server, reports (please provide links to video proofs) and appeals you can contact us at any time via e-mail on support@bedwars.network'

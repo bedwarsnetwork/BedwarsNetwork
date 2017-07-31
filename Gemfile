@@ -61,6 +61,8 @@ gem 'meta-tags'
 gem 'chartkick'
 gem 'countries'
 gem 'cucumber'
+gem 'route_translator'
+gem 'http_accept_language'
 
 group :development do
   gem 'brakeman', :require => false

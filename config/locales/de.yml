@@ -20,6 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
+  routes:
+    controllers:
+      static:
+        statistics: "statistiken"
+        application: "bewerbung"
+        location: "herkunft"
+        history: "ehemalige"
+        contact: "kontakt"
+        imprint: "impressum"
+        tos: "agb"
   mongoid:
     models:
       user: 
