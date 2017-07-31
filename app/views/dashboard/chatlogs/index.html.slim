@@ -49,12 +49,7 @@
         - @active_chatlogs.each do |chatlog|
           li.collection-item.avatar
             = link_to dashboard_chatlog_path(chatlog) do
-              - if chatlog.server.start_with?("Hub") or chatlog.server.start_with?("Lobby")
-                = content_tag(:i, "home", class: "material-icons green circle")
-              - elsif chatlog.server.start_with?("BW")
-                = content_tag(:i, "games", class: "material-icons red circle")
-              - else
-                = content_tag(:i, "attachment", class: "material-icons circle")
+              = content_tag(:i, chatlog.server_icon, class: "material-icons #{chatlog.server_icon_color} circle")
               - if params[:search]
                   span.title = highlight(chatlog._id, params[:search])
               - else

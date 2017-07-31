@@ -4,7 +4,7 @@ class Dashboard::ServerstatisticsController < ApplicationController
   
   def index
     @page_title = "Serverstatistik"
-    @serverstatistics = Serverstatistic.order_by(:_id => 'asc').page params[:page]
+    @serverstatistics = Serverstatistic.order_by(:_id => 'desc').page params[:page]
   end
   
   def search

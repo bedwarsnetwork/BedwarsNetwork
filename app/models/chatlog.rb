@@ -14,6 +14,12 @@ class Chatlog
       return "home"
     elsif server.start_with?("BW")
       return "games"
+    elsif server.start_with?("Build")
+      return "build"
+    elsif server.start_with?("SRV")
+      return "developer_board"
+    elsif server.start_with?("FP")
+      return "call_split"
     else
       return "attachment"
     end
@@ -24,6 +30,12 @@ class Chatlog
       return "green"
     elsif server.start_with?("BW")
       return "red"
+    elsif server.start_with?("Build")
+      return "blue"
+    elsif server.start_with?("SRV")
+      return "cyan"
+    elsif server.start_with?("FP")
+      return "yellow"
     else
       return "grey"
     end
