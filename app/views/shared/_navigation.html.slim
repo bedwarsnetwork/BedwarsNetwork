@@ -15,9 +15,20 @@
             = link_to t('global.nav.faq'), faq_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
           = link_to t('global.nav.contact'), contact_path(), class: "white-text"
-      a.button-collapse.white-text.mobile-nav[href="#" data-activates="nav-mobile"]
+        li
+          a[href="#!" class="dropdown-button" data-activates="language-dropdown"]
+            = content_tag(:i, 'language', class: 'material-icons white-text')
+      a.button-collapse.white-text.mobile-nav[href="#!" data-activates="nav-mobile"]
         i.material-icons
           | menu
+ul#language-dropdown.dropdown-content
+  li class=('active' if (I18n.locale == :de))
+    = link_to(home_de_path()) do
+      => image_tag('flags/de.png')
+      | &nbsp;DE
+    = link_to(home_en_path()) do
+      => image_tag('flags/gb.png')
+      | &nbsp;EN
 ul#nav-mobile.side-nav
   li class=('active' if (params[:controller] == "static" && params[:action] == "home"))
     = link_to(home_path()) do
