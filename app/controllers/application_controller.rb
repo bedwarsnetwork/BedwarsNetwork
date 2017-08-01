@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   
   def set_locale
     I18n.locale = params[:locale] || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
-    logger.debug "Locale: #{I18n.locale}"
   end
   
   def get_layout
