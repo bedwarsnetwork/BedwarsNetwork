@@ -7,7 +7,7 @@
       .col.xs12
         .card
           .card-content.center-align
-            h1 Ehemalige Teammitglieder
+            h1 = t('global.pages.team_history')
   .section
     .row
       - @team.each do |user|
@@ -21,4 +21,5 @@
                 span.card-title
                   = link_to user.name, user_path(user.name), class: "black-text"
                 - if user.team_member_since && user.team_member_until
-                  br #{l(user.team_member_since, format: :month)} bis #{l(user.team_member_until, format: :month)}
+                  br
+                  = t('.team_member_from_until', from: l(user.team_member_since, format: :month), until: l(user.team_member_until, format: :month))

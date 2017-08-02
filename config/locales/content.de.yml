@@ -1,22 +1,72 @@
 de:
+  routes:
+    controllers:
+      static:
+        statistics: "statistiken"
+        application: "bewerbung"
+        location: "herkunft"
+        history: "ehemalige"
+        contact: "kontakt"
+        imprint: "impressum"
+        tos: "agb"
+  mongoid:
+    models:
+      user: 
+        one: "Spieler"
+        other: "Spieler"
+      chatlog:
+        one: "Chatlog"
+        other: "Chatlogs"
+      serverstatistic: 
+        one: "Server-Statistik"
+        other: "Server-Statistiken"
+    attributes:
+      user:
+        _id: "UUID"
+        name: "Name"
+        youtube_id: "YouTube Kanal ID"
+        password: "Passwort"
+        password_confirmation: "Passwort bestätigen"
+        team_member_since: "Im Team seit..."
+        team_member_until: "Im Team bis..."
+        friends: 'Freunde'
+  activerecord:
+    models:
+      bedwarsstatistic:
+        one: 'Bedwars-Statistik'
+        other: 'Bedwars-Statistiken'
+    attributes:
+      bedwarsstatistic:
+        score: 'Punkte'
+        score_unit: 'Punkte'
+        kd: 'Kills/Death'
+        kd_unit: 'K/D'
+        kills: 'Kills'
+        deaths: 'Tode'
+        games: 'Gespielte Spiele'
+        games_unit: 'Spiele'
+        destroyed_beds: 'Zerstörte Betten'
+        destroyed_beds_unit: 'Betten'
   global:
-    nav:
+    pages:
       home: 'Startseite'
       team: 'Team'
+      team_history: 'Ehemalige Teammitglieder'
       maps: 'Maps'
       premium: 'Premium'
       statistics: 'Statistiken'
+      statistics_location: 'Herkunft-Statistik'
       faq: 'FAQ'
       contact: 'Kontakt'
+      imprint_and_privacy: 'Impressum und Datenschutz'
+      tos: 'Allgemeine Geschäftsbedingungen'
     footer:
       connect: 'Connect'
       description: 'ist ein Minecraft Servernetzwerk, das sich auf den Spielmodus "Bedwars" spezialisiert hat.'
-      imprint_and_privacy: 'Impressum und Datenschutz'
-      tos: 'Allgemeine Geschäftsbedingungen'
   static:
     home:
       welcome_on: 'Willkommen auf'
-      slogan: 'Das Bedwars-Netzwerk für Minecraft 1.9 - 1.12!'
+      slogan: 'Das Bedwars-Netzwerk für Minecraft %{versions}!'
       server_address: 'Serveradresse'
       players_online: 'Spieler online'
       join_now: 'Joine jetzt!'
@@ -30,13 +80,15 @@ de:
       impressions: 'Impressionen'
       public_voice_server: 'Public Voice Server'
     team:
-      team_member_since: 'Im Team seit'
+      team_member_since: 'Im Team seit %{since}'
       apply_title: 'Bewirb dich bei uns!'
       apply_text: 'Wir suchen regelmäßig neue Mitglieder für unser Team. Schau doch einmal auf unserer Seite "Bewerbung" vorbei, wen wir gerade suchen!'
       apply_button: 'Bewerbung'
       team_history_title: 'Ehemalige Teammitglieder'
       team_history_text: 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
       team_history_button: 'Ehemalige Teammitglieder'
+    team_history:
+      team_member_from_until: '%{from} bis %{until}'
     maps:
       team1: '1er-Teams'
       team2: '2er-Teams'
@@ -54,3 +106,8 @@ de:
     contact:
       contact_title: 'Fragen? Kontaktiere uns!'
       contact_text: 'Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern (mit Videobeweis bitte per YouTube-Link) und zum Stellen von Entbannungsanträgen kannst du uns jederzeit unter support@bedwars.network kontaktieren. Wir freuen uns auf deine E-Mail!'
+  users:
+    header:
+      profile: 'Profil'
+      statistics: 'Statistiken'
+      youtube: 'YouTube'

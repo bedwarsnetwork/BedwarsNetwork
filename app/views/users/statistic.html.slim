@@ -9,27 +9,27 @@
       .col.s12
         .card
           .card-content
-            span.card-title Statistik
+            span.card-title = Bedwarsstatistic.model_name.human
             - if @statistic.nil?
               p Keine Daten gefunden...
             - else
               table.table
                 thead
                   tr
-                    th.center-align Punkte
-                    th.center-align KD
-                    th.center-align Kills
-                    th.center-align Tode
-                    th.center-align
-                      | Gespielte
-                      br> Spiele
-                    th.center-align
-                      | Zerstörte
-                      br> Betten
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:score)
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:kd)
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:kills)
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:deaths)
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:games)
+                    th.center-align = Bedwarsstatistic.human_attribute_name(:destroyed_beds)
                 tbody
-                  td.center-align= @statistic.score
-                  td.center-align= (@statistic.kills / @statistic.deaths).round
-                  td.center-align= @statistic.kills
-                  td.center-align= @statistic.deaths
-                  td.center-align= (@statistic.wins + @statistic.loses)
-                  td.center-align= @statistic.destroyedBeds
+                  td.center-align = @statistic.score
+                  td.center-align
+                    - if @statistic.deaths != 0
+                      = (@statistic.kills / @statistic.deaths).round
+                    - else
+                      = @statistic.kills
+                  td.center-align = @statistic.kills
+                  td.center-align = @statistic.deaths
+                  td.center-align = (@statistic.wins + @statistic.loses)
+                  td.center-align = @statistic.destroyedBeds

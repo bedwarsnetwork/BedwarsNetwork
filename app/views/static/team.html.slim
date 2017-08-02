@@ -7,7 +7,7 @@
       .col.xs12
         .card
           .card-content.center-align
-            h1 Team
+            h1 = t('global.pages.team')
   .section
     .row
       - @team.select{|key| key[:_id] == "93ede72e-3ef0-42eb-a37b-62477df6497f" }.each do |user|
@@ -42,8 +42,7 @@
                   = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
                 - if user.team_member_since
                   br
-                  => t('.team_member_since')
-                  = l(user.team_member_since, format: :month)
+                  = t('.team_member_since', since: l(user.team_member_since, format: :month))
   .section
     .row
       .col.s12.l6

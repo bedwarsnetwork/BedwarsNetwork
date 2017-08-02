@@ -4,17 +4,17 @@
       = link_to "bedwars.network", home_path(), id: "logo-container", class: "brand-logo white-text"
       ul.right.hide-on-med-and-down
         li class=('active' if (params[:controller] == "static" && params[:action] == "team"))
-          = link_to t('global.nav.team'), team_path(), class: "white-text"
+          = link_to t('global.pages.team'), team_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "maps"))
-            = link_to t('global.nav.maps'), maps_path(), class: "white-text"
+            = link_to t('global.pages.maps'), maps_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "premium"))
-            = link_to t('global.nav.premium'), premium_path(), class: "white-text"
+            = link_to t('global.pages.premium'), premium_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
-            = link_to t('global.nav.statistics'), statistics_path(), class: "white-text"
+            = link_to t('global.pages.statistics'), statistics_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))
-            = link_to t('global.nav.faq'), faq_path(), class: "white-text"
+            = link_to t('global.pages.faq'), faq_path(), class: "white-text"
         li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
-          = link_to t('global.nav.contact'), contact_path(), class: "white-text"
+          = link_to t('global.pages.contact'), contact_path(), class: "white-text"
         li
           a[href="#!" class="dropdown-button" data-activates="language-dropdown"]
             = content_tag(:i, 'language', class: 'material-icons white-text')
@@ -33,31 +33,31 @@ ul#nav-mobile.side-nav
   li class=('active' if (params[:controller] == "static" && params[:action] == "home"))
     = link_to(home_path()) do
       = content_tag(:i, 'home', class: 'material-icons')
-      = t('global.nav.home')
+      = t('global.pages.home')
   li class=('active' if (params[:controller] == "static" && params[:action] == "team"))
     = link_to(team_path()) do
       = content_tag(:i, 'people', class: 'material-icons')
-      = t('global.nav.team')
+      = t('global.pages.team')
   li class=('active' if (params[:controller] == "static" && params[:action] == "maps"))
     = link_to(maps_path()) do
       = content_tag(:i, 'map', class: 'material-icons')
-      = t('global.nav.maps')
+      = t('global.pages.maps')
   li class=('active' if (params[:controller] == "static" && params[:action] == "premium"))
     = link_to(premium_path()) do
       = content_tag(:i, 'star', class: 'material-icons')
-      = t('global.nav.premium')
+      = t('global.pages.premium')
   li class=('active' if (params[:controller] == "static" && params[:action] == "statistic"))
     = link_to(statistics_path()) do
       = content_tag(:i, 'pie_chart', class: 'material-icons')
-      = t('global.nav.statistics')
+      = t('global.pages.statistics')
   li class=('active' if (params[:controller] == "static" && params[:action] == "faq"))
     = link_to(faq_path()) do
       = content_tag(:i, 'question_answer', class: 'material-icons')
-      = t('global.nav.faq')
+      = t('global.pages.faq')
   li class=('active' if (params[:controller] == "static" && params[:action] == "contact"))
     = link_to(contact_path()) do
       = content_tag(:i, 'email', class: 'material-icons')
-      = t('global.nav.contact')
+      = t('global.pages.contact')
 - if user_signed_in?
   ul#nav-user.side-nav
     li

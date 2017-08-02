@@ -12,7 +12,7 @@
               br
               span.light-blue-text.text-lighten-1
                 | bedwars.network
-            p = t('.slogan')
+            p = t('.slogan', versions: '1.9 - 1.12')
   .section
     .row
       - if !@server_query.nil? && @server_query['status'] && @server_query['players']['online'] >= 5

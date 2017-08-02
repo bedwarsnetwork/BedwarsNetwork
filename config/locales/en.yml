@@ -20,26 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  mongoid:
-    models:
-      user: 
-        one: "Player"
-        other: "Players"
-      chatlog:
-        one: "Chatlog"
-        other: "Chatlogs"
-      serverstatistic: 
-        one: "Server-Statistic"
-        other: "Server-Statistics"
-    attributes:
-      user:
-        _id: "UUID"
-        name: "Name"
-        youtube_id: "YouTube Channel ID"
-        password: "Password"
-        password_confirmation: "Confirm password"
-        team_member_since: "Team member since..."
-        team_member_until: "Team member until..."
   helpers:
     submit:
       create: "%{model} create"
