@@ -63,6 +63,7 @@ gem 'countries'
 gem 'cucumber'
 gem 'route_translator'
 gem 'http_accept_language'
+gem 'acts_as_api'
 
 group :development do
   gem 'brakeman', :require => false

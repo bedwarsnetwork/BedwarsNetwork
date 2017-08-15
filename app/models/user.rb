@@ -3,6 +3,9 @@
 class User
   include Mongoid::Document
   
+  acts_as_api
+  include ApiV1::User
+  
   RANKS = {"§9" => "Builder", "§3" => "Developer", "§4" => "Admin", "§5" => "YouTube", "§6" => "Premium", "§c" => "Moderator"}
   COLORS = {"§9" => "5555FF", "§3" => "00AAAA", "§4" => "AA0000", "§5" => "AA00AA", "§6" => "FFAA00", "§c" => "FF5555"}
   
@@ -41,6 +44,9 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  
+  ## Token
+  field :token
   
   field :_id
   field :name

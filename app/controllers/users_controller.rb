@@ -54,6 +54,10 @@ class UsersController < ApplicationController
     end
     @page_title = ["Spieler", @user.name]
     @page_description = "Informiere dich über den Spieler #{@user.name}."
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render_for_api :name_only, json: @user }
+    end
 	end
 	
 	def youtube
