@@ -28,7 +28,7 @@ class Dashboard::ServerstatisticsController < ApplicationController
 	end
   	
 	def show
-    if(params[:id] == "latest")
+    if(params[:id] == "today")
   	 @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
     else
       @serverstatistic = Serverstatistic.find_by(id: params[:id])

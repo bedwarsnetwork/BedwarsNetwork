@@ -23,7 +23,7 @@ module ApiNumerics::ServerstatisticEntry
   end
   
   api_accessible :numerics_private, extend: :numerics_public do |template|
-    template.add :timestamp, as: :name
+    #template.add :timestamp, as: :name
     template.add :count, as: :value
   end
 

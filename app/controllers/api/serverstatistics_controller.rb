@@ -1,30 +1,30 @@
 class Api::ServerstatisticsController < ApiController
   authorize_resource
-
-  def index
-    @serverstatistics = Serverstatistic.order_by(:id => 'asc').page params[:page]
-    @metadata[:total] = Serverstatistic.count
-    respond_with @serverstatistics, :api_template => @api_template, :meta => @metadata
-  end
   
   def online
-    meta = {postfix: :online}
-    if(params[:serverstatistic_id] == "latest")
-  	  @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
-    else
-      @serverstatistic = Serverstatistic.find_by(id: params[:id])
+    meta = {postfix: "Online Players"}
+    if params[:limit].nil?
+      params[:limit] = 30
     end
-    respond_with @serverstatistic.players_online_entries, :api_template => @api_template, root: :data, meta: meta
+    @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
+    response = @serverstatistic.players_online_entries.order_by(timestamp: :desc).limit(params[:limit]).reverse
+    if response.count == 1
+      response = response.first
+    end
+    respond_with response, :api_template => @api_template, root: :data, meta: meta
   end
   
   def individual
-    meta = {postfix: :individual}
-    if(params[:serverstatistic_id] == "latest")
-  	  @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
-    else
-      @serverstatistic = Serverstatistic.find_by(id: params[:id])
+    meta = {postfix: "Individual Players"}
+    if params[:limit].nil?
+      params[:limit] = 30
     end
-    respond_with @serverstatistic.players_individual_entries, :api_template => @api_template, root: :data, meta: meta
+    @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
+    response = @serverstatistic.players_individual_entries.order_by(timestamp: :desc).limit(params[:limit]).reverse
+    if response.count == 1
+      response = response.first
+    end
+    respond_with response, :api_template => @api_template, root: :data, meta: meta
   end
 
 end

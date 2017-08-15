@@ -70,9 +70,9 @@ Rails.application.routes.draw do
   namespace :api do
     scope ':version' do
       resources :users, path: 'players', except: [:edit, :update], param: :name
-      resources :serverstatistics, path: 'statistics', except: [:edit, :update] do
-        get 'online'
-        get 'individual'
+      resources :serverstatistics, path: 'statistics', except: [:index, :edit, :update] do
+        get 'online', :on => :collection
+        get 'individual', :on => :collection
       end
     end
   end
