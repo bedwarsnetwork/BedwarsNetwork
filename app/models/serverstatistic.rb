@@ -9,7 +9,7 @@ class Serverstatistic
   paginates_per 50
   
   field :_id
-  embeds_many :players_individual_entries, store_as: :players_online, class_name: "ServerstatisticEntry"
+  embeds_many :players_individual_entries, store_as: :players_individual, class_name: "ServerstatisticEntry"
   embeds_many :players_online_entries, store_as: :players_online, class_name: "ServerstatisticEntry"
   
   def mapped_players_individual
