@@ -8,21 +8,23 @@ class Api::ServerstatisticsController < ApiController
   end
   
   def online
+    meta = {postfix: :online}
     if(params[:serverstatistic_id] == "latest")
   	  @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
     else
       @serverstatistic = Serverstatistic.find_by(id: params[:id])
     end
-    respond_with @serverstatistic.players_online_entries, :api_template => @api_template, root: :data
+    respond_with @serverstatistic.players_online_entries, :api_template => @api_template, root: :data, meta: meta
   end
   
   def individual
+    meta = {postfix: :individual}
     if(params[:serverstatistic_id] == "latest")
   	  @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
     else
       @serverstatistic = Serverstatistic.find_by(id: params[:id])
     end
-    respond_with @serverstatistic.players_individual_entries, :api_template => @api_template, root: :data
+    respond_with @serverstatistic.players_individual_entries, :api_template => @api_template, root: :data, meta: meta
   end
 
 end
