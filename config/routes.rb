@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/bewerbung' => 'static#application'
   get '/deine-chance' => 'static#youtube'
+  get '/gamescom' => 'static#gamescom', :as => 'gamescom'
   
   localized do
     get "/404" => "errors#not_found"

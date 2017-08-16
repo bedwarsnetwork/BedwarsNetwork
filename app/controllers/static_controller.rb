@@ -173,4 +173,9 @@ class StaticController < ApplicationController
     @page_title = 'Bewerbung'
     @page_description = 'Wir suchen jederzeit Team-Mitglieder, mit denen wir gemeinsam unser Netzwerk ausbauen können.'
   end
+  
+  def gamescom
+    @page_title = 'gamescom 2017'
+    @page_description = 'Wir sind auf der gamescom vertreten. Triff dich mit uns und erhalte einen Gutschein!'
+  end
 end
