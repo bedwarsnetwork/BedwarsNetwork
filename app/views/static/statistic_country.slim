@@ -7,7 +7,7 @@
       .col.xs12
         .card
           .card-content.center-align
-            h1 Statistik
+            h1 = t('global.pages.statistics')
   .section
     .row
       .col.s12
@@ -20,9 +20,9 @@
                 = link_to "Bedwars-Statistik", statistics_bedwars_path()
             li.tab.col.s6
               - if params[:action] == "statistic_country"
-                = link_to "Herkunft-Statistik", statistics_country_path(), class: "active"
+                = link_to t('global.pages.statistics_location'), statistics_country_path(), class: "active"
               - else
-                = link_to "Herkunft-Statistik", statistics_country_path()
+                = link_to t('global.pages.statistics_location'), statistics_country_path()
     .row
       .col.xs12
         .card

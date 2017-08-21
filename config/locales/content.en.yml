@@ -1,22 +1,62 @@
 en:
+  mongoid:
+    models:
+      user: 
+        one: "Player"
+        other: "Players"
+      chatlog:
+        one: "Chatlog"
+        other: "Chatlogs"
+      serverstatistic: 
+        one: "Server-Statistic"
+        other: "Server-Statistics"
+    attributes:
+      user:
+        _id: "UUID"
+        name: "Name"
+        youtube_id: "YouTube Channel ID"
+        password: "Password"
+        password_confirmation: "Confirm password"
+        team_member_since: "Team member since..."
+        team_member_until: "Team member until..."
+        friends: 'Friends'
+  activerecord:
+    models:
+      bedwarsstatistic:
+        one: 'Bedwars Statistic'
+        other: 'Bedwars Statistics'
+    attributes:
+      bedwarsstatistic:
+        score: 'Score'
+        score_unit: 'Points'
+        kd: 'Kills/Death'
+        kd_unit: 'K/D'
+        kills: 'Kills'
+        deaths: 'Deaths'
+        games: 'Played Games'
+        games_unit: 'Games'
+        destroyed_beds: 'Destroyed Beds'
+        destroyed_beds_unit: 'Beds'
   global:
-    nav:
+    pages:
       home: 'Home'
       team: 'Team'
+      team_history: 'Former Team Members'
       maps: 'Maps'
       premium: 'Premium (de)'
-      statistics: 'Statistics (de)'
+      statistics: 'Statistics'
+      statistics_location: 'Location Statistics'
       faq: 'FAQ (de)'
       contact: 'Contact'
+      imprint_and_privacy: 'Imprint and Privacy (de)'
+      tos: 'Terms of Service (de)'
     footer:
       connect: 'Connect'
       description: 'is a Minecraft server network highly specialized in and focusing on "Bedwars".'
-      imprint_and_privacy: 'imprint and privacy (de)'
-      tos: 'terms of service (de)'
   static:
     home:
       welcome_on: 'Welcome on'
-      slogan: 'The Bedwars-Network for Minecraft 1.9 - 1.12!'
+      slogan: 'The Bedwars-Network for Minecraft %{versions}!'
       server_address: 'Server Address'
       players_online: 'Players Online'
       join_now: 'Join Now!'
@@ -30,13 +70,15 @@ en:
       impressions: 'Impressions'
       public_voice_server: 'Public Voice Server'
     team:
-      team_member_since: 'Team Member since'
+      team_member_since: 'Team Member since %{since}'
       apply_title: 'Become a Team Member!'
       apply_text: 'We are always looking for German speaking new team members. If you are interested, have a look on our page "Application".'
       apply_button: 'Application (de)'
       team_history_title: 'Former Team Members'
       team_history_text: 'Every single helping hand is undescribable valuable. Therefor our former team members shall never be forgotten.'
       team_history_button: 'Former Team Members'
+    team_history:
+      team_member_from_until: '%{from} until %{until}'
     maps:
       team1: '1 vs. 1'
       team2: '2 vs. 2'
@@ -54,3 +96,8 @@ en:
     contact:
       contact_title: 'Questions? Contact us!'
       contact_text: 'For general inquries, questions regarding the server, reports (please provide links to video proofs) and appeals you can contact us at any time via e-mail on support@bedwars.network'
+  users:
+    header:
+      profile: 'Profile'
+      statistics: 'Statistics'
+      youtube: 'YouTube'

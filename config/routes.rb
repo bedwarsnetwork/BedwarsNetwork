@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/bewerbung' => 'static#application'
   get '/deine-chance' => 'static#youtube'
+  get '/gamescom' => 'static#gamescom', :as => 'gamescom'
   
   localized do
     get "/404" => "errors#not_found"
@@ -63,6 +64,16 @@ Rails.application.routes.draw do
       resources :users, path: 'players', :concerns => [:searchable, :search_paginatable, :paginatable] do
         get 'online', :on => :collection
         get 'chatlogs'
+      end
+    end
+  end
+  
+  namespace :api do
+    scope ':version' do
+      resources :users, path: 'players', except: [:edit, :update], param: :name
+      resources :serverstatistics, path: 'statistics', except: [:index, :edit, :update] do
+        get 'online', :on => :collection
+        get 'individual', :on => :collection
       end
     end
   end

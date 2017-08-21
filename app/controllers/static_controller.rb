@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   skip_authorization_check
   
   def home
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = 'Das Bedwars-Netzwerk für Minecraft 1.9 - 1.12!'
       @page_description = 'bedwars.network ist ein Minecraft-Server, der sich auf den Spielmodus Bedwars spezialisiert hat. Dir wird Bedwars geboten, wie du es noch nie gesehen hast!'
     else
@@ -25,7 +25,7 @@ class StaticController < ApplicationController
   end
 
   def team
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_description = 'Ein Server bedeutet jede Menge Arbeit. Dafür benötigt man ein kleines, zuverlässiges und qualifiziertes Team.'
     else
       @page_description = 'A server means a lot of work. Therefor a small, reliable and qualified team is needed.'
@@ -35,7 +35,7 @@ class StaticController < ApplicationController
   end
   
   def team_history
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = 'Ehemalige Teammitglieder'
       @page_description = 'Jede helfende Hand im Team ist unbeschreiblich wertvoll. Daher sollen auch die ehemaligen Teammitglieder nicht in Vergessenheit geraten.'
     else
@@ -46,7 +46,7 @@ class StaticController < ApplicationController
   end
 
   def maps
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_description = 'bedwars.network bietet individuell gestaltete Bedwars-Maps für spannende Bedwars-Runden.'
     else
       @page_description = 'bedwars.network offers individual designed Bedwars maps for thrilling Bedwars games.'
@@ -55,7 +55,7 @@ class StaticController < ApplicationController
   end
   
   def youtube
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = 'Deine Chance'
     else
       @page_title = 'Your Chance'
@@ -70,7 +70,7 @@ class StaticController < ApplicationController
   end
   
   def statistic_bedwars
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = ['Statistiken', 'Bedwars']
       @page_description = 'Die Bedwars-Statistik zeigt die besten Spieler in den einzelnen Kategorien.'
     else
@@ -105,7 +105,7 @@ class StaticController < ApplicationController
   end
   
   def statistic_country
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = ['Statistiken', 'Herkunft']
       @page_description = 'Die Herkunft-Statistik zeigt dir, wo die Spieler auf unserem Server weltweit herkommen.'
     else
@@ -151,7 +151,7 @@ class StaticController < ApplicationController
   end
   
   def contact
-    if params[:locale] == 'de'
+    if I18n.locale == :de
       @page_title = 'Kontakt'
       @page_description = 'Für allgemeine Anfragen, für Fragen zum Server, zum Melden von Hackern und zum Stellen von Entbannungsanträgen kannst du uns jederzeit kontaktieren.'
     else
@@ -172,5 +172,10 @@ class StaticController < ApplicationController
   def application
     @page_title = 'Bewerbung'
     @page_description = 'Wir suchen jederzeit Team-Mitglieder, mit denen wir gemeinsam unser Netzwerk ausbauen können.'
+  end
+  
+  def gamescom
+    @page_title = 'gamescom 2017'
+    @page_description = 'Wir sind auf der gamescom vertreten. Triff dich mit uns und erhalte einen Gutschein!'
   end
 end

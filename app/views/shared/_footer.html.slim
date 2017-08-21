@@ -28,9 +28,9 @@ footer.page-footer
         |  &copy
         = Time.now.year
         |  bedwars.network |
-        =<> link_to t('global.footer.imprint_and_privacy'), imprint_path(), class: "light-blue-text text-lighten-3"
+        =<> link_to t('global.pages.imprint_and_privacy'), imprint_path(), class: "light-blue-text text-lighten-3"
         | |
-        =<> link_to t('global.footer.tos'), tos_path(), class: "light-blue-text text-lighten-3"
+        =<> link_to t('global.pages.tos'), tos_path(), class: "light-blue-text text-lighten-3"
         - if !user_signed_in?
           |  |
           =<> link_to "Anmelden", new_user_session_path(), class: "light-blue-text text-lighten-3"

@@ -28,11 +28,11 @@ class Dashboard::ServerstatisticsController < ApplicationController
 	end
   	
 	def show
-  	  if(params[:id] == "latest")
-    	 @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
-      else
-        @serverstatistic = Serverstatistic.find_by(id: params[:id])
-      end
+    if(params[:id] == "today")
+  	 @serverstatistic = Serverstatistic.find_by(id: DateTime.now.in_time_zone("Berlin").strftime("%Y-%m-%d"))
+    else
+      @serverstatistic = Serverstatistic.find_by(id: params[:id])
+    end
     if @serverstatistic.nil?
       redirect_back(fallback_location: home_path, :flash => { :error => "Statistik nicht gefunden" })
     end

@@ -22,6 +22,7 @@ module BedwarsNetwork
     config.encoding = "utf-8"
     config.time_zone = 'Berlin'
     config.action_controller.default_url_options = { :trailing_slash => true }
+    config.autoload_paths += %W(#{config.root}/app/representations)
     
     Yt.configure do |config|
       config.api_key = ENV["GOOGLE_API_KEY"]

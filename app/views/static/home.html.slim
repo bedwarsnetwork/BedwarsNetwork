@@ -12,7 +12,14 @@
               br
               span.light-blue-text.text-lighten-1
                 | bedwars.network
-            p = t('.slogan')
+            p = t('.slogan', versions: '1.9 - 1.12')
+            
+  .section
+    .row
+      .col.xs12
+        .card.bwnet
+          .card-content.white-text
+            span.card-title[style="margin-bottom:0px"] = link_to('gamescom 2017 - Informationen und Gutscheinaktion vor Ort »', gamescom_path, class: "white-text")
   .section
     .row
       - if !@server_query.nil? && @server_query['status'] && @server_query['players']['online'] >= 5

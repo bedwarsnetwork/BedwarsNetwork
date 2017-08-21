@@ -7,7 +7,7 @@
       .col.xs12
         .card
           .card-content.center-align
-            h1 Statistik
+            h1 = t('global.pages.statistics')
   .section
     .row
       .col.s12
@@ -15,14 +15,14 @@
           ul.linked-tabs
             li.tab.col.s6
               - if params[:action] == "statistic_bedwars"
-                = link_to "Bedwars-Statistik", statistics_bedwars_path(), class: "active"
+                = link_to Bedwarsstatistic.model_name.human(count: 2), statistics_bedwars_path(), class: "active"
               - else
-                = link_to "Bedwars-Statistik", statistics_bedwars_path()
+                = link_to Bedwarsstatistic.model_name.human(count: 2), statistics_bedwars_path()
             li.tab.col.s6
               - if params[:action] == "statistic_country"
-                = link_to "Herkunft-Statistik", statistics_country_path(), class: "active"
+                = link_to t('global.pages.statistics_location'), statistics_country_path(), class: "active"
               - else
-                = link_to "Herkunft-Statistik", statistics_country_path()
+                = link_to t('global.pages.statistics_location'), statistics_country_path()
     .row
       .col.xs12.center-align
         span.grey-text style="font-size: 10px;"
@@ -30,7 +30,7 @@
       .col.xs12.m6
         .card
           .card-content
-            span.card-title Punkte
+            span.card-title = Bedwarsstatistic.human_attribute_name(:score)
             - @score.each_with_index do |statistic, i|
               - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
@@ -45,13 +45,13 @@
                     strong
                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
-                  = statistic.score
-                  |  Punkte 
+                  => statistic.score
+                  = Bedwarsstatistic.human_attribute_name(:score_unit)
             .clearfix
       .col.xs12.m6
         .card
           .card-content
-            span.card-title Kills/Death
+            span.card-title = Bedwarsstatistic.human_attribute_name(:kd)
             - @kd.each_with_index do |statistic, i|
               - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
@@ -66,13 +66,13 @@
                     strong
                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
-                  = (statistic.kills / statistic.deaths).round
-                  |  Kills/Death
+                  => (statistic.kills / statistic.deaths).round
+                  = Bedwarsstatistic.human_attribute_name(:kd_unit)
             .clearfix
       .col.xs12.m6
         .card
           .card-content
-            span.card-title Gespielte Spiele
+            span.card-title = Bedwarsstatistic.human_attribute_name(:games)
             - @games.each_with_index do |statistic, i|
               - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
@@ -87,13 +87,13 @@
                     strong
                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
-                  = statistic.wins + statistic.loses
-                  |  Spiele 
+                  => statistic.wins + statistic.loses
+                  = Bedwarsstatistic.human_attribute_name(:games_unit)
             .clearfix
       .col.xs12.m6
         .card
           .card-content
-            span.card-title Zerstörte Betten
+            span.card-title = Bedwarsstatistic.human_attribute_name(:destroyed_beds)
             - @destroyedBeds.each_with_index do |statistic, i|
               - user = statistic.user
               div class=(i == 0 ? 'col xs12 valign-wrapper' : 'col xs12 l6 valign-wrapper')
@@ -108,8 +108,8 @@
                     strong
                       = link_to(user.name, user_statistic_path(user.name), class: "black-text")
                   br
-                  = statistic.destroyedBeds
-                  |  Betten 
+                  => statistic.destroyedBeds
+                  = Bedwarsstatistic.human_attribute_name(:destroyed_beds_unit)
             .clearfix
     .divider
   .section

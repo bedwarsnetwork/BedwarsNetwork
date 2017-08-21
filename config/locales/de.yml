@@ -20,36 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
-  routes:
-    controllers:
-      static:
-        statistics: "statistiken"
-        application: "bewerbung"
-        location: "herkunft"
-        history: "ehemalige"
-        contact: "kontakt"
-        imprint: "impressum"
-        tos: "agb"
-  mongoid:
-    models:
-      user: 
-        one: "Spieler"
-        other: "Spieler"
-      chatlog:
-        one: "Chatlog"
-        other: "Chatlogs"
-      serverstatistic: 
-        one: "Server-Statistik"
-        other: "Server-Statistiken"
-    attributes:
-      user:
-        _id: "UUID"
-        name: "Name"
-        youtube_id: "YouTube Kanal ID"
-        password: "Passwort"
-        password_confirmation: "Passwort bestätigen"
-        team_member_since: "Im Team seit..."
-        team_member_until: "Im Team bis..."
   helpers:
     submit:
       create: "%{model} erstellen"

@@ -15,27 +15,27 @@
       - if !@user.youtube_id.nil? && !@user.youtube_id.empty?
         li.tab.col.s4
           - if params[:action] == "show"
-            = link_to "Profil", user_path(@user.name), class: "active"
+            = link_to t('.profile'), user_path(@user.name), class: "active"
           - else
-            = link_to "Profil", user_path(@user.name)
+            = link_to t('.profile'), user_path(@user.name)
         li.tab.col.s4
           - if params[:action] == "statistic"
-            = link_to "Statistik", user_statistic_path(@user.name), class: "active"
+            = link_to t('.statistics'), user_statistic_path(@user.name), class: "active"
           - else
-            = link_to "Statistik", user_statistic_path(@user.name)
+            = link_to t('.statistics'), user_statistic_path(@user.name)
         li.tab.col.s4
           - if params[:action] == "youtube"
-            = link_to "YouTube", user_youtube_path(@user.name), class: "active"
+            = link_to t('.youtube'), user_youtube_path(@user.name), class: "active"
           - else
-            = link_to "YouTube", user_youtube_path(@user.name)
+            = link_to t('.youtube'), user_youtube_path(@user.name)
       - else
         li.tab.col.s6
           - if params[:action] == "show"
-            = link_to "Profil", user_path(@user.name), class: "active"
+            = link_to t('.profile'), user_path(@user.name), class: "active"
           - else
-            = link_to "Profil", user_path(@user.name)
+            = link_to t('.profile'), user_path(@user.name)
         li.tab.col.s6
           - if params[:action] == "statistic"
-            = link_to "Statistik", user_statistic_path(@user.name), class: "active"
+            = link_to t('.statistics'), user_statistic_path(@user.name), class: "active"
           - else
-            = link_to "Statistik", user_statistic_path(@user.name)
+            = link_to t('.statistics'), user_statistic_path(@user.name)

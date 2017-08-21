@@ -11,7 +11,7 @@
         .col.s12
           .card
             .card-content
-              span.card-title Freunde
+              span.card-title = User.human_attribute_name(:friends)
               .center-align
                 - @user.sorted_friendships.each do |friendship|
                   - if friendship.status?

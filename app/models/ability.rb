@@ -7,6 +7,7 @@ class Ability
 
     def load_team_perms
       can :access, :dashboard
+      can :use, :api
       can :online, User
       can :index, Serverstatistic
       can :show, Serverstatistic
