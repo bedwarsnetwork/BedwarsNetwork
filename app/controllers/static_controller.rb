@@ -79,7 +79,8 @@ class StaticController < ApplicationController
     end
 
     @users = User.order_by(:name => 'asc')
-    excluded_uuids = []
+    excluded_banned_and_old_uuids = []
+    excluded_team_members_uuids = []
     project = {"$project" => {
         "_id" => 1,
         "groups" => 1,
@@ -87,21 +88,29 @@ class StaticController < ApplicationController
         "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]}
       }
     }
-    match = {"$match" => {
+    match_banned_and_old = {"$match" => {
         "$or" => [
-          {"groups" => {"$in" => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]}},
           {"last_ban_entry.until"    => { "$gte" => Date.today}},
           {"last_session_entry.end"    => { "$lte" => Date.today - 90.day}} 
         ]
       }
     }
-    User.collection.aggregate([project, match]).each do |entry|
-      excluded_uuids << entry['_id']
+    match_team_members = {"$match" => {
+        "$or" => [
+          {"groups" => {"$in" => ["Admin", "Builder", "BuilderSenior", "DeveloperPlugin", "DeveloperWeb", "Moderator", "ModeratorJunior", "ModeratorSenior"]}}
+        ]
+      }
+    }
+    User.collection.aggregate([project, match_banned_and_old]).each do |entry|
+      excluded_banned_and_old_uuids << entry['_id']
     end
-    @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_uuids).limit(11);
-    @kd = Bedwarsstatistic.order('kills / deaths DESC').where("games > 25").where.not(uuid: excluded_uuids).limit(11);
-    @games = Bedwarsstatistic.order('wins + loses DESC').where.not(uuid: excluded_uuids).limit(11);
-    @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_uuids).limit(11);
+    User.collection.aggregate([project, match_team_members]).each do |entry|
+      excluded_team_members_uuids << entry['_id']
+    end
+    @score = Bedwarsstatistic.order(score: :desc).where.not(uuid: excluded_team_members_uuids).limit(11);
+    @kd = Bedwarsstatistic.order('kills / deaths DESC').where("games > 25").where.not(uuid: excluded_banned_and_old_uuids).where.not(uuid: excluded_team_members_uuids).limit(11);
+    @games = Bedwarsstatistic.order('wins + loses DESC').where.not(uuid: excluded_banned_and_old_uuids).where.not(uuid: excluded_team_members_uuids).limit(11);
+    @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_banned_and_old_uuids).where.not(uuid: excluded_team_members_uuids).limit(11);
   end
   
   def statistic_country
