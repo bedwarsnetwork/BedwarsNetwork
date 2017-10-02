@@ -1,4 +1,4 @@
-FROM phusion/passenger-ruby24:0.9.20
+FROM phusion/passenger-ruby24:0.9.25
 
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
