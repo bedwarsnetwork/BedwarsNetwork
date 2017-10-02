@@ -122,28 +122,41 @@ class StaticController < ApplicationController
       @page_description = 'The location statistics show the origin of the players on our server.'
     end
     @global_count = User.all.count
-    
+     
+    @countries = Hash.new
+    @locations = Hash.new
       
-      @countries = Hash.new
-      @locations = Hash.new
-      
-     data = User.collection.aggregate([{"$project" => {
+    project = {"$project" => {
         "_id" => 1,
         "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]},
-
       }
-    },
-    {"$match" => { "$nor"=> [ { "last_session_entry.location" => nil}]  }},
-    { "$group" => 
+    }
+    
+    match_within_7_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 7.day}}}
+    
+    match_within_30_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 30.day}}}
+    
+    match_has_location = {"$match" => { "$nor"=> [ { "last_session_entry.location" => nil}]  }}
+    
+    group1 = { "$group" => 
         { "_id" => {"city" =>"$last_session_entry.location.city", "country" => "$last_session_entry.location.country_name"},
             "count" => { "$sum" => 1 }}
-     },
-     { "$group" => 
+     }
+    
+    group2 = { "$group" => 
         { "_id" => "$_id.country",
             "cities" => { "$push"=>  { "city" => "$_id.city", "count" => "$count" }},
             "count" => { "$sum" => "$count"}}
-     },
-     { "$sort"=> { "count" => -1 } }])
+     }
+     
+    sort =  { "$sort"=> { "count" => -1 } }
+    
+    @seven_day_count = User.collection.aggregate([project, match_within_7_days]).count
+    
+    @thirty_day_count = User.collection.aggregate([project, match_within_30_days]).count
+    
+    data = User.collection.aggregate([project, match_has_location, group1, group2, sort])
+    
      
     data.each do |country|
       @countries[country['_id']] = country['count']

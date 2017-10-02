@@ -41,6 +41,36 @@
                       = letter
       .col.xs12.m6
         .card
+          .card-content.center-align
+            span.card-title
+              | Verschiedene Spieler 7 Tage
+            dl class="player-count text-center"
+              dd
+                - if !@seven_day_count.nil?
+                  - @seven_day_count.to_s.split("").each do |letter|
+                    span
+                      = letter
+                - else
+                  - "------".split("").each do |letter|
+                    span
+                      = letter
+      .col.xs12.m6
+        .card
+          .card-content.center-align
+            span.card-title
+              | Verschiedene Spieler 30 Tage
+            dl class="player-count text-center"
+              dd
+                - if !@thirty_day_count.nil?
+                  - @thirty_day_count.to_s.split("").each do |letter|
+                    span
+                      = letter
+                - else
+                  - "------".split("").each do |letter|
+                    span
+                      = letter
+      .col.xs12.m6
+        .card
           .card-content
             = pie_chart @countries
       .col.xs12.m6
