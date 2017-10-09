@@ -13,12 +13,17 @@
       .col.s12
         .card
           ul.linked-tabs
-            li.tab.col.s6
+            li.tab.col.s4
               - if params[:action] == "statistic_bedwars"
-                = link_to Bedwarsstatistic.model_name.human(count: 2), statistics_bedwars_path(), class: "active"
+                = link_to "Bedwars-Statistik", statistics_bedwars_path(), class: "active"
               - else
-                = link_to Bedwarsstatistic.model_name.human(count: 2), statistics_bedwars_path()
-            li.tab.col.s6
+                = link_to "Bedwars-Statistik", statistics_bedwars_path()
+            li.tab.col.s4
+              - if params[:action] == "statistic_server"
+                = link_to "Server-Statistik", statistics_server_path(), class: "active"
+              - else
+                = link_to "Server-Statistik", statistics_server_path()
+            li.tab.col.s4
               - if params[:action] == "statistic_country"
                 = link_to t('global.pages.statistics_location'), statistics_country_path(), class: "active"
               - else

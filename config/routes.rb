@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get '/premium' => 'static#premium', :as => 'premium'
     get '/statistics' => 'static#statistic_bedwars', :as => 'statistics'
     get '/statistics/bedwars' => 'static#statistic_bedwars', :as => 'statistics_bedwars'
+    get '/statistics/server' => 'static#statistic_server', :as => 'statistics_server'
     get '/statistics/location' => 'static#statistic_country', :as => 'statistics_country'
     get '/contact' => 'static#contact', :as => 'contact'
     get '/faq' => 'static#faq', :as => 'faq'

@@ -113,6 +113,45 @@ class StaticController < ApplicationController
     @destroyedBeds = Bedwarsstatistic.order(destroyedBeds: :desc).where.not(uuid: excluded_banned_and_old_uuids).where.not(uuid: excluded_team_members_uuids).limit(11);
   end
   
+  def statistic_server
+    if I18n.locale == :de
+      @page_title = ['Statistiken', 'Server']
+      @page_description = 'Die Server-Statistik zeigt dir Statistiken über unser Servernetzwerk.'
+    else
+      @page_title = ['Statistics', 'Server']
+      @page_description = 'The server statistics show some statistics about our servers.'
+    end
+    
+    @global_count = User.all.count
+    
+    project = {"$project" => {
+        "_id" => 1,
+        "first_seen" => 1,
+        "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]},
+        "last_ban_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$bans", -1 ]}, 0]}
+      }
+    }
+    
+    match_session_within_7_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 7.day}}}
+    match_session_within_30_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 30.day}}}
+
+    match_first_seen_within_7_days = {"$match" => {"first_seen" => {"$gte" => Date.today - 7.day}}}
+    match_first_seen_within_30_days = {"$match" => {"first_seen" => {"$gte" => Date.today - 30.day}}}
+        
+    match_ban_within_7_days = {"$match" => {"last_ban_entry.timestamp" => {"$gte" => Date.today - 7.day}}}
+    match_ban_within_30_days = {"$match" => {"last_ban_entry.timestamp" => {"$gte" => Date.today - 30.day}}}
+    
+    @seven_day_session_count = User.collection.aggregate([project, match_session_within_7_days]).count
+    @thirty_day_session_count = User.collection.aggregate([project, match_session_within_30_days]).count
+    
+    @seven_day_first_seen_count = User.collection.aggregate([project, match_first_seen_within_7_days]).count
+    @thirty_day_first_seen_count = User.collection.aggregate([project, match_first_seen_within_30_days]).count
+    
+    @seven_day_ban_count = User.collection.aggregate([project, match_ban_within_7_days]).count
+    @thirty_day_ban_count = User.collection.aggregate([project, match_ban_within_30_days]).count
+    
+  end
+  
   def statistic_country
     if I18n.locale == :de
       @page_title = ['Statistiken', 'Herkunft']
@@ -121,7 +160,7 @@ class StaticController < ApplicationController
       @page_title = ['Statistics', 'Location']
       @page_description = 'The location statistics show the origin of the players on our server.'
     end
-    @global_count = User.all.count
+    
      
     @countries = Hash.new
     @locations = Hash.new
@@ -131,10 +170,6 @@ class StaticController < ApplicationController
         "last_session_entry"    => {"$arrayElemAt" => [{ "$slice" => [ "$sessions", -1 ]}, 0]},
       }
     }
-    
-    match_within_7_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 7.day}}}
-    
-    match_within_30_days = {"$match" => {"last_session_entry.start" => {"$gte" => Date.today - 30.day}}}
     
     match_has_location = {"$match" => { "$nor"=> [ { "last_session_entry.location" => nil}]  }}
     
@@ -150,10 +185,6 @@ class StaticController < ApplicationController
      }
      
     sort =  { "$sort"=> { "count" => -1 } }
-    
-    @seven_day_count = User.collection.aggregate([project, match_within_7_days]).count
-    
-    @thirty_day_count = User.collection.aggregate([project, match_within_30_days]).count
     
     data = User.collection.aggregate([project, match_has_location, group1, group2, sort])
     
