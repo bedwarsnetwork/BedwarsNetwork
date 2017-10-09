@@ -6,8 +6,8 @@ class User
   acts_as_api
   include ApiV1::User
   
-  RANKS = {"§9" => "Builder", "§3" => "Developer", "§4" => "Admin", "§5" => "YouTube", "§6" => "Premium", "§c" => "Moderator"}
-  COLORS = {"§9" => "5555FF", "§3" => "00AAAA", "§4" => "AA0000", "§5" => "AA00AA", "§6" => "FFAA00", "§c" => "FF5555"}
+  COLORS = {"Builder" => "FFE600", "Developer" => "00AAAA", "Admin" => "AA0000", "YouTube" => "AA00AA", "Premium" => "FFAA00", "Moderator" => "FF5555"}
+  FONT_COLORS = {"Builder" => "FFFFFF", "Developer" => "FFFFFF", "Admin" => "FFFFFF", "YouTube" => "FFFFFF", "Premium" => "FFFFFF", "Moderator" => "FFFFFF"}
   
   paginates_per 50
   
@@ -82,16 +82,34 @@ class User
   end
   
   def rank
-    if !mccolorcode.nil?
-      return RANKS[mccolorcode.to_s]
-    end
+    self.groups ||= []
+    groups.any?{ |s|
+      if s.start_with?('Admin')
+        return "Admin"
+      elsif s.start_with?('Builder')
+        return "Builder"
+      elsif s.start_with?('Moderator')
+        return "Moderator"
+      elsif s.start_with?('Developer')
+        return "Developer"
+      elsif s.start_with?('VIP')
+        return "YouTube"
+      elsif s.start_with?('Premium')
+        return "Premium"
+      end
+    }
   end
   
   def colorcode
-    if !mccolorcode.nil?
-      return COLORS[mccolorcode.to_s]
+    if !rank.nil?
+      return COLORS[rank]
     end
-
+  end
+  
+  def fontcolor
+    if !rank.nil?
+      return FONT_COLORS[rank]
+    end
   end
   
   def has_role?(role)

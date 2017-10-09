@@ -22,7 +22,7 @@
                   = link_to user.name, user_path(user.name), class: "black-text"
                 br
                 - if user.rank
-                  = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
+                  = content_tag(:span, user.rank, class: "label", style: "background-color: ##{user.colorcode}; color: ##{user.fontcolor}")
                 - if user.team_member_since
                   br
                   => t('.team_member_since')
@@ -39,7 +39,7 @@
                   = link_to user.name, user_path(user.name), class: "black-text"
                 br
                 - if user.rank
-                  = content_tag(:span, user.rank, class: "label white-text", style: "background-color: ##{user.colorcode}")
+                  = content_tag(:span, user.rank, class: "label", style: "background-color: ##{user.colorcode}; color: ##{user.fontcolor}")
                 - if user.team_member_since
                   br
                   = t('.team_member_since', since: l(user.team_member_since, format: :month))
