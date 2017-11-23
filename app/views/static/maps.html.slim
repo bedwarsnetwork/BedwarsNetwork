@@ -127,6 +127,13 @@
       .col.xs12.s6.l4
         .card
           .card-image
+            = image_tag("maps/tetris.png", class: "materialboxed", :data => {caption: "Tetris"})
+            span.card-title
+              | Tetris
+              =< content_tag(:span, "4x2", class: "label white-text red")
+      .col.xs12.s6.l4
+        .card
+          .card-image
             = image_tag("maps/village.png", class: "materialboxed", :data => {caption: "Village"})
             span.card-title
               | Village
@@ -199,6 +206,13 @@
             span.card-title
               | Mountains
               =< content_tag(:span, "4x4", class: "label white-text red")
+      .col.xs12.s6.l4
+        .card
+          .card-image
+            = image_tag("maps/oktoberfest.png", class: "materialboxed", :data => {caption: "Oktoberfest"})
+            span.card-title
+              | Oktoberfest
+              =< content_tag(:span, "8x4", class: "label white-text red")
       .col.xs12.s6.l4
         .card
           .card-image
